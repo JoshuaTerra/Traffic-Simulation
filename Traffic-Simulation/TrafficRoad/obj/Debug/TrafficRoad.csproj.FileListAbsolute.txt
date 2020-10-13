@@ -1,0 +1,10 @@
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\bin\Debug\TrafficRoad.exe.config
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\bin\Debug\TrafficRoad.exe
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\bin\Debug\TrafficRoad.pdb
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.csprojAssemblyReference.cache
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.TrafficLight.resources
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.Properties.Resources.resources
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.csproj.GenerateResource.cache
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.csproj.CoreCompileInputs.cache
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.exe
+C:\Users\Reinder\source\repos\TrafficRoad\TrafficRoad\obj\Debug\TrafficRoad.pdb
