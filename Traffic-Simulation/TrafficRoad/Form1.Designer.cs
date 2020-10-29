@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrafficLight));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Change = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -50,16 +49,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // Change
-            // 
-            this.Change.Location = new System.Drawing.Point(613, 97);
-            this.Change.Name = "Change";
-            this.Change.Size = new System.Drawing.Size(98, 62);
-            this.Change.TabIndex = 9;
-            this.Change.Text = "Change Traffic Light";
-            this.Change.UseVisualStyleBackColor = true;
-            this.Change.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox6
             // 
@@ -130,7 +119,6 @@
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.Change);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
@@ -153,7 +141,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button Change;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;

@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace TrafficRoad
 {
     public partial class TrafficLight : Form
     {
         public Boolean isFlipped = false;
-        public int trafficLightStatus;
         public MyTcpListener aListener = new MyTcpListener();
         public int orange = 1;
+        JSONTrafficLight json = new JSONTrafficLight();
         public TrafficLight()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace TrafficRoad
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
+            int trafficLightStatus = json.A11;
             if (pictureBox3.Location.Y == 111) //trafficlight point.
             {
                 if (trafficLightStatus == 0)
@@ -141,18 +143,5 @@ namespace TrafficRoad
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (trafficLightStatus == 0)
-            {
-                trafficLightStatus = 1;
-            }
-
-            else
-            {
-                trafficLightStatus = 0; 
-            }
-            
-        }
     }
 }
