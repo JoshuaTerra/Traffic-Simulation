@@ -9,72 +9,63 @@ namespace TrafficRoad {
     {
         public void Main1()
         {
-            TcpListener server = null;
+            byte[] bytes = new byte[1024];
+
+            // Connect to a remote device.  
             try
             {
-                // Set the TcpListener on port 54000.
-                Int32 port = 54000;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                // Establish the remote endpoint for the socket.  
+                // This example uses port 11000 on the local computer.  
+                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+                IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 54000);
 
-                // TcpListener server = new TcpListener(port);
-                server = new TcpListener(localAddr, port);
+                // Create a TCP/IP  socket.  
+                Socket sender = new Socket(ipAddress.AddressFamily,
+                    SocketType.Stream, ProtocolType.Tcp);
 
-                // Start listening for client requests.
-                server.Start();
-
-                // Buffer for reading data
-                Byte[] bytes = new Byte[256];
-                String data = null;
-
-                // Enter the listening loop.
-                while (true)
+                // Connect the socket to the remote endpoint. Catch any errors.  
+                try
                 {
-                    System.Diagnostics.Debug.WriteLine("Waiting for a connection... ");
+                    sender.Connect(remoteEP);
 
-                    // Perform a blocking call to accept requests.
-                    // You could also use server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    System.Diagnostics.Debug.WriteLine("Connected!");
+                    Console.WriteLine("Socket connected to {0}",
+                        sender.RemoteEndPoint.ToString());
 
-                    data = null;
+                    // Encode the data string into a byte array.  
+                    byte[] msg = Encoding.ASCII.GetBytes("This is a test<EOF>");
 
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
+                    // Send the data through the socket.  
+                    int bytesSent = sender.Send(msg);
 
-                    int i;
+                    // Receive the response from the remote device.  
+                    int bytesRec = sender.Receive(bytes);
+                    Console.WriteLine("Echoed test = {0}",
+                        Encoding.ASCII.GetString(bytes, 0, bytesRec));
 
-                    // Loop to receive all the data sent by the client.
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        // Translate data bytes to a ASCII string.
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        System.Diagnostics.Debug.WriteLine("Received: {0}", data);
+                    // Release the socket.  
+                    sender.Shutdown(SocketShutdown.Both);
+                    sender.Close();
 
-                        // Process the data sent by the client.
-                        data = data.ToUpper();
-
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
-
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-                        System.Diagnostics.Debug.WriteLine("Sent: {0}", data);
-                    }
-
-                    // Shutdown and end connection
-                    client.Close();
                 }
-            }
-            catch (SocketException e)
-            {
-                System.Diagnostics.Debug.WriteLine("SocketException: {0}", e);
-            }
-            finally
-            {
-                // Stop listening for new clients.
-                server.Stop();
-            }
+                catch (ArgumentNullException ane)
+                {
+                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                }
+                catch (SocketException se)
+                {
+                    Console.WriteLine("SocketException : {0}", se.ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                }
 
-            System.Diagnostics.Debug.WriteLine("\nHit enter to continue...");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
     }
 }

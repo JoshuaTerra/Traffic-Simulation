@@ -19,7 +19,7 @@ namespace TrafficRoad
         public TrafficLight()
         {
             InitializeComponent();
-            //aListener.Main1();
+            aListener.Main1();
             pictureBox4.Visible = true; //red
             pictureBox5.Visible = false;
             pictureBox6.Visible = false;
