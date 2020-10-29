@@ -1,6 +1,3 @@
-#ifndef Controller
-#define Controller
-
 #include <string.h>
 #include <iostream>
 #include <sstream>
@@ -14,7 +11,5 @@ public:
 	int send_light_data();
 	string change_traffic_order(int order);
 	void socket_server(const char* Input);
-
 };
 
-#endif

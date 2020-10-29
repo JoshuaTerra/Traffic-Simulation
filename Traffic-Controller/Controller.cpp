@@ -1,13 +1,13 @@
-#include "Controller.h"
-#include <WS2tcpip.h>
-#include <ctime>
-#include <string> 
 #include <iostream>
 #include <sstream>
-#include <stdlib.h> 
 #include <stdio.h> 
-#include <sys/types.h>
+#include <string.h> 
+#include <stdlib.h> 
+#include <ctime>
+#include <WS2tcpip.h>
+#include "Controller.h"
 #pragma comment(lib, "ws2_32.lib")
+#include <sys/types.h>
 
 using namespace std;
 
@@ -41,8 +41,8 @@ int Controller::send_light_data() {
 		{
 			time_counter -= (double)(NUM_SECONDS * CLOCKS_PER_SEC);
 			modorder = (order % 6) + 1; // current order
-			string traffic = change_traffic(modorder);
-			string length = std::to_string(traffic.length());
+			string traffic = change_traffic_order(modorder);
+			string length = to_string(traffic.length());
 			string header = length + ":";
 			string package = header + traffic;
 			const char* input = package.c_str();
@@ -52,7 +52,7 @@ int Controller::send_light_data() {
 		order++;
 	}
 
-	std::cout << "Light data send!" << std::endl;
+	cout << "Light data send!" << endl;
 }
 
 
@@ -91,10 +91,9 @@ string Controller::change_traffic_order(int order)
 	return traffic;
 }
 
-
 void Controller::socket_server(const char* Input)
 {
-	std::string ipAddress = "127.0.0.1";
+	string ipAddress = "127.0.0.1";
 
 	// https://www.youtube.com/watch?v=WDn-htpBlnU
 	// Init winsock
@@ -103,14 +102,14 @@ void Controller::socket_server(const char* Input)
 
 	int wsOk = WSAStartup(ver, &wsData);
 	if (wsOk != 0) {
-		std::cerr << "Can't initialize winsock!" << std::endl;
+		cerr << "Can't initialize winsock!" << endl;
 		return;
 	}
 	
 	// Create socket
 	SOCKET listening = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (listening == INVALID_SOCKET) {
-		std::cerr << "Can't create socket!" << std::endl;
+		cerr << "Can't create socket!" << endl;
 		return;
 	}
 
@@ -131,7 +130,7 @@ void Controller::socket_server(const char* Input)
 
 	SOCKET clientSocket = accept(listening, (sockaddr*)&server, &clientSize);
 	if (clientSocket == INVALID_SOCKET) {
-		std::cerr << "Failed" << std::endl;
+		cerr << "Failed" << endl;
 		return;
 	}
 
@@ -140,39 +139,36 @@ void Controller::socket_server(const char* Input)
 	int size;
 	do
 	{
-		// get text
+		
 		size = strlen(Input);
-		if (size > 0)		// Make sure there is input
+		if (size > 0)		
 		{
-			//std::cout << "size correct ";
+		
 			// Send the text
 			int sendResult = send(clientSocket, Input, size, 0);
 
 			if (sendResult != SOCKET_ERROR)
 				//if (sendResult == -1)
 			{
-				//std::cout << "Socket no result error!\n";					
+							
 				// Wait for response
 				ZeroMemory(buf, 4096);
-				//int bytesReceived = recv(sock, buf, 4096, 0);
+				
 				int bytesReceived = recv(clientSocket, buf, 4096, 0);
 				if (bytesReceived > 0)
 				{
-					std::cout << "Socket buffer!\n";
+					cout << "Socket buffer!\n";
 				}
 			}
 			else {
-				std::cerr << "Socket error!\n";
-				std::cerr << WSAGetLastError;
+				cerr << "Socket error!\n";
+				cerr << WSAGetLastError;
 			}
 		}
 
-	} while (size > 0);
+	} while (size < 0);
 
 	closesocket(clientSocket);
 	WSACleanup();
-
-
-
 }
 
