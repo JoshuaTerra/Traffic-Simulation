@@ -12,17 +12,15 @@ namespace TrafficRoad
 {
     public partial class TrafficLight : Form
     {
-        public int count = 1;
-        public int a;
         public Boolean isFlipped = false;
         public int trafficLightStatus;
-        public System.Timers.Timer aTimer = new System.Timers.Timer();
+        public MyTcpListener aListener = new MyTcpListener();
         public int orange = 1;
         public TrafficLight()
         {
             InitializeComponent();
-            a = 1;
-            pictureBox4.Visible = true;
+            //aListener.Main1();
+            pictureBox4.Visible = true; //red
             pictureBox5.Visible = false;
             pictureBox6.Visible = false;
         }
@@ -70,13 +68,12 @@ namespace TrafficRoad
             {
                 if (orange == 1)
                 {
-
-                    pictureBox4.Visible = false;
+                    pictureBox4.Visible = false; // orange
                     pictureBox5.Visible = true;
                     pictureBox6.Visible = false;
                     await Task.Delay(4000);
                     orange = 0;
-                    pictureBox4.Visible = true;
+                    pictureBox4.Visible = true; // red
                     pictureBox5.Visible = false;
                     pictureBox6.Visible = false;
                 }
@@ -84,18 +81,11 @@ namespace TrafficRoad
             }
             else if (trafficLightStatus == 1)
             {
-
                 orange = 1;
-                pictureBox6.Visible = true;
-                pictureBox4.Visible = false;
+                pictureBox4.Visible = false; // green
                 pictureBox5.Visible = false;
-
+                pictureBox6.Visible = true;
             }
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            count = count - 1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
