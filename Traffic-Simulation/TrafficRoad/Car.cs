@@ -10,19 +10,21 @@ namespace TrafficRoad
 {
     class Car : Traffic
     {
-        public void spawnTraffic(int left, int top)
+        public void addCar(int left, int top)
         {
-            t = new PictureBox();
+            trafficPB = new PictureBox();
 
-            t.Size = new Size(23, 39);
+            trafficPB.Image = Properties.Resources.ferrari;
 
-            t.BackColor = Color.Transparent;
+            trafficPB.BackColor = Color.Transparent;
 
-            t.SizeMode = PictureBoxSizeMode.StretchImage;
+            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            t.Left = left;
+            trafficPB.Size = new Size(15, 30);
 
-            t.Top = top;
+            trafficPB.Left = left;
+
+            trafficPB.Top = top;
         }
     }
 }

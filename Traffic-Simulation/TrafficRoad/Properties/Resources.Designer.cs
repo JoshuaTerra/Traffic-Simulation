@@ -63,6 +63,16 @@ namespace TrafficRoad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ferrari {
+            get {
+                object obj = ResourceManager.GetObject("ferrari", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kruispunt_sketch_V2 {
             get {
                 object obj = ResourceManager.GetObject("kruispunt_sketch_V2", resourceCulture);
@@ -83,16 +93,6 @@ namespace TrafficRoad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap light_go1 {
-            get {
-                object obj = ResourceManager.GetObject("light_go1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap light_slow {
             get {
                 object obj = ResourceManager.GetObject("light_slow", resourceCulture);
@@ -103,39 +103,9 @@ namespace TrafficRoad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap light_slow1 {
-            get {
-                object obj = ResourceManager.GetObject("light_slow1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap light_stop {
             get {
                 object obj = ResourceManager.GetObject("light_stop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap light_stop1 {
-            get {
-                object obj = ResourceManager.GetObject("light_stop1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap vwgolf {
-            get {
-                object obj = ResourceManager.GetObject("vwgolf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
