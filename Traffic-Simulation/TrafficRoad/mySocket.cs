@@ -6,11 +6,11 @@ using System.Text;
 using Newtonsoft.Json;
 
 namespace TrafficRoad {
-    public class MyTcpListener
+    public class mySocket
     {
-        private JSONTrafficLight json = null;
+        private jsonTL json = null;
 
-        public JSONTrafficLight Json
+        public jsonTL Json
         {
             get => json; set => json = value;
         }
@@ -72,7 +72,7 @@ namespace TrafficRoad {
                         {
                             data = data.Substring(4);
 
-                            json = JsonConvert.DeserializeObject<JSONTrafficLight>(data);
+                            json = JsonConvert.DeserializeObject<jsonTL>(data);
 
                             //Console.WriteLine(json.A10);
                         }
