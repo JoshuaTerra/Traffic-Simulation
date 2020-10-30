@@ -23,11 +23,13 @@ namespace TrafficRoad
             //aSocket.Main1();
 
             //carlane 1
-            addRoad(20, 170, 600, 0, "down");
+            //addRoad(20, 170, 600, 0, "down");
             //carlane 2
             addRoad(20, 170, 620, 0, "down");
             //carlane 3
             addRoad(20, 170, 640, 0, "down");
+
+            addCar(603, 20);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -44,6 +46,17 @@ namespace TrafficRoad
             this.Controls.Add(road.roadPB);
 
             return road;
+        }
+
+        private Car addCar(int leftX, int topY)
+        {
+            Car car = new Car();
+
+            car.addCar(leftX, topY);
+            
+            this.Controls.Add(car.trafficPB);
+
+            return car;
         }
 
     }

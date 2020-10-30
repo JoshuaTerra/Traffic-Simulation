@@ -5,31 +5,33 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TrafficRoad
 {
     class Traffic
     {
-        public PictureBox t;
+        public PictureBox trafficPB;
 
         public String direction = "forward";
 
-        public int width = 23;
-        public int lenght = 39;
+        protected Road road = null;
 
-        public void spawnTraffic(int left, int top)
+        public void spawnTraffic(int leftX, int topY)
         {
-            t = new PictureBox();
-            t.Image = Properties.Resources.vwgolf;
+            trafficPB = new PictureBox();
 
-            t.BackColor = Color.Transparent;
+            trafficPB.Image = Properties.Resources.ferrari;
 
-            t.SizeMode = PictureBoxSizeMode.StretchImage;
+            trafficPB.BackColor = Color.Transparent;
 
-            t.Size = new Size(23, 39);
+            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            t.Left = left;
-            t.Top = top;
+            trafficPB.Size = new Size(15, 30);
+
+            trafficPB.Left = leftX;
+
+            trafficPB.Top = topY;
         }
 
     }
