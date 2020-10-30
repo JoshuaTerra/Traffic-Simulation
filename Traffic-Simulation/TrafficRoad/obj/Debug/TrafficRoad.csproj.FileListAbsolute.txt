@@ -48,3 +48,6 @@ C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\o
 C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CoreCompileInputs.cache
 C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.exe
 C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.pdb
+C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.dll
+C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.xml
+C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CopyComplete

@@ -3,78 +3,110 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace TrafficRoad {
     public class MyTcpListener
     {
+        private JSONTrafficLight json = null;
+
+        public JSONTrafficLight Json
+        {
+            get => json; set => json = value;
+        }
+
         public void Main1()
         {
-            TcpListener server = null;
+            byte[] bytes = new byte[1024];
+
+            // Connect to a remote device.  
             try
             {
-                // Set the TcpListener on port 54000.
-                Int32 port = 54000;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-
-                // TcpListener server = new TcpListener(port);
-                server = new TcpListener(localAddr, port);
-
-                // Start listening for client requests.
-                server.Start();
-
-                // Buffer for reading data
-                Byte[] bytes = new Byte[256];
-                String data = null;
-
-                // Enter the listening loop.
                 while (true)
                 {
-                    System.Diagnostics.Debug.WriteLine("Waiting for a connection... ");
+                    // Establish the remote endpoint for the socket.  
+                    // This example uses port 11000 on the local computer.  
+                    IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+                    IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+                    IPEndPoint remoteEP = new IPEndPoint(ipAddress, 54000);
 
-                    // Perform a blocking call to accept requests.
-                    // You could also use server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    System.Diagnostics.Debug.WriteLine("Connected!");
+                    // Create a TCP/IP  socket.  
+                    Socket sender = new Socket(ipAddress.AddressFamily,
+                        SocketType.Stream, ProtocolType.Tcp);
 
-                    data = null;
-
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
-
-                    int i;
-
-                    // Loop to receive all the data sent by the client.
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    // Connect the socket to the remote endpoint. Catch any errors.  
+                    try
                     {
-                        // Translate data bytes to a ASCII string.
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        System.Diagnostics.Debug.WriteLine("Received: {0}", data);
+                        sender.Connect(remoteEP);
 
-                        // Process the data sent by the client.
-                        data = data.ToUpper();
+                        Console.WriteLine("Socket connected to {0}",
+                            sender.RemoteEndPoint.ToString());
 
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+                        // Encode the data string into a byte array.  
+                        byte[] msg = Encoding.ASCII.GetBytes("This is a test<EOF>");
 
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-                        System.Diagnostics.Debug.WriteLine("Sent: {0}", data);
+                        // Send the data through the socket.  
+                        int bytesSent = sender.Send(msg);
+
+                        // Receive the response from the remote device.  
+                        int bytesRec = sender.Receive(bytes);
+                        Console.WriteLine("Echoed test = {0}",
+                            Encoding.ASCII.GetString(bytes, 0, bytesRec));
+
+                        string test = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+
+                        string data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        String header = "0";
+
+                        if (!String.IsNullOrWhiteSpace(data))
+                        {
+                            int charLocation = data.IndexOf(":", StringComparison.Ordinal);
+
+                            if (charLocation > 0)
+                            {
+                                header = data.Substring(0, charLocation);
+                            }
+                        }
+
+                        if (header == data.Substring(4).Length.ToString())
+                        {
+                            data = data.Substring(4);
+
+                            json = JsonConvert.DeserializeObject<JSONTrafficLight>(data);
+
+                            //Console.WriteLine(json.A10);
+                        }
+                        else
+                        {
+                            Console.WriteLine("JSON is not complete...");
+                        }
+
+                        Console.WriteLine(json.A11);
+                        // Release the socket.  
+                        sender.Shutdown(SocketShutdown.Both);
+                        sender.Close();
+
+                    }
+                    catch (ArgumentNullException ane)
+                    {
+                        Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                    }
+                    catch (SocketException se)
+                    {
+                        Console.WriteLine("SocketException : {0}", se.ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Unexpected exception : {0}", e.ToString());
                     }
 
-                    // Shutdown and end connection
-                    client.Close();
                 }
-            }
-            catch (SocketException e)
-            {
-                System.Diagnostics.Debug.WriteLine("SocketException: {0}", e);
-            }
-            finally
-            {
-                // Stop listening for new clients.
-                server.Stop();
-            }
 
-            System.Diagnostics.Debug.WriteLine("\nHit enter to continue...");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
     }
 }
