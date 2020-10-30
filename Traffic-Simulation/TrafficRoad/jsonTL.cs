@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TrafficRoad
 {
-    public class JSONTrafficLight
+    public class jsonTL
     {
         [JsonProperty ("A1-1")]
         public int A11 { get; set; }

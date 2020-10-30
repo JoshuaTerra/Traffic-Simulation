@@ -63,6 +63,16 @@ namespace TrafficRoad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kruispunt_sketch_V2 {
+            get {
+                object obj = ResourceManager.GetObject("kruispunt_sketch_V2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap light_go {
             get {
                 object obj = ResourceManager.GetObject("light_go", resourceCulture);
