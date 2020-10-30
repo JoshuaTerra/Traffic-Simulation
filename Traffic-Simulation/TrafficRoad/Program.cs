@@ -16,7 +16,7 @@ namespace TrafficRoad
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrafficLight());
+            Application.Run(new Form1());
         }
     }
 }

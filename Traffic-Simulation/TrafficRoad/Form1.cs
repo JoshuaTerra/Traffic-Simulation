@@ -11,22 +11,41 @@ using Newtonsoft.Json;
 
 namespace TrafficRoad
 {
-    public partial class TrafficLight : Form
+    public partial class Form1 : Form
     {
         List<Traffic> traffic = new List<Traffic>();
-
         private mySocket aSocket = new mySocket();
         private jsonTL json = new jsonTL();
 
-        public TrafficLight()
+        public Form1()
         {
             InitializeComponent();
             //aSocket.Main1();
+
+            //carlane 1
+            addRoad(20, 170, 600, 0, "down");
+            //carlane 2
+            addRoad(20, 170, 620, 0, "down");
+            //carlane 3
+            addRoad(20, 170, 640, 0, "down");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            
         }
+
+        private Road addRoad(int width, int height, int leftX, int topY, string direction)
+        {
+            Road road = new Road(0, 0, 0, 0, "");
+
+            road.addRoad(width, height, leftX, topY, direction);
+
+            this.Controls.Add(road.roadPB);
+
+            return road;
+        }
+
     }
+
 }
