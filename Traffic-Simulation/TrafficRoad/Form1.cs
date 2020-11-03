@@ -31,9 +31,38 @@ namespace TrafficRoad
 
             addCar(603, 20);
 
-            addTrafficLight(7, 16, 100, 100, "down");
+            //north west traffic lights
+            addTrafficLight(16, 7, 274, 175, 270);
+            addTrafficLight(16, 7, 274, 194, 270);
+            addTrafficLight(16, 7, 274, 212, 270);
+            addTrafficLight(16, 7, 274, 231, 270);
 
-            
+            //west traffic lights
+            addTrafficLight(16, 7, 107, 306, 90);
+            addTrafficLight(16, 7, 107, 326, 90);
+            addTrafficLight(16, 7, 107, 344, 90);
+            addTrafficLight(16, 7, 107, 363, 90);
+
+            //southern traffic lights
+            addTrafficLight(7, 16, 231, 416, 0);
+            addTrafficLight(7, 16, 250, 416, 0);
+            addTrafficLight(7, 16, 269, 416, 0);
+            addTrafficLight(7, 16, 288, 416, 0);
+
+            //south east traffic lights
+            addTrafficLight(16, 7, 614, 269, 90);
+            addTrafficLight(16, 7, 614, 288, 90);
+            addTrafficLight(16, 7, 614, 307, 90);
+            addTrafficLight(16, 7, 614, 326, 90);
+
+            //north east traffic lights
+            addTrafficLight(16, 7, 779, 138, 270);
+            addTrafficLight(16, 7, 779, 157, 270);
+            addTrafficLight(16, 7, 779, 176, 270);
+            addTrafficLight(16, 7, 779, 195, 270);
+
+            //northern single traffic light
+            addTrafficLight(7, 16, 607, 75, 180);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -62,11 +91,11 @@ namespace TrafficRoad
 
             return car;
         }
-        private TrafficLights addTrafficLight(int width, int height, int leftX, int topY, string direction)
+        private TrafficLights addTrafficLight(int width, int height, int leftX, int topY, int flipped)
         {
-            TrafficLights trafficLights = new TrafficLights(0, 0, 0, 0, "");
+            TrafficLights trafficLights = new TrafficLights(0, 0, 0, 0, 0);
 
-            trafficLights.InitTrafficLights(width, height, leftX, topY, direction);
+            trafficLights.InitTrafficLights(width, height, leftX, topY, flipped);
 
             this.Controls.Add(trafficLights.trafficLightsPB);
 

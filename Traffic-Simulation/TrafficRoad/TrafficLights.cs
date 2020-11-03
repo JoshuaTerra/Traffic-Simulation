@@ -17,10 +17,10 @@ namespace TrafficRoad
         public int height = 0;
         public int leftX = 0;
         public int topY = 0;
-        public string direction = "";
+        public int flipped;
         public PictureBox trafficLightsPB;
 
-        public TrafficLights(int width, int height, int leftX, int topY, string direction)
+        public TrafficLights(int width, int height, int leftX, int topY, int flipped)
         {
             this.width = width;
 
@@ -30,12 +30,12 @@ namespace TrafficRoad
 
             this.topY = topY;
 
-            this.direction = direction;
+            this.flipped = flipped;
 
             trafficLightsPB = new PictureBox();
         }
 
-        public void InitTrafficLights(int width, int height, int leftX, int topY, string direction)
+        public void InitTrafficLights(int width, int height, int leftX, int topY, int flipped)
         {
             trafficLightsPB = new PictureBox();
 
@@ -53,6 +53,20 @@ namespace TrafficRoad
 
             trafficLightsPB.Top = topY;
 
+            if (flipped == 90)
+            {
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            }
+
+            else if (flipped == 180)
+            {
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            }
+
+            else if (flipped == 270)
+            {
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            }
         }
     }
 }
