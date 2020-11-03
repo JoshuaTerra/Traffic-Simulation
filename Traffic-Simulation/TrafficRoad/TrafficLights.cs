@@ -10,22 +10,49 @@ namespace TrafficRoad
 {
     
 
-    class TrafficLights : Traffic
+    class TrafficLights
     {
- 
-        public void InitTrafficLights(int xposition, int yposition)
+        public List<TrafficLights> trafficLights = new List<TrafficLights>();
+        public int width = 0;
+        public int height = 0;
+        public int leftX = 0;
+        public int topY = 0;
+        public string direction = "";
+        public PictureBox trafficLightsPB;
+
+        public TrafficLights(int width, int height, int leftX, int topY, string direction)
         {
-            tl = new PictureBox();
+            this.width = width;
 
-            tl.Image = Properties.Resources.light_stop;
+            this.height = height;
 
-            tl.Location = new Point(xposition, yposition);
+            this.leftX = leftX;
 
-            tl.Size = new Size(7, 16);
+            this.topY = topY;
 
-            tl.BackColor = Color.Transparent;
+            this.direction = direction;
 
-            tl.SizeMode = PictureBoxSizeMode.StretchImage;
+            trafficLightsPB = new PictureBox();
+        }
+
+        public void InitTrafficLights(int width, int height, int leftX, int topY, string direction)
+        {
+            trafficLightsPB = new PictureBox();
+
+            trafficLightsPB.Image = Properties.Resources.light_stop;
+
+            trafficLightsPB.BackColor = Color.Transparent;
+
+            trafficLightsPB.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            trafficLightsPB.Width = width;
+
+            trafficLightsPB.Height = height;
+
+            trafficLightsPB.Left = leftX;
+
+            trafficLightsPB.Top = topY;
+
         }
     }
 }

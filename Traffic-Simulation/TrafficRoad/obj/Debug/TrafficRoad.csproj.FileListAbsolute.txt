@@ -51,3 +51,16 @@ C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\b
 C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.xml
 C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CopyComplete
 C:\Users\RS\Documents\GitHub\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.Form1.resources
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\TrafficRoad.exe.config
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\TrafficRoad.exe
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\TrafficRoad.pdb
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csprojAssemblyReference.cache
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.Form1.resources
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.Properties.Resources.resources
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.GenerateResource.cache
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CoreCompileInputs.cache
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CopyComplete
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.exe
+C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.pdb

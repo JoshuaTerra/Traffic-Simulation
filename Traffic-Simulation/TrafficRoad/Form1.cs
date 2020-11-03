@@ -30,6 +30,10 @@ namespace TrafficRoad
             addRoad(20, 170, 640, 0, "down");
 
             addCar(603, 20);
+
+            addTrafficLight(7, 16, 100, 100, "down");
+
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -57,6 +61,16 @@ namespace TrafficRoad
             this.Controls.Add(car.trafficPB);
 
             return car;
+        }
+        private TrafficLights addTrafficLight(int width, int height, int leftX, int topY, string direction)
+        {
+            TrafficLights trafficLights = new TrafficLights(0, 0, 0, 0, "");
+
+            trafficLights.InitTrafficLights(width, height, leftX, topY, direction);
+
+            this.Controls.Add(trafficLights.trafficLightsPB);
+
+            return trafficLights;
         }
 
     }
