@@ -78,13 +78,12 @@ namespace TrafficRoad
             {
                 if (trafficLights[i].trafficLightStatus == 0)
                 {
-                    trafficLightsPB.Image = Properties.Resources.light_stop;
-                    trafficLightsPB.Visible = false;
+                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_stop;
                 }
 
                 else if (trafficLights[i].trafficLightStatus == 1)
                 {
-                    trafficLightsPB.Image = Properties.Resources.light_go;
+                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_go;
                 }
             }
         }

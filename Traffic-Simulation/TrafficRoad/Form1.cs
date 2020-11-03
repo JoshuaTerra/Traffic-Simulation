@@ -69,7 +69,7 @@ namespace TrafficRoad
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            CheckTrafficLightstatus();
         }
 
         private Road addRoad(int width, int height, int leftX, int topY, string direction)
@@ -104,9 +104,10 @@ namespace TrafficRoad
             return trafficLights;
         }
 
-        private void CheckTrafficLightstatus()
+        private static void CheckTrafficLightstatus()
         {
-
+            var instance = new TrafficLights(0, 0, 0, 0, 0, 0);
+            instance.checkTrafficLightStatus();
         }
 
     }
