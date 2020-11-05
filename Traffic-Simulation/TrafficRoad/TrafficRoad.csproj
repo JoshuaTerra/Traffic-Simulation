@@ -100,9 +100,6 @@
     <None Include="Resources\light_stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\vwgolf.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\kruispunt_sketch_V2.png" />
   </ItemGroup>
   <ItemGroup>
