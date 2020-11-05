@@ -15,6 +15,7 @@ namespace TrafficRoad
     {
         List<Traffic> traffic = new List<Traffic>();
         List<Road> roads = new List<Road>();
+        List<TrafficLights> trafficLights = new List<TrafficLights>();
         private mySocket aSocket = new mySocket();
         private jsonTL json = new jsonTL();
 
@@ -72,10 +73,12 @@ namespace TrafficRoad
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            CheckTrafficLightstatus();
-
+            //CheckTrafficLightstatus();
+            Console.WriteLine(trafficLights.Count);
+            Console.WriteLine(roads.Count);
             //Console.WriteLine(traffic[0].direction);
             //Console.WriteLine(roads[0].leftX);
+
 
             foreach (Traffic t in traffic)
             {
@@ -106,20 +109,21 @@ namespace TrafficRoad
 
             this.Controls.Add(car.trafficPB);
         }
-        private TrafficLights addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        private void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
         {
-            TrafficLights trafficLights = new TrafficLights(0, 0, 0, 0, 0, 0);
+            TrafficLights trafficLight = new TrafficLights();
 
-            trafficLights.InitTrafficLights(width, height, leftX, topY, flipped, trafficLightStatus);
+            trafficLight.InitTrafficLights(width, height, leftX, topY, flipped, trafficLightStatus);
 
-            this.Controls.Add(trafficLights.trafficLightsPB);
+            trafficLights.Add(trafficLight);
 
-            return trafficLights;
+            this.Controls.Add(trafficLight.trafficLightsPB);
+
         }
 
         private static void CheckTrafficLightstatus()
         {
-            var instance = new TrafficLights(0, 0, 0, 0, 0, 0);
+            var instance = new TrafficLights();
             instance.checkTrafficLightStatus();
         }
 
