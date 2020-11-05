@@ -43,19 +43,19 @@ namespace TrafficRoad
 
         public void movement(int speed)
         {
-            int roadX = road.leftX;
-            int roadY = road.topY;
-            int carX = trafficPB.Location.X;
-            int carY = trafficPB.Location.Y;
+            //int roadX = road.leftX;
+            //int roadY = road.topY;
+            //int carX = trafficPB.Location.X;
+            //int carY = trafficPB.Location.Y;
 
-            if (carX == roadX)
-            {
-                this.direction = road.direction;
-            }
-            if(carY > roadY)
-            {
-                this.direction = road.direction;
-            }
+            //if (carX == roadX)
+            //{
+            //    this.direction = road.direction;
+            //}
+            //if(carY > roadY)
+            //{
+            //    this.direction = road.direction;
+            //}
 
             if (this.direction == "right")
             {

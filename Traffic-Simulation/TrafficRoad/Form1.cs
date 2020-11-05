@@ -47,9 +47,6 @@ namespace TrafficRoad
             addRoad(132, 19, 0, 338, "right");
             addRoad(132, 19, 0, 357, "right");
 
-            // spawn car
-            spawnCar(643, 20, "down", roads[12]);
-
             //north west traffic lights
             addTrafficLight(16, 7, 274, 175, 270, 0);
             addTrafficLight(16, 7, 274, 194, 270, 0);
@@ -84,20 +81,13 @@ namespace TrafficRoad
             addTrafficLight(7, 16, 607, 75, 180, 1);
             addTrafficLight(7, 16, 626, 75, 180, 1);
             addTrafficLight(7, 16, 645, 75, 180, 1);
+
+            spawnCar();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-=======
             CheckTrafficLightstatus();
->>>>>>> Stashed changes
-            //CheckTrafficLightstatus();
-            Console.WriteLine(trafficLights.Count);
-            Console.WriteLine(roads.Count);
-            //Console.WriteLine(traffic[0].direction);
-            //Console.WriteLine(roads[0].leftX);
-
 
             foreach (Traffic t in traffic)
             {
@@ -115,11 +105,15 @@ namespace TrafficRoad
             roads.Add(road);
         }
 
-        private void spawnCar(int leftX, int topY, string direction, Road road)
+        private void spawnCar()
         {
+            Random random = new Random();
+
+            int rnd = random.Next(roads.Count());
+
             Car car = new Car();
 
-            car.spawnTraffic(leftX, topY, direction, road);
+            car.spawnTraffic(roads[rnd].leftX, roads[rnd].topY, roads[rnd].direction, roads[rnd]);
 
             traffic.Add(car);
 

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int main() 
+int main()
 {
 	Controller controller;
 	controller.send_light_data();
@@ -47,12 +47,11 @@ int Controller::send_light_data() {
 			string package = header + traffic;
 			const char* input = package.c_str();
 			socket_server(input); //package every 4 seconds
+			cout << input << endl;
 		}
 		//continuous order
 		order++;
 	}
-
-	cout << "Light data send!" << endl;
 }
 
 
@@ -95,6 +94,8 @@ void Controller::socket_server(const char* Input)
 {
 	string ipAddress = "127.0.0.1";
 
+	string i = Input;
+
 	// https://www.youtube.com/watch?v=WDn-htpBlnU
 	// Init winsock
 	WSADATA wsData;
@@ -105,7 +106,7 @@ void Controller::socket_server(const char* Input)
 		cerr << "Can't initialize winsock!" << endl;
 		return;
 	}
-	
+
 	// Create socket
 	SOCKET listening = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (listening == INVALID_SOCKET) {
@@ -133,27 +134,30 @@ void Controller::socket_server(const char* Input)
 		cerr << "Failed" << endl;
 		return;
 	}
+	else {
+		cerr << "Connected" << endl;
+	}
 
 	// Send and receive data
 	char buf[4096];
 	int size;
 	do
 	{
-		
+
 		size = strlen(Input);
-		if (size > 0)		
+		if (size > 0)
 		{
-		
+
 			// Send the text
 			int sendResult = send(clientSocket, Input, size, 0);
 
 			if (sendResult != SOCKET_ERROR)
 				//if (sendResult == -1)
 			{
-							
+
 				// Wait for response
 				ZeroMemory(buf, 4096);
-				
+
 				int bytesReceived = recv(clientSocket, buf, 4096, 0);
 				if (bytesReceived > 0)
 				{
@@ -166,7 +170,7 @@ void Controller::socket_server(const char* Input)
 			}
 		}
 
-	} while (size < 0);
+	} while (i.size() < 0);
 
 	closesocket(clientSocket);
 	WSACleanup();
