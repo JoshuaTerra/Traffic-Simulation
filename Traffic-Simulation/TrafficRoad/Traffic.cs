@@ -45,38 +45,39 @@ namespace TrafficRoad
         {
             int roadX = road.leftX;
             int roadY = road.topY;
-
             int carX = trafficPB.Location.X;
             int carY = trafficPB.Location.Y;
 
-            Console.WriteLine("roadX: " + roadX);
-            Console.WriteLine("roadY: " + roadY);
-
-            Console.WriteLine("carX: " + carX);
-            Console.WriteLine("carY: " + carY);
-
-            if(carY == roadY)
+            if (carX == roadX)
             {
                 this.direction = road.direction;
             }
-
+            if(carY > roadY)
+            {
+                this.direction = road.direction;
+            }
 
             if (this.direction == "right")
             {
                 trafficPB.Left += 1 * speed;
                 trafficPB.Top += 0 * speed;
             }
-
-            if (this.direction == "down")
+            else if (this.direction == "down")
             {
                 trafficPB.Left += 0 * speed;
                 trafficPB.Top += 1 * speed;
             }
-        }
+            else if (this.direction == "left")
+            {
+                trafficPB.Left -= 1 * speed;
+                trafficPB.Top += 0 * speed;
+            }
+            else if (this.direction == "up")
+            {
+                trafficPB.Left += 0 * speed;
+                trafficPB.Top -= 1 * speed;
+            }
 
-        public int getLocationTop()
-        {
-            return trafficPB.Top;
         }
     }
 }

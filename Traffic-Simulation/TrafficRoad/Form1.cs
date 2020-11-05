@@ -24,16 +24,31 @@ namespace TrafficRoad
             InitializeComponent();
             //aSocket.Main1();
 
-            //carlane 1
-            //addRoad(20, 170, 600, 0, "down");
-            //addCar(603, 20, roads[0]);
-            //carlane 2
-            //addRoad(20, 170, 620, 0, "down");
-            //addCar(623, 20, roads[0]);
-            //carlane 3
-            addRoad(20, 170, 640, 0, "down"); // index 0
-            spawnCar(643, 20, "down", roads[0]);
-            addRoad(264, 18, 640, 320, "right"); // index 1
+            // adding roads north
+            addRoad(19, 98, 601, 0, "down");
+            addRoad(19, 98, 620, 0, "down");
+            addRoad(19, 98, 639, 0, "down");
+
+            // adding roads east
+            addRoad(131, 19, 771, 131, "left");
+            addRoad(131, 19, 771, 150, "left");
+            addRoad(131, 19, 771, 169, "left");
+            addRoad(131, 19, 771, 188, "left");
+
+            // adding roads south
+            addRoad(19, 98, 226, 409, "up");
+            addRoad(19, 98, 245, 409, "up");
+            addRoad(19, 98, 263, 409, "up");
+            addRoad(19, 98, 282, 409, "up");
+
+            // adding roads west
+            addRoad(132, 19, 0, 300, "right");
+            addRoad(132, 19, 0, 319, "right");
+            addRoad(132, 19, 0, 338, "right");
+            addRoad(132, 19, 0, 357, "right");
+
+            // spawn car
+            spawnCar(643, 20, "down", roads[12]);
 
             //north west traffic lights
             addTrafficLight(16, 7, 274, 175, 270, 0);
@@ -73,6 +88,10 @@ namespace TrafficRoad
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
+=======
+            CheckTrafficLightstatus();
+>>>>>>> Stashed changes
             //CheckTrafficLightstatus();
             Console.WriteLine(trafficLights.Count);
             Console.WriteLine(roads.Count);
@@ -83,7 +102,6 @@ namespace TrafficRoad
             foreach (Traffic t in traffic)
             {
                 t.movement(5);
-                //Console.WriteLine(t.direction);
             }
 
         }
@@ -95,8 +113,6 @@ namespace TrafficRoad
             road.addRoad(width, height, leftX, topY, direction);
 
             roads.Add(road);
-
-            //this.Controls.Add(road.roadPB);
         }
 
         private void spawnCar(int leftX, int topY, string direction, Road road)
