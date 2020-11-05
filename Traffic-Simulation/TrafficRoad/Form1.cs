@@ -23,7 +23,6 @@ namespace TrafficRoad
             InitializeComponent();
             //aSocket.Main1();
 
-
             //carlane 1
             //addRoad(20, 170, 600, 0, "down");
             //addCar(603, 20, roads[0]);
@@ -33,9 +32,7 @@ namespace TrafficRoad
             //carlane 3
             addRoad(20, 170, 640, 0, "down"); // index 0
             spawnCar(643, 20, "down", roads[0]);
-
-<<<<<<< Updated upstream
-            addCar(603, 20);
+            addRoad(264, 18, 640, 320, "right"); // index 1
 
             //north west traffic lights
             addTrafficLight(16, 7, 274, 175, 270, 0);
@@ -69,18 +66,12 @@ namespace TrafficRoad
 
             //northern single traffic light
             addTrafficLight(7, 16, 607, 75, 180, 1);
-
-            
-=======
-            addRoad(264, 18, 640, 320, "right"); // index 1
->>>>>>> Stashed changes
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
             CheckTrafficLightstatus();
-=======
+
             //Console.WriteLine(traffic[0].direction);
             //Console.WriteLine(roads[0].leftX);
 
@@ -89,7 +80,7 @@ namespace TrafficRoad
                 t.movement(5);
                 //Console.WriteLine(t.direction);
             }
->>>>>>> Stashed changes
+
         }
 
         private void addRoad(int width, int height, int leftX, int topY, string direction)
