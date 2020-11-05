@@ -66,6 +66,8 @@ namespace TrafficRoad
 
             //northern single traffic light
             addTrafficLight(7, 16, 607, 75, 180, 1);
+            addTrafficLight(7, 16, 626, 75, 180, 1);
+            addTrafficLight(7, 16, 645, 75, 180, 1);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
