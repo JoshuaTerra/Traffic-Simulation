@@ -15,6 +15,7 @@ namespace TrafficRoad
     {
         List<Traffic> traffic = new List<Traffic>();
         List<Road> roads = new List<Road>();
+        List<TrafficLights> trafficLights = new List<TrafficLights>();
         private mySocket aSocket = new mySocket();
         private jsonTL json = new jsonTL();
 
@@ -23,16 +24,28 @@ namespace TrafficRoad
             InitializeComponent();
             //aSocket.Main1();
 
-            //carlane 1
-            //addRoad(20, 170, 600, 0, "down");
-            //addCar(603, 20, roads[0]);
-            //carlane 2
-            //addRoad(20, 170, 620, 0, "down");
-            //addCar(623, 20, roads[0]);
-            //carlane 3
-            addRoad(20, 170, 640, 0, "down"); // index 0
-            spawnCar(643, 20, "down", roads[0]);
-            addRoad(264, 18, 640, 320, "right"); // index 1
+            // adding roads north
+            addRoad(19, 98, 601, 0, "down");
+            addRoad(19, 98, 620, 0, "down");
+            addRoad(19, 98, 639, 0, "down");
+
+            // adding roads east
+            addRoad(131, 19, 771, 131, "left");
+            addRoad(131, 19, 771, 150, "left");
+            addRoad(131, 19, 771, 169, "left");
+            addRoad(131, 19, 771, 188, "left");
+
+            // adding roads south
+            addRoad(19, 98, 226, 409, "up");
+            addRoad(19, 98, 245, 409, "up");
+            addRoad(19, 98, 263, 409, "up");
+            addRoad(19, 98, 282, 409, "up");
+
+            // adding roads west
+            addRoad(132, 19, 0, 300, "right");
+            addRoad(132, 19, 0, 319, "right");
+            addRoad(132, 19, 0, 338, "right");
+            addRoad(132, 19, 0, 357, "right");
 
             //north west traffic lights
             addTrafficLight(16, 7, 274, 175, 270, 0);
@@ -66,19 +79,19 @@ namespace TrafficRoad
 
             //northern single traffic light
             addTrafficLight(7, 16, 607, 75, 180, 1);
+            addTrafficLight(7, 16, 626, 75, 180, 1);
+            addTrafficLight(7, 16, 645, 75, 180, 1);
+
+            spawnCar();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             CheckTrafficLightstatus();
 
-            //Console.WriteLine(traffic[0].direction);
-            //Console.WriteLine(roads[0].leftX);
-
             foreach (Traffic t in traffic)
             {
                 t.movement(5);
-                //Console.WriteLine(t.direction);
             }
 
         }
@@ -90,34 +103,37 @@ namespace TrafficRoad
             road.addRoad(width, height, leftX, topY, direction);
 
             roads.Add(road);
-
-            //this.Controls.Add(road.roadPB);
         }
 
-        private void spawnCar(int leftX, int topY, string direction, Road road)
+        private void spawnCar()
         {
+            Random random = new Random();
+
+            int rnd = random.Next(roads.Count());
+
             Car car = new Car();
 
-            car.spawnTraffic(leftX, topY, direction, road);
+            car.spawnTraffic(roads[rnd].leftX, roads[rnd].topY, roads[rnd].direction, roads[rnd]);
 
             traffic.Add(car);
 
             this.Controls.Add(car.trafficPB);
         }
-        private TrafficLights addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        private void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
         {
-            TrafficLights trafficLights = new TrafficLights(0, 0, 0, 0, 0, 0);
+            TrafficLights trafficLight = new TrafficLights();
 
-            trafficLights.InitTrafficLights(width, height, leftX, topY, flipped, trafficLightStatus);
+            trafficLight.InitTrafficLights(width, height, leftX, topY, flipped, trafficLightStatus);
 
-            this.Controls.Add(trafficLights.trafficLightsPB);
+            trafficLights.Add(trafficLight);
 
-            return trafficLights;
+            this.Controls.Add(trafficLight.trafficLightsPB);
+
         }
 
         private static void CheckTrafficLightstatus()
         {
-            var instance = new TrafficLights(0, 0, 0, 0, 0, 0);
+            var instance = new TrafficLights();
             instance.checkTrafficLightStatus();
         }
 
