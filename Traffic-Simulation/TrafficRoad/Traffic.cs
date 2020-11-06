@@ -198,5 +198,17 @@ namespace TrafficRoad
                 }
             }
         }
+
+        public void deleteTraffic()
+        {
+            if (trafficPB.Location.X < -20 || trafficPB.Location.X > 922)
+            {
+                trafficPB.Dispose();
+            }
+            else if (trafficPB.Location.Y < -20 || trafficPB.Location.Y > 527)
+            {
+                trafficPB.Dispose();
+            }
+        }
     }
 }

@@ -48,8 +48,8 @@ namespace TrafficRoad
             addRoad(132, 19, -10, 357, "right"); // index 14
 
             // adding alternative roads for turning points
-            addRoad(19, 170, 695, 0, "up"); // index 15
-            addRoad(19, 170, 714, 0, "up"); // index 16
+            addRoad(19, 170, 698, 0, "up"); // index 15
+            addRoad(19, 170, 720, 0, "up"); // index 16
             addRoad(19, 169, 169, 338, "down"); // index 17
             addRoad(19, 169, 188, 338, "down"); // index 18
 
