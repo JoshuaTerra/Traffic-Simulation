@@ -18,6 +18,7 @@ namespace TrafficRoad
         List<TrafficLights> trafficLights = new List<TrafficLights>();
         private mySocket aSocket = new mySocket();
         private jsonTL json = new jsonTL();
+        public System.Timers.Timer aTimer = new System.Timers.Timer();
 
         public Form1()
         {
@@ -89,7 +90,7 @@ namespace TrafficRoad
             addTrafficLight(7, 16, 645, 75, 180, 1);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             CheckTrafficLightstatus();
 

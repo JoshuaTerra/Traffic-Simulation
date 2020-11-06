@@ -20,6 +20,42 @@ namespace TrafficRoad
         public int trafficLightStatus = 0;
         public PictureBox trafficLightsPB;
 
+<<<<<<< Updated upstream
+=======
+        public TrafficLights(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        {
+            this.width = width;
+
+            this.height = height;
+
+            this.leftX = leftX;
+
+            this.topY = topY;
+
+            this.flipped = flipped;
+
+            this.trafficLightStatus = trafficLightStatus;
+
+            trafficLightsPB = new PictureBox();
+        }
+
+        public void checkTrafficLightStatus()
+        {
+            for (int i = 0; i < trafficLights.Count; i++)
+            {
+                if (trafficLights[i].trafficLightStatus == 0)
+                {
+                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_stop;
+                }
+
+                else if (trafficLights[i].trafficLightStatus == 1)
+                {
+                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_go;
+                }
+            }
+        }
+
+>>>>>>> Stashed changes
         public void InitTrafficLights(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
         {
             this.trafficLightsPB = new PictureBox();
@@ -53,6 +89,7 @@ namespace TrafficRoad
                 this.trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }
         }
+<<<<<<< Updated upstream
 
         public void checkTrafficLightStatus()
         {
@@ -69,5 +106,7 @@ namespace TrafficRoad
                 }
             }*/
         }
+=======
+>>>>>>> Stashed changes
     }
 }
