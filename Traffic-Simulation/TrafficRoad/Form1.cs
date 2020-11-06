@@ -92,14 +92,17 @@ namespace TrafficRoad
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            CheckTrafficLightstatus();
-
             foreach (Traffic t in traffic)
             {
                 t.movement(5);
             }
 
             spawnCar();
+
+            foreach (TrafficLights t in trafficLights)
+            {
+                t.checkTrafficLightStatus();
+            }
         }
 
         private void addRoad(int width, int height, int leftX, int topY, string direction)
@@ -185,12 +188,6 @@ namespace TrafficRoad
             trafficLights.Add(trafficLight);
 
             this.Controls.Add(trafficLight.trafficLightsPB);
-        }
-
-        private static void CheckTrafficLightstatus()
-        {
-            var instance = new TrafficLights();
-            instance.checkTrafficLightStatus();
         }
 
     }

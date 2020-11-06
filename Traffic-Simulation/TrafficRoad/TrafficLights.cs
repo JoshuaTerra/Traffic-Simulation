@@ -8,105 +8,62 @@ using System.Windows.Forms;
 
 namespace TrafficRoad
 {
-    
-
     class TrafficLights
     {
-        public int width = 0;
-        public int height = 0;
-        public int leftX = 0;
-        public int topY = 0;
-        public int flipped;
-        public int trafficLightStatus = 0;
+        public int flipped = 0;
+        public int trafficLightStatus;
         public PictureBox trafficLightsPB;
 
-<<<<<<< Updated upstream
-=======
-        public TrafficLights(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
-        {
-            this.width = width;
-
-            this.height = height;
-
-            this.leftX = leftX;
-
-            this.topY = topY;
-
-            this.flipped = flipped;
-
-            this.trafficLightStatus = trafficLightStatus;
-
-            trafficLightsPB = new PictureBox();
-        }
-
-        public void checkTrafficLightStatus()
-        {
-            for (int i = 0; i < trafficLights.Count; i++)
-            {
-                if (trafficLights[i].trafficLightStatus == 0)
-                {
-                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_stop;
-                }
-
-                else if (trafficLights[i].trafficLightStatus == 1)
-                {
-                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_go;
-                }
-            }
-        }
-
->>>>>>> Stashed changes
         public void InitTrafficLights(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
         {
-            this.trafficLightsPB = new PictureBox();
-
-            this.trafficLightsPB.Image = Properties.Resources.light_stop;
-
-            this.trafficLightsPB.BackColor = Color.Transparent;
-
-            this.trafficLightsPB.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            this.trafficLightsPB.Width = width;
-
-            this.trafficLightsPB.Height = height;
-
-            this.trafficLightsPB.Left = leftX;
-
-            this.trafficLightsPB.Top = topY;
+            trafficLightsPB = new PictureBox();
+            trafficLightsPB.Image = Properties.Resources.light_stop;
+            trafficLightsPB.BackColor = Color.Transparent;
+            trafficLightsPB.SizeMode = PictureBoxSizeMode.StretchImage;
+            trafficLightsPB.Width = width;
+            trafficLightsPB.Height = height;
+            trafficLightsPB.Left = leftX;
+            trafficLightsPB.Top = topY;
+            this.flipped = flipped;
+            this.trafficLightStatus = trafficLightStatus;
 
             if (flipped == 90)
             {
-                this.trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             }
-
             else if (flipped == 180)
             {
-                this.trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
             }
-
             else if (flipped == 270)
             {
-                this.trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }
         }
-<<<<<<< Updated upstream
 
         public void checkTrafficLightStatus()
         {
-            /*for (int i = 0; i < trafficLights.Count; i++)
+            if (trafficLightStatus == 0)
             {
-                if (trafficLights[i].trafficLightStatus == 0)
-                {
-                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_stop;
-                }
+                trafficLightsPB.Image = Properties.Resources.light_stop;
+            }
+            else if (trafficLightStatus == 1)
+            {
+                trafficLightsPB.Image = Properties.Resources.light_go;
+            }
 
-                else if (trafficLights[i].trafficLightStatus == 1)
-                {
-                    trafficLights[i].trafficLightsPB.Image = Properties.Resources.light_go;
-                }
-            }*/
+            if (flipped == 90)
+            {
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            }
+            else if (flipped == 180)
+            {
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            }
+            else if (flipped == 270)
+            {
+                trafficLightsPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            }   
         }
-=======
->>>>>>> Stashed changes
     }
 }

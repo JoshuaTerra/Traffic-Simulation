@@ -41,6 +41,7 @@ namespace TrafficRoad
         public void movement(int speed)
         {
             flip();
+            deleteTraffic();
 
             int roadX = road.leftX;
             int roadY = road.topY;
