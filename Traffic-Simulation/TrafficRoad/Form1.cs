@@ -18,6 +18,7 @@ namespace TrafficRoad
         List<TrafficLights> trafficLights = new List<TrafficLights>();
         private mySocket aSocket = new mySocket();
         private jsonTL json = new jsonTL();
+        public System.Timers.Timer aTimer = new System.Timers.Timer();
 
         public Form1()
         {
@@ -89,16 +90,19 @@ namespace TrafficRoad
             addTrafficLight(7, 16, 645, 75, 180, 1);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
-            CheckTrafficLightstatus();
-
             foreach (Traffic t in traffic)
             {
                 t.movement(5);
             }
 
             spawnCar();
+
+            foreach (TrafficLights t in trafficLights)
+            {
+                t.checkTrafficLightStatus();
+            }
         }
 
         private void addRoad(int width, int height, int leftX, int topY, string direction)
@@ -184,12 +188,6 @@ namespace TrafficRoad
             trafficLights.Add(trafficLight);
 
             this.Controls.Add(trafficLight.trafficLightsPB);
-        }
-
-        private static void CheckTrafficLightstatus()
-        {
-            var instance = new TrafficLights();
-            instance.checkTrafficLightStatus();
         }
 
     }
