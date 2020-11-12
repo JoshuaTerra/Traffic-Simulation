@@ -13,7 +13,7 @@ namespace TrafficRoad
     {
         public PictureBox trafficPB;
         protected Road road = null;
-        protected string direction = "";
+        protected string direction;
         private bool isFlipped = false;
         public int prevRotation = 0;
 
@@ -49,25 +49,25 @@ namespace TrafficRoad
             int carY = trafficPB.Location.Y;
 
             // if statement to set the right direction of the car when getting onto another lane (road)
-            if (this.direction == "down" && carY > roadY)
+            if (carY + 2 >= roadY && direction == "down")
             {
-                this.direction = road.direction;
+                direction = road.direction;
             }
-            else if (this.direction == "right" && carX > roadX)
+            else if (carX - 2 >= roadX && direction == "right")
             {
-                this.direction = road.direction;
+                direction = road.direction;
             }
-            else if (this.direction == "up" && carY < roadY)
+            else if (carY - 2 <= roadY && direction == "up")
             {
-                this.direction = road.direction;
+                direction = road.direction;
             }
-            else if (this.direction == "left" && carX < roadX)
+            else if (carX + 2 <= roadX && direction == "left")
             {
-                this.direction = road.direction;
+                direction = road.direction;
             }
 
             // if statement that moves the picturebox in the right direction and flips the image
-            if (this.direction == "right")
+            if (direction == "right")
             {
                 trafficPB.Left += 1 * speed;
                 trafficPB.Top += 0 * speed;
@@ -78,13 +78,13 @@ namespace TrafficRoad
                 }
                 trafficPB.Size = new Size(30, 15);
             }
-            else if (this.direction == "down")
+            else if (direction == "down")
             {
                 trafficPB.Left += 0 * speed;
                 trafficPB.Top += 1 * speed;
                 trafficPB.Size = new Size(15, 30);
             }
-            else if (this.direction == "left")
+            else if (direction == "left")
             {
                 trafficPB.Left -= 1 * speed;
                 trafficPB.Top += 0 * speed;
@@ -95,7 +95,7 @@ namespace TrafficRoad
                 }
                 trafficPB.Size = new Size(30, 15);
             }
-            else if (this.direction == "up")
+            else if (direction == "up")
             {
                 trafficPB.Left += 0 * speed;
                 trafficPB.Top -= 1 * speed;
@@ -110,7 +110,7 @@ namespace TrafficRoad
 
         public void flip()
         {
-            if (this.direction == "right")
+            if (direction == "right")
             {
                 if (prevRotation == 0)
                 {
@@ -132,7 +132,7 @@ namespace TrafficRoad
                     prevRotation = 90;
                 }
             }
-            else if (this.direction == "down")
+            else if (direction == "down")
             {
                 if (prevRotation == 0)
                 {
@@ -154,7 +154,7 @@ namespace TrafficRoad
                     prevRotation = 180;
                 }
             }
-            else if (this.direction == "left")
+            else if (direction == "left")
             {
                 if (prevRotation == 0)
                 {
@@ -176,7 +176,7 @@ namespace TrafficRoad
                     prevRotation = 270;
                 }
             }
-            else if (this.direction == "up")
+            else if (direction == "up")
             {
                 if (prevRotation == 0)
                 {
@@ -221,36 +221,32 @@ namespace TrafficRoad
                 return false;
             }
 
-            // Collisionboxes
             Rectangle rectangle = new Rectangle();
             if (direction == "up")
             {
-                rectangle = new Rectangle(trafficPB.Left, (trafficPB.Top - 10), trafficPB.Width, 10);
+                rectangle = new Rectangle(trafficPB.Left, trafficPB.Top - 15, trafficPB.Width, 15);
             }
 
             if (direction == "down")
             {
-                rectangle = new Rectangle(trafficPB.Left, (trafficPB.Top + trafficPB.Height + 10), trafficPB.Width, 10);
+                rectangle = new Rectangle(trafficPB.Left, trafficPB.Top + trafficPB.Height, trafficPB.Width, 15);
             }
 
             if (direction == "right")
             {
-                rectangle = new Rectangle((trafficPB.Left + trafficPB.Width), trafficPB.Top, 10, trafficPB.Top);
+                rectangle = new Rectangle(trafficPB.Left + trafficPB.Width, trafficPB.Top, 15, trafficPB.Height);
             }
 
             if (direction == "left")
             {
-                rectangle = new Rectangle((trafficPB.Left - trafficPB.Width), trafficPB.Top, 10, trafficPB.Top);
+                rectangle = new Rectangle(trafficPB.Left - 15, trafficPB.Top, 15, trafficPB.Height);
             }
 
             foreach (Traffic t in trafficList)
             {
-                if (rectangle.IntersectsWith(t.trafficPB.Bounds))
+                if (rectangle.IntersectsWith(t.trafficPB.Bounds) && t.direction == direction)
                 {
-                    if (trafficPB.Bounds.IntersectsWith(t.trafficPB.Bounds))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
 

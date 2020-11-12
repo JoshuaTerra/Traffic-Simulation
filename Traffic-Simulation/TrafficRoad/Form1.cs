@@ -50,9 +50,9 @@ namespace TrafficRoad
             addRoad(132, 19, -10, 359, "right"); // index 14
 
             // adding alternative roads for turning points
-            addRoad(19, 170, 699, 0, "up"); // index 15
-            addRoad(19, 170, 721, 0, "up"); // index 16
-            addRoad(19, 169, 170, 338, "down"); // index 17
+            addRoad(19, 170, 701, 0, "up"); // index 15
+            addRoad(19, 170, 720, 0, "up"); // index 16
+            addRoad(19, 169, 168, 338, "down"); // index 17
             addRoad(19, 169, 188, 338, "down"); // index 18
 
             //north west traffic lights
@@ -179,10 +179,10 @@ namespace TrafficRoad
                     laneNumber = 12;
                     break;
                 case 13:
-                    laneNumber = 17; 
+                    laneNumber = 18; 
                     break;
                 case 14:
-                    laneNumber = 18; 
+                    laneNumber = 17; 
                     break;
             }
 
