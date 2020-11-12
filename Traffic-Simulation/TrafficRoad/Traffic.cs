@@ -211,5 +211,50 @@ namespace TrafficRoad
                 trafficPB.Dispose();
             }
         }
+
+        public bool collisionDetection(List<Traffic> traffic)
+        {
+            List<Traffic> trafficList = traffic;
+
+            if (trafficList.Count == 0)
+            {
+                return false;
+            }
+
+            // Collisionboxes
+            Rectangle rectangle = new Rectangle();
+            if (direction == "up")
+            {
+                rectangle = new Rectangle(trafficPB.Left, (trafficPB.Top - 10), trafficPB.Width, 10);
+            }
+
+            if (direction == "down")
+            {
+                rectangle = new Rectangle(trafficPB.Left, (trafficPB.Top + trafficPB.Height + 10), trafficPB.Width, 10);
+            }
+
+            if (direction == "right")
+            {
+                rectangle = new Rectangle((trafficPB.Left + trafficPB.Width), trafficPB.Top, 10, trafficPB.Top);
+            }
+
+            if (direction == "left")
+            {
+                rectangle = new Rectangle((trafficPB.Left - trafficPB.Width), trafficPB.Top, 10, trafficPB.Top);
+            }
+
+            foreach (Traffic t in trafficList)
+            {
+                if (rectangle.IntersectsWith(t.trafficPB.Bounds))
+                {
+                    if (trafficPB.Bounds.IntersectsWith(t.trafficPB.Bounds))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }
