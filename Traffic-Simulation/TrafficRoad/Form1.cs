@@ -19,6 +19,7 @@ namespace TrafficRoad
         private mySocket aSocket = new mySocket();
         private jsonTL json = new jsonTL();
         public System.Timers.Timer aTimer = new System.Timers.Timer();
+        public Random random = new Random();
 
         public Form1()
         {
@@ -26,32 +27,32 @@ namespace TrafficRoad
             //aSocket.Main1();
 
             // adding roads north
-            addRoad(19, 98, 601, -10, "down"); // index 0
-            addRoad(19, 98, 620, -10, "down"); // index 1
-            addRoad(19, 98, 639, -10, "down"); // index 2
+            addRoad(19, 98, 603, -10, "down"); // index 0
+            addRoad(19, 98, 622, -10, "down"); // index 1
+            addRoad(19, 98, 641, -10, "down"); // index 2
 
             // adding roads east
-            addRoad(131, 19, 901, 131, "left"); // index 3
-            addRoad(131, 19, 901, 150, "left"); // index 4
-            addRoad(131, 19, 901, 169, "left"); // index 5
-            addRoad(131, 19, 901, 188, "left"); // index 6
+            addRoad(131, 19, 901, 133, "left"); // index 3
+            addRoad(131, 19, 901, 152, "left"); // index 4
+            addRoad(131, 19, 901, 171, "left"); // index 5
+            addRoad(131, 19, 901, 190, "left"); // index 6
 
             // adding roads south
-            addRoad(19, 98, 226, 507, "up");  // index 7
-            addRoad(19, 98, 245, 507, "up");  // index 8
-            addRoad(19, 98, 263, 507, "up"); // index 9
-            addRoad(19, 98, 282, 507, "up"); // index 10
+            addRoad(19, 98, 228, 507, "up");  // index 7
+            addRoad(19, 98, 247, 507, "up");  // index 8
+            addRoad(19, 98, 265, 507, "up"); // index 9
+            addRoad(19, 98, 284, 507, "up"); // index 10
 
             // adding roads west
-            addRoad(132, 19, -10, 300, "right"); // index 11
-            addRoad(132, 19, -10, 319, "right"); // index 12
-            addRoad(132, 19, -10, 338, "right"); // index 13
-            addRoad(132, 19, -10, 357, "right"); // index 14
+            addRoad(132, 19, -10, 302, "right"); // index 11
+            addRoad(132, 19, -10, 321, "right"); // index 12
+            addRoad(132, 19, -10, 340, "right"); // index 13
+            addRoad(132, 19, -10, 359, "right"); // index 14
 
             // adding alternative roads for turning points
-            addRoad(19, 170, 698, 0, "up"); // index 15
-            addRoad(19, 170, 720, 0, "up"); // index 16
-            addRoad(19, 169, 169, 338, "down"); // index 17
+            addRoad(19, 170, 699, 0, "up"); // index 15
+            addRoad(19, 170, 721, 0, "up"); // index 16
+            addRoad(19, 169, 170, 338, "down"); // index 17
             addRoad(19, 169, 188, 338, "down"); // index 18
 
             //north west traffic lights
@@ -94,10 +95,22 @@ namespace TrafficRoad
         {
             foreach (Traffic t in traffic)
             {
-                t.movement(5);
+                bool stop = t.collisionDetection(traffic);
+                if (stop)
+                {
+                    t.movement(0);
+                }
+                else
+                {
+                    t.movement(5);
+                }
             }
 
-            spawnCar();
+            int rnd = random.Next(10);
+            if (rnd == 1)
+            {
+                spawnCar();
+            }
 
             foreach (TrafficLights t in trafficLights)
             {
