@@ -20,6 +20,8 @@ namespace TrafficRoad
         private jsonTL json = new jsonTL();
         public System.Timers.Timer aTimer = new System.Timers.Timer();
         public Random random = new Random();
+        jsonTL json1 = new jsonTL();
+        public int testint = 1;
 
         public Form1()
         {
@@ -110,6 +112,80 @@ namespace TrafficRoad
             if (rnd == 1)
             {
                 spawnCar();
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (testint == 1)
+                {
+                    trafficLights[20].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[20].trafficLightStatus = 0;
+                }
+
+                if (json1.A12 == 1)
+                {
+                    trafficLights[21].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[21].trafficLightStatus = 0;
+                }
+
+                if (testint == 1)
+                {
+                    trafficLights[22].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[22].trafficLightStatus = 0;
+                }
+
+                if (json1.A21 == 1)
+                {
+                    trafficLights[19].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[19].trafficLightStatus = 0;
+                }
+
+                if (json1.A22 == 1)
+                {
+                    trafficLights[18].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[18].trafficLightStatus = 0;
+                }
+
+                if (json1.A23 == 1)
+                {
+                    trafficLights[17].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[17].trafficLightStatus = 0;
+                }
+
+                if (json1.A24 == 1)
+                {
+                    trafficLights[16].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[16].trafficLightStatus = 0;
+                }
+
             }
 
             foreach (TrafficLights t in trafficLights)
