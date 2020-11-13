@@ -15,45 +15,82 @@ namespace TrafficRoad
     {
         List<Traffic> traffic = new List<Traffic>();
         List<Road> roads = new List<Road>();
-        List<TrafficLights> trafficLights = new List<TrafficLights>();
-        private mySocket aSocket = new mySocket();
-        private jsonTL json = new jsonTL();
+        List<TrafficLight> trafficLights = new List<TrafficLight>();
+        //private mySocket aSocket = new mySocket();
+        //private jsonTL json = new jsonTL();
         public System.Timers.Timer aTimer = new System.Timers.Timer();
         public Random random = new Random();
+        jsonTL json1 = new jsonTL();
+        public int testint = 1;
 
         public Form1()
         {
             InitializeComponent();
             //aSocket.Main1();
 
+            // north west traffic lights
+            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0);
+            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0);
+            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0);
+            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0);
+
+            // west traffic lights
+            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0);
+            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0);
+            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0);
+            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0);
+
+            // southern traffic lights
+            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1);
+            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1);
+            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1);
+            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1);
+
+            // south east traffic lights
+            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1);
+            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1);
+            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1);
+            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1);
+
+            // north east traffic lights
+            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1);
+            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1);
+            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1);
+            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1);
+
+            // northern single traffic light
+            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1);
+            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1);
+            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1);
+
             // adding roads north
-            addRoad(19, 98, 603, -10, "down"); // index 0
-            addRoad(19, 98, 622, -10, "down"); // index 1
-            addRoad(19, 98, 641, -10, "down"); // index 2
+            addRoad(19, 98, 603, -20, "south", tA11); // index 0
+            addRoad(19, 98, 622, -20, "south", tA12); // index 1
+            addRoad(19, 98, 641, -20, "south", tA13); // index 2
 
             // adding roads east
-            addRoad(131, 19, 901, 133, "left"); // index 3
-            addRoad(131, 19, 901, 152, "left"); // index 4
-            addRoad(131, 19, 901, 171, "left"); // index 5
-            addRoad(131, 19, 901, 190, "left"); // index 6
+            addRoad(131, 19, 911, 133, "west", tA21); // index 3
+            addRoad(131, 19, 911, 152, "west", tA22); // index 4
+            addRoad(131, 19, 911, 171, "west", tA23); // index 5
+            addRoad(131, 19, 911, 190, "west", tA24); // index 6
 
             // adding roads south
-            addRoad(19, 98, 228, 507, "up");  // index 7
-            addRoad(19, 98, 247, 507, "up");  // index 8
-            addRoad(19, 98, 265, 507, "up"); // index 9
-            addRoad(19, 98, 284, 507, "up"); // index 10
+            addRoad(19, 98, 228, 517, "north", tA41);  // index 7
+            addRoad(19, 98, 247, 517, "north", tA42);  // index 8
+            addRoad(19, 98, 265, 517, "north", tA43); // index 9
+            addRoad(19, 98, 284, 517, "north", tA44); // index 10
 
             // adding roads west
-            addRoad(132, 19, -10, 302, "right"); // index 11
-            addRoad(132, 19, -10, 321, "right"); // index 12
-            addRoad(132, 19, -10, 340, "right"); // index 13
-            addRoad(132, 19, -10, 359, "right"); // index 14
+            addRoad(132, 19, -20, 302, "east", tA51); // index 11
+            addRoad(132, 19, -20, 321, "east", tA52); // index 12
+            addRoad(132, 19, -20, 340, "east", tA53); // index 13
+            addRoad(132, 19, -20, 359, "east", tA54); // index 14
 
             // adding alternative roads for turning points
-            addRoad(19, 170, 699, 0, "up"); // index 15
-            addRoad(19, 170, 721, 0, "up"); // index 16
-            addRoad(19, 169, 170, 338, "down"); // index 17
-            addRoad(19, 169, 188, 338, "down"); // index 18
+            addRoad(19, 170, 699, 0, "north", null); // index 15
+            addRoad(19, 170, 721, 0, "north", null); // index 16
+            addRoad(19, 169, 170, 338, "south", null); // index 17
+            addRoad(19, 169, 188, 338, "south", null); // index 18
 
             //north west traffic lights
             addTrafficLight(16, 7, 274, 175, 270, 0);
@@ -95,7 +132,7 @@ namespace TrafficRoad
         {
             foreach (Traffic t in traffic)
             {
-                bool stop = t.collisionDetection(traffic);
+                bool stop = t.collisionDetection(traffic, trafficLights);
                 if (stop)
                 {
                     t.movement(0);
@@ -112,21 +149,97 @@ namespace TrafficRoad
                 spawnCar();
             }
 
-            foreach (TrafficLights t in trafficLights)
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    if (testint == 1)
+            //    {
+            //        trafficLights[20].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[20].trafficLightStatus = 0;
+            //    }
+
+            //    if (json1.A12 == 1)
+            //    {
+            //        trafficLights[21].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[21].trafficLightStatus = 0;
+            //    }
+
+            //    if (testint == 1)
+            //    {
+            //        trafficLights[22].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[22].trafficLightStatus = 0;
+            //    }
+
+            //    if (json1.A21 == 1)
+            //    {
+            //        trafficLights[19].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[19].trafficLightStatus = 0;
+            //    }
+
+            //    if (json1.A22 == 1)
+            //    {
+            //        trafficLights[18].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[18].trafficLightStatus = 0;
+            //    }
+
+            //    if (json1.A23 == 1)
+            //    {
+            //        trafficLights[17].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[17].trafficLightStatus = 0;
+            //    }
+
+            //    if (json1.A24 == 1)
+            //    {
+            //        trafficLights[16].trafficLightStatus = 1;
+            //    }
+
+            //    else
+            //    {
+            //        trafficLights[16].trafficLightStatus = 0;
+            //    }
+
+            //}
+
+            foreach (TrafficLight t in trafficLights)
             {
                 t.checkTrafficLightStatus();
             }
         }
 
-        private void addRoad(int width, int height, int leftX, int topY, string direction)
+        // function to add the roads into the simulation
+        private void addRoad(int width, int height, int leftX, int topY, string direction, TrafficLight tl)
         {
             Road road = new Road();
 
-            road.addRoad(width, height, leftX, topY, direction);
+            road.addRoad(width, height, leftX, topY, direction, tl);
 
             roads.Add(road);
         }
 
+        // function to spawn cars into the simulation
         private void spawnCar()
         {
             Random random = new Random();
@@ -179,10 +292,10 @@ namespace TrafficRoad
                     laneNumber = 12;
                     break;
                 case 13:
-                    laneNumber = 17; 
+                    laneNumber = 18; 
                     break;
                 case 14:
-                    laneNumber = 18; 
+                    laneNumber = 17; 
                     break;
             }
 
@@ -190,17 +303,21 @@ namespace TrafficRoad
 
             traffic.Add(car);
 
-            this.Controls.Add(car.trafficPB);
+            Controls.Add(car.trafficPB);
         }
-        private void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
-        {
-            TrafficLights trafficLight = new TrafficLights();
 
-            trafficLight.InitTrafficLights(width, height, leftX, topY, flipped, trafficLightStatus);
+        // function to add the trafficlights into the simulation
+        private TrafficLight addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        {
+            TrafficLight trafficLight = new TrafficLight();
+
+            trafficLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus);
 
             trafficLights.Add(trafficLight);
 
-            this.Controls.Add(trafficLight.trafficLightsPB);
+            Controls.Add(trafficLight.trafficLightPB);
+
+            return trafficLight;
         }
 
     }
