@@ -239,11 +239,10 @@ namespace TrafficRoad
         }
 
         // collision detection function
-        public bool collisionDetection(List<Traffic> traffic, List<TrafficLight> lights)
+        public bool collisionDetection(List<Traffic> traffic)
         {
             // creating new list with all the current traffic 
             List<Traffic> trafficList = traffic;
-            List<TrafficLight> lightsList = lights;
 
             // if the list is empty return false
             if (trafficList.Count == 0)
