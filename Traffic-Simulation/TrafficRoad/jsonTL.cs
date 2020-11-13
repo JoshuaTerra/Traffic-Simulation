@@ -87,6 +87,15 @@ namespace TrafficRoad
         public int V53 { get; set; }
         [JsonProperty("V5-4")]
         public int V54 { get; set; }
+        [JsonProperty("A6-1")]
+        public int A61 { get; set; }
+        [JsonProperty("A6-2")]
+        public int A62 { get; set; }
+        [JsonProperty("A6-3")]
+        public int A63 { get; set; }
+        [JsonProperty("A6-4")]
+        public int A64 { get; set; }
+
     }
 
 }
