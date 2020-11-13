@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TrafficRoad
 {
-    class TrafficLights
+    public class TrafficLights
     {
         public int flipped = 0;
         public int trafficLightStatus;
