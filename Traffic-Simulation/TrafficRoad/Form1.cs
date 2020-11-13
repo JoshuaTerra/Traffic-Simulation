@@ -149,79 +149,238 @@ namespace TrafficRoad
                 spawnCar();
             }
 
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    if (testint == 1)
-            //    {
-            //        trafficLights[20].trafficLightStatus = 1;
-            //    }
+            for (int i = 0; i < 1; i++)
+            {
+                if (testint == 1)
+                {
+                    trafficLights[20].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[20].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[20].trafficLightStatus = 0;
+                }
 
-            //    if (json1.A12 == 1)
-            //    {
-            //        trafficLights[21].trafficLightStatus = 1;
-            //    }
+                if (json1.A12 == 1)
+                {
+                    trafficLights[21].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[21].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[21].trafficLightStatus = 0;
+                }
 
-            //    if (testint == 1)
-            //    {
-            //        trafficLights[22].trafficLightStatus = 1;
-            //    }
+                if (testint == 1)
+                {
+                    trafficLights[22].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[22].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[22].trafficLightStatus = 0;
+                }
 
-            //    if (json1.A21 == 1)
-            //    {
-            //        trafficLights[19].trafficLightStatus = 1;
-            //    }
+                if (json1.A21 == 1)
+                {
+                    trafficLights[19].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[19].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[19].trafficLightStatus = 0;
+                }
 
-            //    if (json1.A22 == 1)
-            //    {
-            //        trafficLights[18].trafficLightStatus = 1;
-            //    }
+                if (json1.A22 == 1)
+                {
+                    trafficLights[18].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[18].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[18].trafficLightStatus = 0;
+                }
 
-            //    if (json1.A23 == 1)
-            //    {
-            //        trafficLights[17].trafficLightStatus = 1;
-            //    }
+                if (json1.A23 == 1)
+                {
+                    trafficLights[17].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[17].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[17].trafficLightStatus = 0;
+                }
 
-            //    if (json1.A24 == 1)
-            //    {
-            //        trafficLights[16].trafficLightStatus = 1;
-            //    }
+                if (json1.A24 == 1)
+                {
+                    trafficLights[16].trafficLightStatus = 1;
+                }
 
-            //    else
-            //    {
-            //        trafficLights[16].trafficLightStatus = 0;
-            //    }
+                else
+                {
+                    trafficLights[16].trafficLightStatus = 0;
+                }               
 
-            //}
+                if (json1.A31 == 1)
+                {
+                    trafficLights[12].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[12].trafficLightStatus = 0;
+                }
+
+                if (json1.A32 == 1)
+                {
+                    trafficLights[13].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[13].trafficLightStatus = 0;
+                }
+
+                if (json1.A33 == 1)
+                {
+                    trafficLights[14].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[14].trafficLightStatus = 0;
+                }
+
+                if (json1.A34 == 1)
+                {
+                    trafficLights[15].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[15].trafficLightStatus = 0;
+                }
+
+                if (json1.A41 == 1)
+                {
+                    trafficLights[8].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[8].trafficLightStatus = 0;
+                }
+
+                if (json1.A42 == 1)
+                {
+                    trafficLights[9].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[9].trafficLightStatus = 0;
+                }
+
+                if (json1.A43 == 1)
+                {
+                    trafficLights[10].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[10].trafficLightStatus = 0;
+                }
+
+                if (json1.A44 == 1)
+                {
+                    trafficLights[11].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[11].trafficLightStatus = 0;
+                }
+
+                if (json1.A51 == 1)
+                {
+                    trafficLights[4].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[4].trafficLightStatus = 0;
+                }
+
+                if (json1.A52 == 1)
+                {
+                    trafficLights[5].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[5].trafficLightStatus = 0;
+                }
+
+                if (json1.A53 == 1)
+                {
+                    trafficLights[6].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[6].trafficLightStatus = 0;
+                }
+
+                if (json1.A54 == 1)
+                {
+                    trafficLights[7].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[7].trafficLightStatus = 0;
+                }
+
+                if (json1.A61 == 1)
+                {
+                    trafficLights[0].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[0].trafficLightStatus = 0;
+                }
+
+                if (json1.A62 == 1)
+                {
+                    trafficLights[1].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[1].trafficLightStatus = 0;
+                }
+
+                if (json1.A63 == 1)
+                {
+                    trafficLights[2].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[2].trafficLightStatus = 0;
+                }
+
+                if (json1.A64 == 1)
+                {
+                    trafficLights[3].trafficLightStatus = 1;
+                }
+
+                else
+                {
+                    trafficLights[3].trafficLightStatus = 0;
+                }
+        }
 
             foreach (TrafficLight t in trafficLights)
             {
