@@ -64,68 +64,27 @@ namespace TrafficRoad
             TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1);
 
             // adding roads north
-            addRoad(19, 98, 603, -20, "south", tA11); // index 0
-            addRoad(19, 98, 622, -20, "south", tA12); // index 1
-            addRoad(19, 98, 641, -20, "south", tA13); // index 2
+            addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
+            addRoad(19, 98, 622, -20, "south", "A12", tA12); // index 1
+            addRoad(19, 98, 641, -20, "south", "A13", tA13); // index 2
 
             // adding roads east
-            addRoad(131, 19, 911, 133, "west", tA21); // index 3
-            addRoad(131, 19, 911, 152, "west", tA22); // index 4
-            addRoad(131, 19, 911, 171, "west", tA23); // index 5
-            addRoad(131, 19, 911, 190, "west", tA24); // index 6
+            addRoad(131, 19, 911, 133, "west", "A21", tA21); // index 3
+            addRoad(131, 19, 911, 152, "west", "A22", tA22); // index 4
+            addRoad(131, 19, 911, 171, "west", "A23", tA23); // index 5
+            addRoad(131, 19, 911, 190, "west", "A24", tA24); // index 6
 
             // adding roads south
-            addRoad(19, 98, 228, 517, "north", tA41);  // index 7
-            addRoad(19, 98, 247, 517, "north", tA42);  // index 8
-            addRoad(19, 98, 265, 517, "north", tA43); // index 9
-            addRoad(19, 98, 284, 517, "north", tA44); // index 10
+            addRoad(19, 98, 228, 517, "north", "A41", tA41);  // index 7
+            addRoad(19, 98, 247, 517, "north", "A42", tA42);  // index 8
+            addRoad(19, 98, 265, 517, "north", "A43", tA43); // index 9
+            addRoad(19, 98, 284, 517, "north", "A44", tA44); // index 10
 
             // adding roads west
-            addRoad(132, 19, -20, 302, "east", tA51); // index 11
-            addRoad(132, 19, -20, 321, "east", tA52); // index 12
-            addRoad(132, 19, -20, 340, "east", tA53); // index 13
-            addRoad(132, 19, -20, 359, "east", tA54); // index 14
-
-            // adding alternative roads for turning points
-            addRoad(19, 170, 699, 0, "north", null); // index 15
-            addRoad(19, 170, 721, 0, "north", null); // index 16
-            addRoad(19, 169, 170, 338, "south", null); // index 17
-            addRoad(19, 169, 188, 338, "south", null); // index 18
-
-            //north west traffic lights
-            addTrafficLight(16, 7, 274, 175, 270, 0);
-            addTrafficLight(16, 7, 274, 194, 270, 0);
-            addTrafficLight(16, 7, 274, 212, 270, 0);
-            addTrafficLight(16, 7, 274, 231, 270, 0);
-
-            //west traffic lights
-            addTrafficLight(16, 7, 107, 306, 90, 0);
-            addTrafficLight(16, 7, 107, 326, 90, 0);
-            addTrafficLight(16, 7, 107, 344, 90, 0);
-            addTrafficLight(16, 7, 107, 363, 90, 0);
-
-            //southern traffic lights
-            addTrafficLight(7, 16, 231, 416, 0, 1);
-            addTrafficLight(7, 16, 250, 416, 0, 1);
-            addTrafficLight(7, 16, 269, 416, 0, 1);
-            addTrafficLight(7, 16, 288, 416, 0, 1);
-
-            //south east traffic lights
-            addTrafficLight(16, 7, 614, 269, 90, 1);
-            addTrafficLight(16, 7, 614, 288, 90, 1);
-            addTrafficLight(16, 7, 614, 307, 90, 1);
-            addTrafficLight(16, 7, 614, 326, 90, 1);
-
-            //north east traffic lights
-            addTrafficLight(16, 7, 779, 138, 270, 1);
-            addTrafficLight(16, 7, 779, 157, 270, 1);
-            addTrafficLight(16, 7, 779, 176, 270, 1);
-            addTrafficLight(16, 7, 779, 195, 270, 1);
-
-            //northern single traffic light
-            addTrafficLight(7, 16, 607, 75, 180, 1);
-            addTrafficLight(7, 16, 626, 75, 180, 1);
-            addTrafficLight(7, 16, 645, 75, 180, 1);
+            addRoad(132, 19, -20, 302, "east", "A51", tA51); // index 11
+            addRoad(132, 19, -20, 321, "east", "A52", tA52); // index 12
+            addRoad(132, 19, -20, 340, "east", "A53", tA53); // index 13
+            addRoad(132, 19, -20, 359, "east", "A54", tA54); // index 14
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -389,11 +348,11 @@ namespace TrafficRoad
         }
 
         // function to add the roads into the simulation
-        private void addRoad(int width, int height, int leftX, int topY, string direction, TrafficLight tl)
+        private void addRoad(int width, int height, int leftX, int topY, string direction, string name, TrafficLight tl)
         {
             Road road = new Road();
 
-            road.addRoad(width, height, leftX, topY, direction, tl);
+            road.addRoad(width, height, leftX, topY, direction, name, tl);
 
             roads.Add(road);
         }
@@ -403,62 +362,11 @@ namespace TrafficRoad
         {
             Random random = new Random();
 
-            int rnd = random.Next(roads.Count() - 4);
+            int rnd = random.Next(roads.Count());
 
             Car car = new Car();
 
-            int laneNumber = rnd; 
-
-            switch (laneNumber)
-            {
-                case 0:
-                    laneNumber = 5;
-                    break;
-                case 1:
-                    laneNumber = 6;
-                    break;
-                case 2:
-                    laneNumber = 12;
-                    break;
-                case 3:
-                    laneNumber = 16; 
-                    break;
-                case 4:
-                    laneNumber = 15; 
-                    break;
-                case 5:
-                    laneNumber = 5;
-                    break;
-                case 6:
-                    laneNumber = 5;
-                    break;
-                case 7:
-                    laneNumber = 6;
-                    break;
-                case 8:
-                    laneNumber = 5;
-                    break;
-                case 9:
-                    laneNumber = 11;
-                    break;
-                case 10:
-                    laneNumber = 12;
-                    break;
-                case 11:
-                    laneNumber = 11;
-                    break;
-                case 12:
-                    laneNumber = 12;
-                    break;
-                case 13:
-                    laneNumber = 18; 
-                    break;
-                case 14:
-                    laneNumber = 17; 
-                    break;
-            }
-
-            car.spawnTraffic(roads[rnd].leftX, roads[rnd].topY, roads[rnd].direction, roads[laneNumber]);
+            car.spawnTraffic(roads[rnd].leftX, roads[rnd].topY, roads[rnd].direction, roads[rnd]);
 
             traffic.Add(car);
 
