@@ -44,27 +44,50 @@ namespace TrafficRoad
             flip();
             deleteTraffic();
 
-            int roadX = road.leftX;
-            int roadY = road.topY;
-            int carX = trafficPB.Location.X;
-            int carY = trafficPB.Location.Y;
-
             // if statement to set the right direction of the car when getting onto another lane (road)
-            if (carY + 2 >= roadY && direction == "south")
+            if (road.name == "A11" && trafficPB.Top >= 170)
             {
-                direction = road.direction;
+                direction = "west";
             }
-            else if (carX - 2 >= roadX && direction == "east")
+            else if (road.name == "A12" && trafficPB.Top >= 189)
             {
-                direction = road.direction;
+                direction = "west";
             }
-            else if (carY - 2 <= roadY && direction == "north")
+            else if (road.name == "A13" && trafficPB.Top >= 319)
             {
-                direction = road.direction;
+                direction = "east";
             }
-            else if (carX + 2 <= roadX && direction == "west")
+            else if (road.name == "A21" && trafficPB.Left <= 716)
             {
-                direction = road.direction;
+                direction = "north";
+            }
+            else if (road.name == "A22" && trafficPB.Left <= 696)
+            {
+                direction = "north";
+            }
+            else if (road.name == "A41" && trafficPB.Top <= 192)
+            {
+                direction = "west";
+            }
+            else if (road.name == "A42" && trafficPB.Top <= 173)
+            {
+                direction = "west";
+            }
+            else if (road.name == "A43" && trafficPB.Top <= 302)
+            {
+                direction = "east";
+            }
+            else if (road.name == "A44" && trafficPB.Top <= 323)
+            {
+                direction = "east";
+            }
+            else if (road.name == "A53" && trafficPB.Left >= 190)
+            {
+                direction = "south";
+            }
+            else if (road.name == "A54" && trafficPB.Left >= 170)
+            {
+                direction = "south";
             }
 
             // if statement that moves the picturebox in the right direction and flips the image
@@ -250,33 +273,18 @@ namespace TrafficRoad
                 rectangle = new Rectangle(trafficPB.Left - 15, trafficPB.Top, 15, trafficPB.Height);
             }
 
-            foreach (TrafficLight tl in lightsList)
+            //stops the traffic infront of the trafficlights if light is red
+            if (road.tl != null)
             {
-                if (road.tl != null)
+                if (rectangle.IntersectsWith(road.tl.trafficLightPB.Bounds) && road.tl.trafficLightStatus == 0)
                 {
-                    if (rectangle.IntersectsWith(tl.trafficLightPB.Bounds) && road.tl.trafficLightStatus == 0)
-                    {
-                        stop = true;
-                    }
-                    else
-                    {
-                        stop = false;
-                    }
+                    stop = true;
+                }
+                else
+                {
+                    stop = false;
                 }
             }
-
-            // stops the traffic infront of the trafficlights if light is red
-            //if (road.tl != null)
-            //{
-            //    if (rectangle.IntersectsWith(road.tl.trafficLightPB.Bounds) && road.tl.trafficLightStatus == 0)
-            //    {
-            //        stop = true;
-            //    }
-            //    else
-            //    {
-            //        stop = false;
-            //    }
-            //}
 
             // if the collisionbox infront of the car intersects with another car it stops
             foreach (Traffic t in trafficList)
