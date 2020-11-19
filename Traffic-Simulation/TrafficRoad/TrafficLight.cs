@@ -13,8 +13,9 @@ namespace TrafficRoad
         public int flipped = 0;
         public int trafficLightStatus;
         public PictureBox trafficLightPB;
+        public string nameT;
 
-        public void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        public void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             trafficLightPB = new PictureBox();
             trafficLightPB.Image = Properties.Resources.light_stop;
@@ -26,6 +27,7 @@ namespace TrafficRoad
             trafficLightPB.Top = topY;
             this.flipped = flipped;
             this.trafficLightStatus = trafficLightStatus;
+            this.nameT = nameT;
 
             if (flipped == 90)
             {

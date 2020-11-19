@@ -27,39 +27,39 @@ namespace TrafficRoad
             //aSocket.Main1();
 
             // north west traffic lights
-            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0);
-            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0);
-            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0);
-            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0);
+            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0, "tA61");
+            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0, "tA62");
+            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0, "tA63");
+            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0, "tA64");
 
             // west traffic lights
-            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0);
-            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0);
-            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0);
-            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0);
+            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0, "tA51");
+            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0, "tA52");
+            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0, "tA53");
+            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0, "tA54");
 
             // southern traffic lights
-            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1);
-            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1);
-            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1);
-            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1);
+            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1, "tA41");
+            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1, "tA42");
+            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1, "tA43");
+            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1, "tA44");
 
             // south east traffic lights
-            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1);
-            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1);
-            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1);
-            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1);
+            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1, "tA31");
+            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1, "tA32");
+            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1, "tA33");
+            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1, "tA34");
 
             // north east traffic lights
-            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1);
-            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1);
-            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1);
-            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1);
+            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1, "tA21");
+            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1, "tA22");
+            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1, "tA23");
+            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1, "tA24");
 
             // northern single traffic light
-            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1);
-            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1);
-            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1);
+            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1, "tA11");
+            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "tA12");
+            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "tA13");
 
             // adding roads north
             addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
@@ -384,11 +384,11 @@ namespace TrafficRoad
         }
 
         // function to add the trafficlights into the simulation
-        private TrafficLight addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        private TrafficLight addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             TrafficLight trafficLight = new TrafficLight();
 
-            trafficLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus);
+            trafficLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
 
             trafficLights.Add(trafficLight);
 
