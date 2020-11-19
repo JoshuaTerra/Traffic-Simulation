@@ -21,21 +21,12 @@ namespace TrafficRoad
         public void spawnTraffic(int leftX, int topY, string direction, Road road)
         {
             trafficPB = new PictureBox();
-
-            trafficPB.Image = Properties.Resources.ferrari;
-
+            trafficPB.Image = null;
             trafficPB.BackColor = Color.Transparent;
-
-            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
-
             trafficPB.Size = new Size(15, 30);
-
             trafficPB.Left = leftX;
-
             trafficPB.Top = topY;
-
             this.direction = direction;
-
             this.road = road;
         }
 

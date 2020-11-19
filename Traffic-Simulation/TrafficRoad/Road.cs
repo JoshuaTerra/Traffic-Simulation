@@ -18,7 +18,7 @@ namespace TrafficRoad
         public string name;
         public TrafficLight tl;
 
-        public void addRoad(int width, int height, int leftX, int topY, string direction, string name,TrafficLight tl)
+        public void addRoad(int width, int height, int leftX, int topY, string direction, string name, TrafficLight tl)
         {
             this.direction = direction;
             this.width = width;

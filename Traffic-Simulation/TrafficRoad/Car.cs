@@ -16,12 +16,9 @@ namespace TrafficRoad
             trafficPB = new PictureBox();
             trafficPB.Image = Properties.Resources.ferrari;
             trafficPB.BackColor = Color.Transparent;
-            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
             trafficPB.Size = new Size(15, 30);
-
             this.direction = direction;
             this.road = road;
-
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
         }
