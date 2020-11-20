@@ -11,14 +11,13 @@ namespace TrafficRoad
 {
     class Car : Traffic
     {
-        public void spawnTraffic(int leftX, int topY, string direction, Road road)
+        public void spawnTraffic(int leftX, int topY, Path path)
         {
             trafficPB = new PictureBox();
             trafficPB.Image = Properties.Resources.ferrari;
             trafficPB.BackColor = Color.Transparent;
             trafficPB.Size = new Size(15, 30);
-            this.direction = direction;
-            this.road = road;
+            this.path = path;
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
         }

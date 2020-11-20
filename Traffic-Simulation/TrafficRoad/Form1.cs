@@ -16,8 +16,11 @@ namespace TrafficRoad
     public partial class Form1 : Form
     {
         List<Traffic> traffic = new List<Traffic>();
+        List<Path> paths = new List<Path>();
         List<Road> roads = new List<Road>();
         List<TrafficLight> trafficLights = new List<TrafficLight>();
+        List<BusLight> busLights = new List<BusLight>();
+        //private mySocket aSocket = new mySocket();
         private mySocket aSocket = new mySocket();
         public Random random = new Random();
         jsonTL json = new jsonTL();
@@ -62,6 +65,47 @@ namespace TrafficRoad
             TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "A12");
             TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "A13");
 
+            //pedestrain lights
+            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1, "pV51");
+            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1, "pV52");
+            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1, "pV53");
+            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1, "pV54");
+
+            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1, "pV41");
+            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1, "pV42");
+            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1, "pV43");
+            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1, "pV44");
+
+            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1, "pV24");
+            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1, "pV23");
+            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1, "pV22");
+            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1, "pV21");
+
+            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1, "pV14");
+            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1, "pV13");
+            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1, "pV12");
+            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1, "pV11");
+
+            //bike lights
+
+            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "bF11");
+            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "bF12");
+
+            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "bF21");
+            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "bF22");
+
+            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "bF41");
+            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "bF42");
+
+            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "bF51");
+            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "bF52");
+
+            //bus lights
+            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "bB11");
+            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "bB12");
+            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "bB41");
+
+
             // adding roads north
             addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
             addRoad(19, 98, 622, -20, "south", "A12", tA12); // index 1
@@ -101,6 +145,29 @@ namespace TrafficRoad
             Path path0 = new Path();
             path0.addPoint(603, 0, tA11);
             path0.addPoint(262, 171, tA61);
+            paths.Add(path0);
+
+            Path path1 = new Path();
+            path1.addPoint(622, 0, tA12);
+            path1.addPoint(262, 190, tA62);
+            paths.Add(path1);
+
+            Path path2 = new Path();
+            path2.addPoint(642, 0, tA12);
+            path2.addPoint(262, 209, tA63);
+            path2.addPoint(172, 260);
+            paths.Add(path2);
+
+            Path path3 = new Path();
+            path3.addPoint(642, 0, tA12);
+            path3.addPoint(262, 228, tA64);
+            path2.addPoint(191, 260);
+            paths.Add(path3);
+
+            Path path4 = new Path();
+            path4.addPoint(642, 0, tA13);
+            path4.addPoint(639, 305);
+            paths.Add(path4);
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
@@ -163,11 +230,11 @@ namespace TrafficRoad
         {
             Random random = new Random();
 
-            int rnd = random.Next(roads.Count() - 8);
+            int rnd = random.Next(paths.Count());
 
             Car car = new Car();
 
-            car.spawnTraffic(roads[rnd].leftX, roads[rnd].topY, roads[rnd].direction, roads[rnd]);
+            car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, paths[rnd]);
 
             traffic.Add(car);
 
@@ -186,6 +253,19 @@ namespace TrafficRoad
             Controls.Add(trafficLight.trafficLightPB);
 
             return trafficLight;
+        }
+
+        private BusLight addBusLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
+        {
+            BusLight busLight = new BusLight();
+
+            busLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
+
+            busLights.Add(busLight);
+
+            Controls.Add(busLight.trafficLightPB);
+
+            return busLight;
         }
 
     }

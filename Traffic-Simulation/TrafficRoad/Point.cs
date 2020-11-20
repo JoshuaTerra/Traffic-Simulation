@@ -18,5 +18,9 @@ namespace TrafficRoad
             this.topY = topY;
             this.tl = tl;
         }
+
+        public int Left { get => leftX; set => leftX = value; }
+        public int Top { get => topY; set => topY = value; }
+        public TrafficLight Tl { get => tl; set => tl = value; }
     }
 }

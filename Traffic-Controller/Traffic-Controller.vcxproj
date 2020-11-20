@@ -20,15 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Carlane.cpp" />
-    <ClCompile Include="ChangeTraffic.cpp" />
     <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carlane.h" />
-    <ClInclude Include="ChangeTraffic.h" />
     <ClInclude Include="Controller.h" />
-    <ClInclude Include="Server.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
