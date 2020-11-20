@@ -64,3 +64,16 @@ C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\Traffic
 C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CopyComplete
 C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.exe
 C:\Users\Reinder\Documents\SE3\SE2\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.pdb
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\TrafficRoad.exe.config
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\TrafficRoad.exe
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\TrafficRoad.pdb
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.dll
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\bin\Debug\Newtonsoft.Json.xml
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csprojAssemblyReference.cache
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.Form1.resources
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.Properties.Resources.resources
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.GenerateResource.cache
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CoreCompileInputs.cache
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.csproj.CopyComplete
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.exe
+C:\Users\joshu\source\repos\Traffic\Traffic-Simulation\Traffic-Simulation\TrafficRoad\obj\Debug\TrafficRoad.pdb

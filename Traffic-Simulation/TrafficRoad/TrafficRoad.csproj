@@ -59,6 +59,8 @@
     </Compile>
     <Compile Include="jsonTL.cs" />
     <Compile Include="mySocket.cs" />
+    <Compile Include="Path.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Road.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
