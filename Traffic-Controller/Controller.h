@@ -8,8 +8,6 @@ using std::string;
 class Controller
 {
 public:
-	int send_light_data();
 	string change_traffic_order(int order);
-	void socket_server(const char* Input);
 };
 

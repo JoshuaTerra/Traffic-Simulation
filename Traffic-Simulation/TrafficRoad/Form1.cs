@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ namespace TrafficRoad
         List<Traffic> traffic = new List<Traffic>();
         List<Road> roads = new List<Road>();
         List<TrafficLight> trafficLights = new List<TrafficLight>();
-        //private mySocket aSocket = new mySocket();
+        private mySocket aSocket = new mySocket();
         public Random random = new Random();
         jsonTL json = new jsonTL();
         public int testint = 1;
@@ -27,39 +28,39 @@ namespace TrafficRoad
             //aSocket.Main1();
 
             // north west traffic lights
-            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0, "tA61");
-            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0, "tA62");
-            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0, "tA63");
-            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0, "tA64");
+            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0, "A61");
+            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0, "A62");
+            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0, "A63");
+            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0, "A64");
 
             // west traffic lights
-            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0, "tA51");
-            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0, "tA52");
-            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0, "tA53");
-            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0, "tA54");
+            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0, "A51");
+            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0, "A52");
+            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0, "A53");
+            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0, "A54");
 
             // southern traffic lights
-            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1, "tA41");
-            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1, "tA42");
-            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1, "tA43");
-            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1, "tA44");
+            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1, "A41");
+            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1, "A42");
+            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1, "A43");
+            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1, "A44");
 
             // south east traffic lights
-            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1, "tA31");
-            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1, "tA32");
-            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1, "tA33");
-            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1, "tA34");
+            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1, "A31");
+            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1, "A32");
+            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1, "A33");
+            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1, "A34");
 
             // north east traffic lights
-            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1, "tA21");
-            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1, "tA22");
-            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1, "tA23");
-            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1, "tA24");
+            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1, "A21");
+            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1, "A22");
+            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1, "A23");
+            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1, "A24");
 
             // northern single traffic light
-            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1, "tA11");
-            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "tA12");
-            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "tA13");
+            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1, "A11");
+            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "A12");
+            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "A13");
 
             // adding roads north
             addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
@@ -95,6 +96,9 @@ namespace TrafficRoad
             addRoad(308, 19, 262, 190, "west", "A62", tA62); // index 20
             addRoad(308, 19, 262, 209, "west", "A63", tA63); // index 21
             addRoad(308, 19, 262, 228, "west", "A64", tA64); // index 22
+
+            Thread t = new Thread(aSocket.Connect);
+            t.Start();
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -118,238 +122,19 @@ namespace TrafficRoad
                 spawnCar();
             }
 
-            for (int i = 0; i < 1; i++)
+
+
+            foreach (var j in json.GetType().GetProperties())
             {
-                if (testint == 1)
-                {
-                    trafficLights[20].trafficLightStatus = 1;
+                foreach (TrafficLight t in trafficLights)
+            {
+                    if (j.Name == t.nameT)
+                    {
+                        t.trafficLightStatus = testint; //Convert.ToInt32(j.GetValue(null));
+                        //Console.WriteLine(j.Name + "  " + t.nameT);
+                    }
                 }
-
-                else
-                {
-                    trafficLights[20].trafficLightStatus = 0;
-                }
-
-                if (json.A12 == 1)
-                {
-                    trafficLights[21].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[21].trafficLightStatus = 0;
-                }
-
-                if (testint == 1)
-                {
-                    trafficLights[22].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[22].trafficLightStatus = 0;
-                }
-
-                if (json.A21 == 1)
-                {
-                    trafficLights[19].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[19].trafficLightStatus = 0;
-                }
-
-                if (json.A22 == 1)
-                {
-                    trafficLights[18].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[18].trafficLightStatus = 0;
-                }
-
-                if (json.A23 == 1)
-                {
-                    trafficLights[17].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[17].trafficLightStatus = 0;
-                }
-
-                if (json.A24 == 1)
-                {
-                    trafficLights[16].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[16].trafficLightStatus = 0;
-                }               
-
-                if (json.A31 == 1)
-                {
-                    trafficLights[12].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[12].trafficLightStatus = 0;
-                }
-
-                if (json.A32 == 1)
-                {
-                    trafficLights[13].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[13].trafficLightStatus = 0;
-                }
-
-                if (json.A33 == 1)
-                {
-                    trafficLights[14].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[14].trafficLightStatus = 0;
-                }
-
-                if (json.A34 == 1)
-                {
-                    trafficLights[15].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[15].trafficLightStatus = 0;
-                }
-
-                if (json.A41 == 1)
-                {
-                    trafficLights[8].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[8].trafficLightStatus = 0;
-                }
-
-                if (json.A42 == 1)
-                {
-                    trafficLights[9].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[9].trafficLightStatus = 0;
-                }
-
-                if (json.A43 == 1)
-                {
-                    trafficLights[10].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[10].trafficLightStatus = 0;
-                }
-
-                if (json.A44 == 1)
-                {
-                    trafficLights[11].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[11].trafficLightStatus = 0;
-                }
-
-                if (testint == 1)
-                {
-                    trafficLights[4].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[4].trafficLightStatus = 0;
-                }
-
-                if (testint == 1)
-                {
-                    trafficLights[5].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[5].trafficLightStatus = 0;
-                }
-
-                if (json.A53 == 1)
-                {
-                    trafficLights[6].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[6].trafficLightStatus = 0;
-                }
-
-                if (json.A54 == 1)
-                {
-                    trafficLights[7].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[7].trafficLightStatus = 0;
-                }
-
-                if (json.A61 == 1)
-                {
-                    trafficLights[0].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[0].trafficLightStatus = 0;
-                }
-
-                if (json.A62 == 1)
-                {
-                    trafficLights[1].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[1].trafficLightStatus = 0;
-                }
-
-                if (json.A63 == 1)
-                {
-                    trafficLights[2].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[2].trafficLightStatus = 0;
-                }
-
-                if (json.A64 == 1)
-                {
-                    trafficLights[3].trafficLightStatus = 1;
-                }
-
-                else
-                {
-                    trafficLights[3].trafficLightStatus = 0;
-                }
-        }
+            }
 
             foreach (TrafficLight t in trafficLights)
             {
