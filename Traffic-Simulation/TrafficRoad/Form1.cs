@@ -63,44 +63,44 @@ namespace TrafficRoad
             TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "tA13");
 
             //pedestrain lights
-            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1);
-            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1);
-            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1);
-            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1);
+            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1, "pV51");
+            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1, "pV52");
+            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1, "pV53");
+            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1, "pV54");
 
-            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1);
-            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1);
-            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1);
-            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1);
+            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1, "pV41");
+            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1, "pV42");
+            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1, "pV43");
+            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1, "pV44");
 
-            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1);
-            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1);
-            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1);
-            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1);
+            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1, "pV24");
+            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1, "pV23");
+            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1, "pV22");
+            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1, "pV21");
 
-            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1);
-            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1);
-            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1);
-            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1);
+            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1, "pV14");
+            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1, "pV13");
+            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1, "pV12");
+            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1, "pV11");
 
             //bike lights
 
-            TrafficLight pF11 = addTrafficLight(8, 3, 590, 106, 90, 1);
-            TrafficLight pF12 = addTrafficLight(8, 3, 735, 106, 270, 1);
+            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "bF11");
+            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "bF12");
 
-            TrafficLight pF21 = addTrafficLight(3, 8, 759, 120, 180, 1);
-            TrafficLight pF22 = addTrafficLight(3, 8, 760, 340, 0, 1);
+            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "bF21");
+            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "bF22");
 
-            TrafficLight pF41 = addTrafficLight(8, 3, 160, 398, 90, 1);
-            TrafficLight pF44 = addTrafficLight(8, 3, 322, 398, 270, 1);
+            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "bF41");
+            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "bF42");
 
-            TrafficLight pF51 = addTrafficLight(3, 8, 140, 160, 180, 1);
-            TrafficLight pF52 = addTrafficLight(3, 8, 140, 378, 0, 1);
+            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "bF51");
+            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "bF52");
 
             //bus lights
-            BusLight B11 = addBusLight(8, 8, 306, 425, 0, 1);
-            BusLight B12 = addBusLight(8, 8, 659, 74, 0, 1);
-            BusLight B41 = addBusLight(8, 8, 667, 74, 0, 1);
+            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "bB11");
+            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "bB12");
+            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "bB41");
 
 
             // adding roads north
@@ -439,11 +439,11 @@ namespace TrafficRoad
             return trafficLight;
         }
 
-        private BusLight addBusLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        private BusLight addBusLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             BusLight busLight = new BusLight();
 
-            busLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus);
+            busLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
 
             busLights.Add(busLight);
 
