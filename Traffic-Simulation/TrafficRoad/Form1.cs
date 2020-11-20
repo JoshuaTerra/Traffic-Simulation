@@ -14,6 +14,7 @@ namespace TrafficRoad
     public partial class Form1 : Form
     {
         List<Traffic> traffic = new List<Traffic>();
+        List<Path> paths = new List<Path>();
         List<Road> roads = new List<Road>();
         List<TrafficLight> trafficLights = new List<TrafficLight>();
         List<BusLight> busLights = new List<BusLight>();
@@ -137,6 +138,38 @@ namespace TrafficRoad
             addRoad(308, 19, 262, 190, "west", "A62", tA62); // index 20
             addRoad(308, 19, 262, 209, "west", "A63", tA63); // index 21
             addRoad(308, 19, 262, 228, "west", "A64", tA64); // index 22
+
+            // adding Paths
+            Path path0 = new Path();
+            path0.addPoint(603, 0, tA11);
+            path0.addPoint(262, 171, tA61);
+            paths.Add(path0);
+
+            Path path1 = new Path();
+            path1.addPoint(622, 0, tA12);
+            path1.addPoint(262, 190, tA62);
+            paths.Add(path1);
+
+            Path path2 = new Path();
+            path2.addPoint(642, 0, tA12);
+            path2.addPoint(262, 209, tA63);
+            path2.addPoint(172, 260);
+            paths.Add(path2);
+
+            Path path3 = new Path();
+            path3.addPoint(642, 0, tA12);
+            path3.addPoint(262, 228, tA64);
+            path2.addPoint(191, 260);
+            paths.Add(path3);
+
+            Path path4 = new Path();
+            path4.addPoint(642, 0, tA13);
+            path4.addPoint(639, 305);
+            paths.Add(path4);
+
+            Thread t = new Thread(aSocket.Connect);
+            t.Start();
+
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -414,11 +447,11 @@ namespace TrafficRoad
         {
             Random random = new Random();
 
-            int rnd = random.Next(roads.Count() - 8);
+            int rnd = random.Next(paths.Count());
 
             Car car = new Car();
 
-            car.spawnTraffic(roads[rnd].leftX, roads[rnd].topY, roads[rnd].direction, roads[rnd]);
+            car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, paths[rnd]);
 
             traffic.Add(car);
 

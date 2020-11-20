@@ -12,13 +12,15 @@ namespace TrafficRoad
     class Traffic
     {
         public PictureBox trafficPB;
-        protected Road road = null;
+        //protected Road road = null;
         protected string direction;
         private bool isFlipped = false;
         public int prevRotation = 0;
         public bool stop = false;
 
-        public void spawnTraffic(int leftX, int topY, string direction, Road road)
+        protected Path path = null;
+
+        public void spawnTraffic(int leftX, int topY, Path path)
         {
             trafficPB = new PictureBox();
             trafficPB.Image = null;
@@ -26,8 +28,7 @@ namespace TrafficRoad
             trafficPB.Size = new Size(15, 30);
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
-            this.direction = direction;
-            this.road = road;
+            this.path = path;
         }
 
         public void movement(int speed)
@@ -35,51 +36,55 @@ namespace TrafficRoad
             flip();
             deleteTraffic();
 
+            trafficPB.Left += 0 * speed;
+            trafficPB.Top += 1 * speed;
+            trafficPB.Size = new Size(15, 30);
+
             // if statement to set the right direction of the car when getting onto another lane (road)
-            if (road.name == "A11" && trafficPB.Top >= 170)
-            {
-                direction = "west";
-            }
-            else if (road.name == "A12" && trafficPB.Top >= 189)
-            {
-                direction = "west";
-            }
-            else if (road.name == "A13" && trafficPB.Top >= 319)
-            {
-                direction = "east";
-            }
-            else if (road.name == "A21" && trafficPB.Left <= 716)
-            {
-                direction = "north";
-            }
-            else if (road.name == "A22" && trafficPB.Left <= 696)
-            {
-                direction = "north";
-            }
-            else if (road.name == "A41" && trafficPB.Top <= 192)
-            {
-                direction = "west";
-            }
-            else if (road.name == "A42" && trafficPB.Top <= 173)
-            {
-                direction = "west";
-            }
-            else if (road.name == "A43" && trafficPB.Top <= 302)
-            {
-                direction = "east";
-            }
-            else if (road.name == "A44" && trafficPB.Top <= 323)
-            {
-                direction = "east";
-            }
-            else if (road.name == "A53" && trafficPB.Left >= 190)
-            {
-                direction = "south";
-            }
-            else if (road.name == "A54" && trafficPB.Left >= 170)
-            {
-                direction = "south";
-            }
+            //if (road.name == "A11" && trafficPB.Top >= 170)
+            //{
+            //    direction = "west";
+            //}
+            //else if (road.name == "A12" && trafficPB.Top >= 189)
+            //{
+            //    direction = "west";
+            //}
+            //else if (road.name == "A13" && trafficPB.Top >= 319)
+            //{
+            //    direction = "east";
+            //}
+            //else if (road.name == "A21" && trafficPB.Left <= 716)
+            //{
+            //    direction = "north";
+            //}
+            //else if (road.name == "A22" && trafficPB.Left <= 696)
+            //{
+            //    direction = "north";
+            //}
+            //else if (road.name == "A41" && trafficPB.Top <= 192)
+            //{
+            //    direction = "west";
+            //}
+            //else if (road.name == "A42" && trafficPB.Top <= 173)
+            //{
+            //    direction = "west";
+            //}
+            //else if (road.name == "A43" && trafficPB.Top <= 302)
+            //{
+            //    direction = "east";
+            //}
+            //else if (road.name == "A44" && trafficPB.Top <= 323)
+            //{
+            //    direction = "east";
+            //}
+            //else if (road.name == "A53" && trafficPB.Left >= 190)
+            //{
+            //    direction = "south";
+            //}
+            //else if (road.name == "A54" && trafficPB.Left >= 170)
+            //{
+            //    direction = "south";
+            //}
 
             // if statement that moves the picturebox in the right direction and flips the image
             if (direction == "east" && !stop)
@@ -264,17 +269,17 @@ namespace TrafficRoad
             }
 
             //stops the traffic infront of the trafficlights if light is red
-            if (road.tl != null)
-            {
-                if (rectangle.IntersectsWith(road.tl.trafficLightPB.Bounds) && road.tl.trafficLightStatus == 0)
-                {
-                    stop = true;
-                }
-                else
-                {
-                    stop = false;
-                }
-            }
+            //if (path.points[0].Tl != null)
+            //{
+            //    if (rectangle.IntersectsWith(path.points[0].trafficLightPB.Bounds) && path.points[0].trafficLightStatus == 0)
+            //    {
+            //        stop = true;
+            //    }
+            //    else
+            //    {
+            //        stop = false;
+            //    }
+            //}
 
             // if the collisionbox infront of the car intersects with another car it stops
             foreach (Traffic t in trafficList)
