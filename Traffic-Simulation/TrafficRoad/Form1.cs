@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace TrafficRoad
 {
@@ -20,12 +21,11 @@ namespace TrafficRoad
         private mySocket aSocket = new mySocket();
         public Random random = new Random();
         jsonTL json = new jsonTL();
-        public int testint = 1;
+        public int testint = 0;
 
         public Form1()
         {
             InitializeComponent();
-            //aSocket.Main1();
 
             // north west traffic lights
             TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0, "A61");
@@ -97,8 +97,14 @@ namespace TrafficRoad
             addRoad(308, 19, 262, 209, "west", "A63", tA63); // index 21
             addRoad(308, 19, 262, 228, "west", "A64", tA64); // index 22
 
+            // adding Paths
+            Path path0 = new Path();
+            path0.addPoint(603, 0, tA11);
+            path0.addPoint(262, 171, tA61);
+
             Thread t = new Thread(aSocket.Connect);
             t.Start();
+
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

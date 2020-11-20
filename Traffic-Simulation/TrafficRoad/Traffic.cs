@@ -18,6 +18,8 @@ namespace TrafficRoad
         public int prevRotation = 0;
         public bool stop = false;
 
+        protected Path path = null;
+
         public void spawnTraffic(int leftX, int topY, string direction, Road road)
         {
             trafficPB = new PictureBox();
