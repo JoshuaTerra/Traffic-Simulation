@@ -21,21 +21,12 @@ namespace TrafficRoad
         public void spawnTraffic(int leftX, int topY, string direction, Road road)
         {
             trafficPB = new PictureBox();
-
-            trafficPB.Image = Properties.Resources.ferrari;
-
+            trafficPB.Image = null;
             trafficPB.BackColor = Color.Transparent;
-
-            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
-
             trafficPB.Size = new Size(15, 30);
-
             trafficPB.Left = leftX;
-
             trafficPB.Top = topY;
-
             this.direction = direction;
-
             this.road = road;
         }
 
@@ -239,11 +230,10 @@ namespace TrafficRoad
         }
 
         // collision detection function
-        public bool collisionDetection(List<Traffic> traffic, List<TrafficLight> lights)
+        public bool collisionDetection(List<Traffic> traffic)
         {
             // creating new list with all the current traffic 
             List<Traffic> trafficList = traffic;
-            List<TrafficLight> lightsList = lights;
 
             // if the list is empty return false
             if (trafficList.Count == 0)
