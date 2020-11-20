@@ -79,7 +79,33 @@ namespace TrafficRoad.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+        internal static System.Drawing.Bitmap bus_stop
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("bus_stop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        internal static System.Drawing.Bitmap bus_right_go
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("bus_right_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        internal static System.Drawing.Bitmap bus_straight_go
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("bus_straight_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>

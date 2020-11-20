@@ -16,6 +16,7 @@ namespace TrafficRoad
         List<Traffic> traffic = new List<Traffic>();
         List<Road> roads = new List<Road>();
         List<TrafficLight> trafficLights = new List<TrafficLight>();
+        List<BusLight> busLights = new List<BusLight>();
         //private mySocket aSocket = new mySocket();
         //private jsonTL json = new jsonTL();
         public System.Timers.Timer aTimer = new System.Timers.Timer();
@@ -62,6 +63,47 @@ namespace TrafficRoad
             TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1);
             TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1);
             TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1);
+
+            //pedestrain lights
+            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1);
+            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1);
+            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1);
+            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1);
+
+            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1);
+            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1);
+            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1);
+            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1);
+
+            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1);
+            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1);
+            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1);
+            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1);
+
+            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1);
+            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1);
+            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1);
+            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1);
+
+            //bike lights
+
+            TrafficLight pF11 = addTrafficLight(8, 3, 590, 106, 90, 1);
+            TrafficLight pF12 = addTrafficLight(8, 3, 735, 106, 270, 1);
+
+            TrafficLight pF21 = addTrafficLight(3, 8, 759, 120, 180, 1);
+            TrafficLight pF22 = addTrafficLight(3, 8, 760, 340, 0, 1);
+
+            TrafficLight pF41 = addTrafficLight(8, 3, 160, 398, 90, 1);
+            TrafficLight pF44 = addTrafficLight(8, 3, 322, 398, 270, 1);
+
+            TrafficLight pF51 = addTrafficLight(3, 8, 140, 160, 180, 1);
+            TrafficLight pF52 = addTrafficLight(3, 8, 140, 378, 0, 1);
+
+            //bus lights
+            BusLight B11 = addBusLight(8, 8, 306, 425, 0, 1);
+            BusLight B12 = addBusLight(8, 8, 659, 74, 0, 1);
+            BusLight B41 = addBusLight(8, 8, 667, 74, 0, 1);
+
 
             // adding roads north
             addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
@@ -112,12 +154,12 @@ namespace TrafficRoad
             {
                 if (testint == 1)
                 {
-                    trafficLights[20].trafficLightStatus = 1;
+                    busLights[1].trafficLightStatus = 1;
                 }
 
                 else
                 {
-                    trafficLights[20].trafficLightStatus = 0;
+                    busLights[1].trafficLightStatus = 0;
                 }
 
                 if (json1.A12 == 1)
@@ -385,6 +427,19 @@ namespace TrafficRoad
             Controls.Add(trafficLight.trafficLightPB);
 
             return trafficLight;
+        }
+
+        private BusLight addBusLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus)
+        {
+            BusLight busLight = new BusLight();
+
+            busLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus);
+
+            busLights.Add(busLight);
+
+            Controls.Add(busLight.trafficLightPB);
+
+            return busLight;
         }
 
     }
