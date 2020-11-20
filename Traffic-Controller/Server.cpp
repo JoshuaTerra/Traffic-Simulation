@@ -47,20 +47,20 @@ void Server::setup()
 	// Wait for connection
 	int clientSize = sizeof(server);
 
-	SOCKET clientSocket = accept(listening, (sockaddr*)&server, &clientSize);
-	if (clientSocket == INVALID_SOCKET) {
+	SOCKET ClientSocket = accept(listening, (sockaddr*)&server, &clientSize);
+	if (ClientSocket == INVALID_SOCKET) {
 		cerr << "Failed" << endl;
 		return;
 	}
 	else {
 		cerr << "Connected" << endl;
 	}
+
+	clientSocket = ClientSocket;
 }
 
 void Server::socketServer(std::string trafficInput)
 {
-	std::cout << "Socket start sending!\n";
-	//Create send data.
 	std::string length = std::to_string(trafficInput.length());
 	std::string header = length + ":";
 	std::string package = header + trafficInput;

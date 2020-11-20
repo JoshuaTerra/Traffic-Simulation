@@ -45,11 +45,12 @@ int main()
 			modorder = (order % 6) + 1; // current order
 			string traffic = tr->change_traffic_order(modorder);
 			ser->socketServer(traffic); //package every 4 seconds
-			cout << traffic << endl;
+			cout << "Data sent: " << traffic << endl;
 		}
 		//continuous order
 		order++;
 	}
+	tr.reset();
 }
 
 
