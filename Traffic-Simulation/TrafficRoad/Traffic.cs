@@ -14,6 +14,7 @@ namespace TrafficRoad
         public PictureBox trafficPB;
         public int prevRotation = 0;
         public int index = 0;
+        public string direction;
         public bool stop;
         public Path path = null;
 
@@ -59,6 +60,7 @@ namespace TrafficRoad
         {
             if (leftX > path.points[index].Left)
             {
+                // west
                 trafficPB.Size = new Size(30, 15);
                 if (prevRotation == 0)
                 {
@@ -82,6 +84,8 @@ namespace TrafficRoad
             }
             else if (topY < path.points[index].Top)
             {
+                // south
+                trafficPB.Size = new Size(15, 30);
                 if (prevRotation == 0)
                 {
                     trafficPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
@@ -104,6 +108,7 @@ namespace TrafficRoad
             }
             else if (leftX < path.points[index].Left)
             {
+                direction = "east";
                 trafficPB.Size = new Size(30, 15);
                 if (prevRotation == 0)
                 {
@@ -127,6 +132,8 @@ namespace TrafficRoad
             }
             else if (topY > path.points[index].Top)
             {
+                // north
+                trafficPB.Size = new Size(15, 30);
                 if (prevRotation == 0)
                 {
                     prevRotation = 0;
