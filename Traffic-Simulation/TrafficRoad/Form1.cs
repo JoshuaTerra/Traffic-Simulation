@@ -137,35 +137,38 @@ namespace TrafficRoad
             //addRoad(308, 19, 262, 209, "west", "A63", tA63); // index 21
             //addRoad(308, 19, 262, 228, "west", "A64", tA64); // index 22
 
-            // adding Paths
+            // adding Paths (path0/4 from north spawn)
             Path path0 = new Path();
             path0.addPoint(603, -20, "south");
             path0.addPoint(603, 175, "south", tA11);
             path0.addPoint(262, 172, "west", tA61);
             path0.addPoint(-40, 172, "west");
             paths.Add(path0);
-
-            /*Path path1 = new Path();
-            path1.addPoint(622, 0, tA12);
-            path1.addPoint(262, 190, tA62);
+            Path path1 = new Path();
+            path1.addPoint(622, -20, "south");
+            path1.addPoint(622, 193, "south", tA12);
+            path1.addPoint(262, 190, "west", tA62);
+            path1.addPoint(-40, 190, "west");
             paths.Add(path1);
-
             Path path2 = new Path();
-            path2.addPoint(642, 0, tA12);
-            path2.addPoint(262, 209, tA63);
-            path2.addPoint(172, 260);
+            path2.addPoint(622, -20, "south");
+            path2.addPoint(622, 213, "south", tA12);
+            path2.addPoint(262, 209, "west", tA63);
+            path2.addPoint(172, 209, "west");
+            path2.addPoint(172, 546, "south");
             paths.Add(path2);
-
             Path path3 = new Path();
-            path3.addPoint(642, 0, tA12);
-            path3.addPoint(262, 228, tA64);
-            path2.addPoint(191, 260);
+            path3.addPoint(622, -20, "south");
+            path3.addPoint(622, 231, "south", tA12);
+            path3.addPoint(262, 227, "west", tA63);
+            path3.addPoint(191, 227, "west");
+            path3.addPoint(191, 546, "south");
             paths.Add(path3);
-
             Path path4 = new Path();
-            path4.addPoint(642, 0, tA13);
-            path4.addPoint(639, 305);
-            paths.Add(path4); */
+            path4.addPoint(642, -20, "south");
+            path4.addPoint(642, 308, "south", tA13);
+            path4.addPoint(941, 303, "east");
+            paths.Add(path4);
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
@@ -187,11 +190,12 @@ namespace TrafficRoad
                 }
             }
 
-            int rnd = random.Next(10);
-            if (rnd == 1)
-            {
-                spawnCar();
-            }
+            //int rnd = random.Next(10);
+            //if (rnd == 1)
+            //{
+            //    spawnCar();
+            //}
+            spawnCar();
 
             foreach (var j in json.GetType().GetProperties())
             {
@@ -199,7 +203,7 @@ namespace TrafficRoad
             {
                     if (j.Name == t.nameT)
                     {
-                        t.trafficLightStatus = 0; //Convert.ToInt32(j.GetValue(null));
+                        t.trafficLightStatus = 1; //Convert.ToInt32(j.GetValue(null));
                         //Console.WriteLine(j.Name + "  " + t.nameT);
                     }
                 }
