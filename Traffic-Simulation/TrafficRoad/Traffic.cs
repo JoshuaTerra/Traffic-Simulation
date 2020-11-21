@@ -12,13 +12,10 @@ namespace TrafficRoad
     class Traffic
     {
         public PictureBox trafficPB;
-        //protected Road road = null;
-        protected string direction;
-        private bool isFlipped = false;
         public int prevRotation = 0;
-        public bool stop = false;
-
-        protected Path path = null;
+        public int index = 0;
+        public bool stop;
+        public Path path = null;
 
         public void spawnTraffic(int leftX, int topY, Path path)
         {
@@ -33,150 +30,36 @@ namespace TrafficRoad
 
         public void movement(int speed)
         {
-            flip();
+            float x1 = trafficPB.Left;
+            float y1 = trafficPB.Top;
+            float x2 = path.points[index].Left;
+            float y2 = path.points[index].Top;
+
+            float moveX = path.points[index].Left - trafficPB.Left;
+            float moveY = path.points[index].Top - trafficPB.Top;
+
+            double distance = Math.Sqrt((Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)));
+
+            if (distance > speed && !stop)
+            {
+                flip(trafficPB.Left, trafficPB.Top);
+                trafficPB.Left = (int)(trafficPB.Left + moveX / distance * speed);
+                trafficPB.Top = (int)(trafficPB.Top + moveY / distance * speed);
+            }
+            else if (index < (path.points.Count - 1))
+            {
+                index++;
+            }
+
             deleteTraffic();
-
-            trafficPB.Left += 0 * speed;
-            trafficPB.Top += 1 * speed;
-            trafficPB.Size = new Size(15, 30);
-
-            // if statement to set the right direction of the car when getting onto another lane (road)
-            //if (road.name == "A11" && trafficPB.Top >= 170)
-            //{
-            //    direction = "west";
-            //}
-            //else if (road.name == "A12" && trafficPB.Top >= 189)
-            //{
-            //    direction = "west";
-            //}
-            //else if (road.name == "A13" && trafficPB.Top >= 319)
-            //{
-            //    direction = "east";
-            //}
-            //else if (road.name == "A21" && trafficPB.Left <= 716)
-            //{
-            //    direction = "north";
-            //}
-            //else if (road.name == "A22" && trafficPB.Left <= 696)
-            //{
-            //    direction = "north";
-            //}
-            //else if (road.name == "A41" && trafficPB.Top <= 192)
-            //{
-            //    direction = "west";
-            //}
-            //else if (road.name == "A42" && trafficPB.Top <= 173)
-            //{
-            //    direction = "west";
-            //}
-            //else if (road.name == "A43" && trafficPB.Top <= 302)
-            //{
-            //    direction = "east";
-            //}
-            //else if (road.name == "A44" && trafficPB.Top <= 323)
-            //{
-            //    direction = "east";
-            //}
-            //else if (road.name == "A53" && trafficPB.Left >= 190)
-            //{
-            //    direction = "south";
-            //}
-            //else if (road.name == "A54" && trafficPB.Left >= 170)
-            //{
-            //    direction = "south";
-            //}
-
-            // if statement that moves the picturebox in the right direction and flips the image
-            if (direction == "east" && !stop)
-            {
-                trafficPB.Left += 1 * speed;
-                trafficPB.Top += 0 * speed;
-                if (!isFlipped)
-                {
-                    flip();
-                    isFlipped = true;
-                }
-                trafficPB.Size = new Size(30, 15);
-            }
-            else if (direction == "south" && !stop)
-            {
-                trafficPB.Left += 0 * speed;
-                trafficPB.Top += 1 * speed;
-                trafficPB.Size = new Size(15, 30);
-            }
-            else if (direction == "west" && !stop)
-            {
-                trafficPB.Left -= 1 * speed;
-                trafficPB.Top += 0 * speed;
-                if (!isFlipped)
-                {
-                    flip();
-                    isFlipped = true;
-                }
-                trafficPB.Size = new Size(30, 15);
-            }
-            else if (direction == "north" && !stop)
-            {
-                trafficPB.Left += 0 * speed;
-                trafficPB.Top -= 1 * speed;
-                if (!isFlipped)
-                {
-                    flip();
-                    isFlipped = true;
-                }
-                trafficPB.Size = new Size(15, 30);
-            }
         }
 
         // this function takes care of flipping all the traffic images
-        public void flip()
+        public void flip(int leftX, int topY)
         {
-            if (direction == "east")
+            if (leftX > path.points[index].Left)
             {
-                if (prevRotation == 0)
-                {
-                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                    prevRotation = 90;
-                }
-                if (prevRotation == 90)
-                {
-                    prevRotation = 90;
-                }
-                if (prevRotation == 180)
-                {
-                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                    prevRotation = 90;
-                }
-                if (prevRotation == 270)
-                {
-                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                    prevRotation = 90;
-                }
-            }
-            else if (direction == "south")
-            {
-                if (prevRotation == 0)
-                {
-                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                    prevRotation = 180;
-                }
-                if (prevRotation == 90)
-                {
-                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                    prevRotation = 180;
-                }
-                if (prevRotation == 180)
-                {
-                    prevRotation = 180;
-                }
-                if (prevRotation == 270)
-                {
-                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                    prevRotation = 180;
-                }
-            }
-            else if (direction == "west")
-            {
+                trafficPB.Size = new Size(30, 15);
                 if (prevRotation == 0)
                 {
                     trafficPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
@@ -197,7 +80,52 @@ namespace TrafficRoad
                     prevRotation = 270;
                 }
             }
-            else if (direction == "north")
+            else if (topY < path.points[index].Top)
+            {
+                if (prevRotation == 0)
+                {
+                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    prevRotation = 180;
+                }
+                if (prevRotation == 90)
+                {
+                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    prevRotation = 180;
+                }
+                if (prevRotation == 180)
+                {
+                    prevRotation = 180;
+                }
+                if (prevRotation == 270)
+                {
+                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    prevRotation = 180;
+                }
+            }
+            else if (leftX < path.points[index].Left)
+            {
+                trafficPB.Size = new Size(30, 15);
+                if (prevRotation == 0)
+                {
+                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    prevRotation = 90;
+                }
+                if (prevRotation == 90)
+                {
+                    prevRotation = 90;
+                }
+                if (prevRotation == 180)
+                {
+                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    prevRotation = 90;
+                }
+                if (prevRotation == 270)
+                {
+                    trafficPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    prevRotation = 90;
+                }
+            }
+            else if (topY > path.points[index].Top)
             {
                 if (prevRotation == 0)
                 {
@@ -221,22 +149,24 @@ namespace TrafficRoad
             }
         }
 
-        // deletes the traffic if they get out of the boundaries
+        // deletes the traffic if they get out of the boundaries 
         public void deleteTraffic()
         {
             if (trafficPB.Location.X < -20 || trafficPB.Location.X > 922)
             {
-                trafficPB.Dispose();
+                trafficPB.Size = new Size(0, 0);
             }
             else if (trafficPB.Location.Y < -20 || trafficPB.Location.Y > 527)
             {
-                trafficPB.Dispose();
+                trafficPB.Size = new Size(0, 0);
             }
         }
 
         // collision detection function
         public bool collisionDetection(List<Traffic> traffic)
         {
+            string direction = path.points[index].Direction;
+
             // creating new list with all the current traffic 
             List<Traffic> trafficList = traffic;
 
@@ -269,27 +199,22 @@ namespace TrafficRoad
             }
 
             //stops the traffic infront of the trafficlights if light is red
-            //if (path.points[0].Tl != null)
-            //{
-            //    if (rectangle.IntersectsWith(path.points[0].trafficLightPB.Bounds) && path.points[0].trafficLightStatus == 0)
-            //    {
-            //        stop = true;
-            //    }
-            //    else
-            //    {
-            //        stop = false;
-            //    }
-            //}
+            if (path.points[index].Tl != null)
+            {
+                if (rectangle.IntersectsWith(path.points[index].Tl.trafficLightPB.Bounds) && path.points[index].Tl.trafficLightStatus == 0)
+                {
+                    stop = true;
+                }
+            }
 
             // if the collisionbox infront of the car intersects with another car it stops
             foreach (Traffic t in trafficList)
             {
-                if (rectangle.IntersectsWith(t.trafficPB.Bounds) && t.direction == direction)
+                if (rectangle.IntersectsWith(t.trafficPB.Bounds) && t.path.points[index].Direction == direction)
                 {
                     return true;
                 }
             }
-
             return false;
         }
     }
