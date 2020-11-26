@@ -85,22 +85,22 @@ namespace TrafficRoad
 
             //bike lights
 
-            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "bF11");
-            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "bF12");
+            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "F11");
+            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "F12");
 
-            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "bF21");
-            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "bF22");
+            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "F21");
+            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "F22");
 
-            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "bF41");
-            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "bF42");
+            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "F41");
+            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "F42");
 
-            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "bF51");
-            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "bF52");
+            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "F51");
+            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "F52");
 
             //bus lights
-            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "bB11");
-            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "bB12");
-            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "bB41");
+            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "B11");
+            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "B12");
+            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B41");
 
             //// adding roads north
             //addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
@@ -138,7 +138,7 @@ namespace TrafficRoad
             //addRoad(308, 19, 262, 228, "west", "A64", tA64); // index 22
 
             // adding Paths (path0/4 from north spawn)
-            Path path0 = new Path();
+            /*Path path0 = new Path();
             path0.addPoint(603, -20, "south");
             path0.addPoint(603, 175, "south", tA11);
             path0.addPoint(262, 172, "west", tA61);
@@ -168,7 +168,50 @@ namespace TrafficRoad
             path4.addPoint(642, -20, "south");
             path4.addPoint(642, 308, "south", tA13);
             path4.addPoint(941, 303, "east");
-            paths.Add(path4);
+            paths.Add(path4);*/
+
+            Path path17 = new Path();
+            path17.addPoint(-50, 303, "east");
+            path17.addPoint(206, 303, "east", tA51);
+            path17.addPoint(320, 265, "east");
+            path17.addPoint(697, 265, "east", tA31);
+            path17.addPoint(697, -50, "north");
+            paths.Add(path17);
+
+            Path path18 = new Path();
+            path18.addPoint(-50, 303, "east");
+            path18.addPoint(206, 303, "east", tA51);
+            path18.addPoint(332, 284, "east");
+            path18.addPoint(716, 284, "north", tA32);
+            path18.addPoint(716, -50, "north");
+            paths.Add(path18);
+
+            Path path19 = new Path();
+            path19.addPoint(-50, 322, "east");
+            path19.addPoint(226, 322, "east", tA52);
+            path19.addPoint(333, 303, "east", tA33);
+            path19.addPoint(950, 303, "east");
+            paths.Add(path19);
+
+            Path path20 = new Path();
+            path20.addPoint(-50, 322, "east");
+            path20.addPoint(226, 322, "east", tA52);
+            path20.addPoint(333, 322, "east", tA34);
+            path20.addPoint(950, 322, "east");
+            paths.Add(path20);
+
+            Path path21 = new Path();
+            path21.addPoint(-50, 341, "east");
+            path21.addPoint(191, 341, "south", tA53);
+            path21.addPoint(191, 550, "south");
+            paths.Add(path21);
+
+            Path path22 = new Path();
+            path22.addPoint(-50, 359, "east");
+            path22.addPoint(174, 359, "south", tA54);
+            path22.addPoint(174, 550, "south");
+            paths.Add(path22);
+
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
