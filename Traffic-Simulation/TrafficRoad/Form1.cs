@@ -274,19 +274,27 @@ namespace TrafficRoad
 
             //peds paths
             Path pPath1 = new Path();
-            pPath1.addPoint(-150, 136, "west");
+            pPath1.addPoint(-50, 136, "west");
             pPath1.addPoint(132, 136, "south", pV51);
             pPath1.addPoint(132, 410, "east");
             pPath1.addPoint(-50, 410, "east");
-            paths.Add(pPath1);
+            pedestrianPaths.Add(pPath1);
 
             Path pPath2 = new Path();
-            pPath2.addPoint(-150, 136, "west");
+            pPath2.addPoint(-50, 136, "west");
             pPath2.addPoint(565, 113, "north");
             pPath2.addPoint(572, 99, "west");
             pPath2.addPoint(767, 99, "north");
             pPath2.addPoint(767, -50, "north");
-            paths.Add(pPath2);
+            pedestrianPaths.Add(pPath2);
+
+            //cyclist paths
+            Path cPath1 = new Path();
+            cPath1.addPoint(-50, 142, "west");
+            cPath1.addPoint(138, 142, "south", bF51);
+            cPath1.addPoint(138, 400, "east");
+            cPath1.addPoint(-50, 400, "east");
+            cyclistPaths.Add(cPath1);
 
 
 
