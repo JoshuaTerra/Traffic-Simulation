@@ -289,6 +289,24 @@ namespace TrafficRoad
             bPath3.addPoint(938, 321, "east", tA34);
             busPaths.Add(bPath3);
 
+            //peds paths
+            Path pPath1 = new Path();
+            pPath1.addPoint(-150, 136, "west");
+            pPath1.addPoint(132, 136, "south", pV51);
+            pPath1.addPoint(132, 410, "east");
+            pPath1.addPoint(-50, 410, "east");
+            paths.Add(pPath1);
+
+            Path pPath2 = new Path();
+            pPath2.addPoint(-150, 136, "west");
+            pPath2.addPoint(565, 113, "north");
+            pPath2.addPoint(572, 99, "west");
+            pPath2.addPoint(767, 99, "north");
+            pPath2.addPoint(767, -50, "north");
+            paths.Add(pPath2);
+
+
+
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
