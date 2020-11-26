@@ -81,6 +81,7 @@ void Server::socketServer(std::string trafficInput)
 			int sendResult = 0;
 			if (true) {
 				sendResult = send(clientSocket, Input, size, 0);
+				cout << "Data sent:" << Input << endl;
 			}
 
 			if (sendResult != SOCKET_ERROR)

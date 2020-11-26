@@ -8,6 +8,5 @@ using std::string;
 class Controller
 {
 public:
-	string change_traffic_order(int order);
 };
 
