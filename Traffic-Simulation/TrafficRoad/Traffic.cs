@@ -18,15 +18,20 @@ namespace TrafficRoad
         public bool stop;
         public Path path = null;
 
-        public void spawnTraffic(int leftX, int topY, Path path)
+        public int height;
+        public int width;
+
+        public void spawnTraffic(int leftX, int topY, int width, int height, Path path)
         {
             trafficPB = new PictureBox();
             trafficPB.Image = null;
             trafficPB.BackColor = Color.Transparent;
-            trafficPB.Size = new Size(15, 30);
+            trafficPB.Size = new Size(height, width);
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
             this.path = path;
+            this.width = width;
+            this.height = height;
         }
 
         public void movement(int speed)
@@ -61,7 +66,7 @@ namespace TrafficRoad
             if (leftX > path.points[index].Left)
             {
                 direction = "west";
-                trafficPB.Size = new Size(30, 15);
+                trafficPB.Size = new Size(height, width);
                 if (prevRotation == 0)
                 {
                     trafficPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
@@ -85,7 +90,7 @@ namespace TrafficRoad
             else if (topY < path.points[index].Top)
             {
                 direction = "south";
-                trafficPB.Size = new Size(15, 30);
+                trafficPB.Size = new Size(width, height);
                 if (prevRotation == 0)
                 {
                     trafficPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
@@ -109,7 +114,7 @@ namespace TrafficRoad
             else if (leftX < path.points[index].Left)
             {
                 direction = "east";
-                trafficPB.Size = new Size(30, 15);
+                trafficPB.Size = new Size(height, width);
                 if (prevRotation == 0)
                 {
                     trafficPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
@@ -133,7 +138,7 @@ namespace TrafficRoad
             else if (topY > path.points[index].Top)
             {
                 direction = "north";
-                trafficPB.Size = new Size(15, 30);
+                trafficPB.Size = new Size(width, height);
                 if (prevRotation == 0)
                 {
                     prevRotation = 0;

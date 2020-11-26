@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +11,17 @@ namespace TrafficRoad
 {
     class Bus : Traffic
     {
-        public void spawnTraffic(int leftX, int topY, string direction, Road road)
+        public void spawnTraffic(int leftX, int topY, int width, int height, Path path)
         {
             trafficPB = new PictureBox();
-            //trafficPB.Image = Properties.Resources.ferrari;
+            trafficPB.Image = Properties.Resources.bus;
             trafficPB.BackColor = Color.Transparent;
-            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
-            trafficPB.Size = new Size(15, 30);
-
-            this.direction = direction;
-            this.road = road;
-
+            trafficPB.Size = new Size(15, 58);
+            this.path = path;
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
+            this.width = width;
+            this.height = height;
         }
     }
 }
