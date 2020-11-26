@@ -103,6 +103,16 @@ namespace TrafficRoad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cyclist {
+            get {
+                object obj = ResourceManager.GetObject("cyclist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ferrari {
             get {
                 object obj = ResourceManager.GetObject("ferrari", resourceCulture);
@@ -146,6 +156,16 @@ namespace TrafficRoad.Properties {
         internal static System.Drawing.Bitmap light_stop {
             get {
                 object obj = ResourceManager.GetObject("light_stop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pedestrian {
+            get {
+                object obj = ResourceManager.GetObject("pedestrian", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
