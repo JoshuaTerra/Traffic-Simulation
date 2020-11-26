@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bus.cs" />
     <Compile Include="BusLight.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Form1.cs">
@@ -106,6 +107,7 @@
     <None Include="Resources\kruispunt_sketch_V2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\bus.png" />
     <Content Include="Resources\bus_right_go.png" />
     <Content Include="Resources\bus_stop.png" />
     <Content Include="Resources\bus_straight_go.png" />
