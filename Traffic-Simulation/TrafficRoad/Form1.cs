@@ -139,7 +139,7 @@ namespace TrafficRoad
             path4.addPoint(642, 308, "south", tA13);
             path4.addPoint(941, 303, "east");
 
-            paths.Add(path4);*/
+            paths.Add(path4);
 
             paths.Add(path4);
 
