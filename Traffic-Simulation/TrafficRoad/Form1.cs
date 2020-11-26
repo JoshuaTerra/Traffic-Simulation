@@ -184,21 +184,25 @@ namespace TrafficRoad
             path5.addPoint(715, 133, "west", tA21);
             path5.addPoint(716, -40, "north");
             paths.Add(path5);
+
             Path path6 = new Path();
             path6.addPoint(921, 152, "west");
             path6.addPoint(695, 152, "west", tA21);
             path6.addPoint(696, -40, "north");
             paths.Add(path6);
+
             Path path7 = new Path();
             path7.addPoint(921, 172, "west");
             path7.addPoint(520, 172, "west", tA23);
             path7.addPoint(-40, 172, "west", tA61);
             paths.Add(path7);
+
             Path path8 = new Path();
             path8.addPoint(921, 190, "west");
             path8.addPoint(520, 190, "west", tA24);
             path8.addPoint(-40, 190, "west", tA62);
             paths.Add(path8);
+
             Path path9 = new Path();
             path9.addPoint(921, 190, "west");
             path9.addPoint(714, 190, "west", tA24);
@@ -207,6 +211,7 @@ namespace TrafficRoad
             path9.addPoint(172, 209, "west");
             path9.addPoint(172, 546, "south");
             paths.Add(path9);
+
             Path path10 = new Path();
             path10.addPoint(921, 190, "west");
             path10.addPoint(714, 190, "west", tA24);
@@ -223,24 +228,28 @@ namespace TrafficRoad
             path11.addPoint(0, 189, "west");
             path11.addPoint(-50, 189, "west");
             paths.Add(path11);
+
             Path path12 = new Path();
             path12.addPoint(247, 558, "north");
             path12.addPoint(247, 170, "north", tA42);
             path12.addPoint(0, 170, "west");
             path12.addPoint(-50, 170, "west");
             paths.Add(path12);
+
             Path path13 = new Path();
             path13.addPoint(265, 558, "north");
             path13.addPoint(265, 302, "north", tA43);
             path13.addPoint(888, 302, "east", tA33);
             path13.addPoint(938, 302, "east");
             paths.Add(path13);
+
             Path path14 = new Path();
             path14.addPoint(284, 558, "north");
             path14.addPoint(284, 322, "north", tA44);
             path14.addPoint(888, 322, "east", tA34);
             path14.addPoint(938, 322, "east");
             paths.Add(path14);
+
             Path path15 = new Path();
             path15.addPoint(265, 558, "north");
             path15.addPoint(265, 285, "north", tA43);
@@ -248,6 +257,7 @@ namespace TrafficRoad
             path15.addPoint(714, 0, "north");
             path15.addPoint(714, -50, "north");
             paths.Add(path15);
+
             Path path16 = new Path();
             path16.addPoint(265, 558, "north");
             path16.addPoint(265, 265, "north", tA43);
@@ -255,6 +265,29 @@ namespace TrafficRoad
             path16.addPoint(696, 0, "north");
             path16.addPoint(696, -50, "north");
             paths.Add(path16);
+
+            //bus paths
+
+            Path bPath1 = new Path();
+            bPath1.addPoint(660, -50, "south", bB11);
+            bPath1.addPoint(660, 173, "west");
+            bPath1.addPoint(-50, 173, "west", tA61);
+            paths.Add(bPath1);
+
+            Path bPath2 = new Path();
+            bPath2.addPoint(660, -50, "south", bB12);
+            bPath2.addPoint(660, 301, "east");
+            bPath2.addPoint(938, 301, "east");
+            paths.Add(bPath2);
+
+            Path bPath3 = new Path();
+            bPath3.addPoint(305, 555, "north", bB41);
+            bPath3.addPoint(305, 395, "north");
+            bPath3.addPoint(284, 365, "north");
+            bPath3.addPoint(278, 321, "east");
+            bPath3.addPoint(938, 321, "east", tA34);
+            paths.Add(bPath3);
+
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
