@@ -1,9 +1,13 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
+using System.Collections.Generic;
 using System.Text;
+using System.Net.Sockets;
+using System.Net;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
+using System.Linq;
+using System.Threading;
 
 namespace TrafficRoad {
     public class mySocket
@@ -14,12 +18,7 @@ namespace TrafficRoad {
 
         Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        private jsonTL json = null;
-
-        public jsonTL Json
-        {
-            get => json; set => json = value;
-        }
+        public JObject json = null;
 
         public void Listen()
         {
@@ -47,7 +46,7 @@ namespace TrafficRoad {
                 {
                     data = data.Substring(4);
 
-                    json = JsonConvert.DeserializeObject<jsonTL>(data);
+                    json = JsonConvert.DeserializeObject<JObject>(data);
 
                     Console.WriteLine(data);
                 }

@@ -41,6 +41,8 @@ namespace TrafficRoad
 
             double distance = Math.Sqrt((Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)));
 
+            
+
             if (distance > speed && !stop)
             {
                 flip(trafficPB.Left, trafficPB.Top);

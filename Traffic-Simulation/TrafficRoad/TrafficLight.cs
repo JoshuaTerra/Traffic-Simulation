@@ -14,6 +14,7 @@ namespace TrafficRoad
         public int trafficLightStatus;
         public PictureBox trafficLightPB;
         public string nameT;
+        bool isChecked;
 
         public void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
@@ -43,12 +44,16 @@ namespace TrafficRoad
             }
         }
 
-        public void checkTrafficLightStatus()
+        public async void checkTrafficLightStatus()
         {
             if (trafficLightStatus == 0)
             {
+                /*trafficLightPB.Image = Properties.Resources.light_slow;
+                trafficLightPB.Update();
+                await Task.Delay(3000);*/
                 trafficLightPB.Image = Properties.Resources.light_stop;
             }
+            
             else if (trafficLightStatus == 1)
             {
                 trafficLightPB.Image = Properties.Resources.light_go;
@@ -67,5 +72,6 @@ namespace TrafficRoad
                 trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }   
         }
+
     }
 }

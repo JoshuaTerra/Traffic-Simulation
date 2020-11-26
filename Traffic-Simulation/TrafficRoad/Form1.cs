@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Threading;
 
 namespace TrafficRoad
@@ -21,86 +22,85 @@ namespace TrafficRoad
         List<BusLight> busLights = new List<BusLight>();
         private mySocket aSocket = new mySocket();
         public Random random = new Random();
-        jsonTL json = new jsonTL();
 
         public Form1()
         {
             InitializeComponent();
 
             // north west traffic lights
-            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0, "A61");
-            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0, "A62");
-            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0, "A63");
-            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0, "A64");
+            TrafficLight tA61 = addTrafficLight(16, 7, 274, 175, 270, 0, "A6-1");
+            TrafficLight tA62 = addTrafficLight(16, 7, 274, 194, 270, 0, "A6-2");
+            TrafficLight tA63 = addTrafficLight(16, 7, 274, 212, 270, 0, "A6-3");
+            TrafficLight tA64 = addTrafficLight(16, 7, 274, 231, 270, 0, "A6-4");
 
             // west traffic lights
-            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0, "A51");
-            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0, "A52");
-            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0, "A53");
-            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0, "A54");
+            TrafficLight tA51 = addTrafficLight(16, 7, 107, 306, 90, 0, "A5-1");
+            TrafficLight tA52 = addTrafficLight(16, 7, 107, 326, 90, 0, "A5-2");
+            TrafficLight tA53 = addTrafficLight(16, 7, 107, 344, 90, 0, "A5-3");
+            TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0, "A5-4");
 
             // southern traffic lights
-            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1, "A41");
-            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1, "A42");
-            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1, "A43");
-            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1, "A44");
+            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1, "A4-1");
+            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1, "A4-2");
+            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1, "A4-3");
+            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1, "A4-4");
 
             // south east traffic lights
-            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1, "A31");
-            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1, "A32");
-            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1, "A33");
-            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1, "A34");
+            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1, "A3-1");
+            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1, "A3-2");
+            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1, "A3-3");
+            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1, "A3-4");
 
             // north east traffic lights
-            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1, "A21");
-            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1, "A22");
-            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1, "A23");
-            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1, "A24");
+            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1, "A2-1");
+            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1, "A2-2");
+            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1, "A2-3");
+            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1, "A2-4");
 
             // northern single traffic light
-            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1, "A11");
-            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "A12");
-            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "A13");
+            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1, "A1-1");
+            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "A1-2");
+            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "A1-3");
 
             //pedestrain lights
-            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1, "pV51");
-            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1, "pV52");
-            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1, "pV53");
-            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1, "pV54");
+            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1, "V5-1");
+            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1, "V5-2");
+            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1, "V5-3");
+            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1, "V5-4");
 
-            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1, "pV41");
-            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1, "pV42");
-            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1, "pV43");
-            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1, "pV44");
+            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1, "V4-1");
+            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1, "V4-2");
+            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1, "V4-3");
+            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1, "V4-4");
 
-            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1, "pV24");
-            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1, "pV23");
-            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1, "pV22");
-            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1, "pV21");
+            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1, "V2-4");
+            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1, "V2-3");
+            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1, "V2-2");
+            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1, "V2-1");
 
-            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1, "pV14");
-            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1, "pV13");
-            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1, "pV12");
-            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1, "pV11");
+            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1, "V1-4");
+            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1, "V1-3");
+            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1, "V1-2");
+            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1, "V1-1");
 
             //bike lights
 
-            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "F11");
-            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "F12");
+            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "F1-1");
+            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "F1-2");
 
-            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "F21");
-            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "F22");
+            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "F2-1");
+            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "F2-2");
 
-            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "F41");
-            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "F42");
+            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "F4-1");
+            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "F4-2");
 
-            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "F51");
-            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "F52");
+            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "F5-1");
+            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "F5-2");
 
             //bus lights
-            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "B11");
-            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "B12");
-            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B41");
+            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "B1-1");
+            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "B1-2");
+            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B4-1");
 
             // adding Paths (path0/4 from north spawn)
             /*Path path0 = new Path();
@@ -134,48 +134,6 @@ namespace TrafficRoad
             path4.addPoint(642, 308, "south", tA13);
             path4.addPoint(941, 303, "east");
             paths.Add(path4);*/
-
-            Path path17 = new Path();
-            path17.addPoint(-50, 303, "east");
-            path17.addPoint(206, 303, "east", tA51);
-            path17.addPoint(320, 265, "east");
-            path17.addPoint(697, 265, "east", tA31);
-            path17.addPoint(697, -50, "north");
-            paths.Add(path17);
-
-            Path path18 = new Path();
-            path18.addPoint(-50, 303, "east");
-            path18.addPoint(206, 303, "east", tA51);
-            path18.addPoint(332, 284, "east");
-            path18.addPoint(716, 284, "north", tA32);
-            path18.addPoint(716, -50, "north");
-            paths.Add(path18);
-
-            Path path19 = new Path();
-            path19.addPoint(-50, 322, "east");
-            path19.addPoint(226, 322, "east", tA52);
-            path19.addPoint(333, 303, "east", tA33);
-            path19.addPoint(950, 303, "east");
-            paths.Add(path19);
-
-            Path path20 = new Path();
-            path20.addPoint(-50, 322, "east");
-            path20.addPoint(226, 322, "east", tA52);
-            path20.addPoint(333, 322, "east", tA34);
-            path20.addPoint(950, 322, "east");
-            paths.Add(path20);
-
-            Path path21 = new Path();
-            path21.addPoint(-50, 341, "east");
-            path21.addPoint(191, 341, "south", tA53);
-            path21.addPoint(191, 550, "south");
-            paths.Add(path21);
-
-            Path path22 = new Path();
-            path22.addPoint(-50, 359, "east");
-            path22.addPoint(174, 359, "south", tA54);
-            path22.addPoint(174, 550, "south");
-            paths.Add(path22);
 
 
             // addings Paths (path5/10 from east spawn)
@@ -256,6 +214,48 @@ namespace TrafficRoad
             path16.addPoint(696, -50, "north");
             paths.Add(path16);
 
+            Path path17 = new Path();
+            path17.addPoint(-50, 303, "east");
+            path17.addPoint(206, 303, "east", tA51);
+            path17.addPoint(320, 265, "east");
+            path17.addPoint(700, 265, "north", tA31);
+            path17.addPoint(700, -50, "north");
+            paths.Add(path17);
+
+            Path path18 = new Path();
+            path18.addPoint(-50, 303, "east");
+            path18.addPoint(206, 303, "east", tA51);
+            path18.addPoint(332, 284, "east");
+            path18.addPoint(720, 284, "north", tA32);
+            path18.addPoint(720, -50, "north");
+            paths.Add(path18);
+
+            Path path19 = new Path();
+            path19.addPoint(-50, 322, "east");
+            path19.addPoint(226, 322, "east", tA52);
+            path19.addPoint(333, 303, "east", tA33);
+            path19.addPoint(950, 303, "east");
+            paths.Add(path19);
+
+            Path path20 = new Path();
+            path20.addPoint(-50, 322, "east");
+            path20.addPoint(226, 322, "east", tA52);
+            path20.addPoint(333, 322, "east", tA34);
+            path20.addPoint(950, 322, "east");
+            paths.Add(path20);
+
+            Path path21 = new Path();
+            path21.addPoint(-50, 341, "east");
+            path21.addPoint(191, 341, "south", tA53);
+            path21.addPoint(191, 550, "south");
+            paths.Add(path21);
+
+            Path path22 = new Path();
+            path22.addPoint(-50, 359, "east");
+            path22.addPoint(174, 359, "south", tA54);
+            path22.addPoint(174, 550, "south");
+            paths.Add(path22);
+
             Thread t = new Thread(aSocket.Connect);
             t.Start();
 
@@ -263,6 +263,32 @@ namespace TrafficRoad
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
+            JObject jsonReceived = aSocket.json;
+
+            if(jsonReceived != null)
+            {
+                foreach(TrafficLight t in trafficLights)
+                {
+                    int status;
+                    status = (int)jsonReceived[t.nameT];
+                    t.trafficLightStatus = status;
+                    t.checkTrafficLightStatus();
+                }
+
+                foreach(BusLight bus in busLights)
+                {
+                    int status = (int)jsonReceived[bus.nameT];
+                    if (bus.nameT == "B4-1")
+                        bus.trafficLightStatus = status;
+                    if (bus.nameT == "B1-1")
+                        bus.trafficLightStatus = status;
+                    if (bus.nameT == "B1-2")
+                        bus.trafficLightStatus = status;
+                    bus.checkTrafficLightStatus();
+                }
+                jsonReceived = null;
+            }
+
             foreach (Traffic t in traffic)
             {
                 bool stop = t.collisionDetection(traffic);
@@ -282,22 +308,10 @@ namespace TrafficRoad
                 spawnCar();
             }
 
-            foreach (var j in json.GetType().GetProperties())
-            {
-                foreach (TrafficLight t in trafficLights)
-            {
-                    if (j.Name == t.nameT)
-                    {
-                        t.trafficLightStatus = 1; //Convert.ToInt32(j.GetValue(null));
-                        //Console.WriteLine(j.Name + "  " + t.nameT);
-                    }
-                }
-            }
-
-            foreach (TrafficLight t in trafficLights)
+            /*foreach (TrafficLight t in trafficLights)
             {
                 t.checkTrafficLightStatus();
-            }
+            }*/
         }
 
         // function to spawn cars into the simulation
