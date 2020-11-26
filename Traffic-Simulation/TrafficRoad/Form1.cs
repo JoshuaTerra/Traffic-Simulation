@@ -282,11 +282,61 @@ namespace TrafficRoad
 
             Path pPath2 = new Path();
             pPath2.addPoint(-50, 136, "west");
+            pPath2.addPoint(565, 136, "west");
             pPath2.addPoint(565, 113, "north");
-            pPath2.addPoint(572, 99, "west");
+            pPath2.addPoint(572, 99, "west", pV11);
             pPath2.addPoint(767, 99, "north");
             pPath2.addPoint(767, -50, "north");
             pedestrianPaths.Add(pPath2);
+
+            Path pPath3 = new Path();
+            pPath3.addPoint(-50, 408, "west", pV41);
+            pPath3.addPoint(221, 408, "west", pV43);
+            pPath3.addPoint(337, 408, "west");
+            pPath3.addPoint(355, 391, "north");
+            pPath3.addPoint(368, 374, "west");
+            pPath3.addPoint(950, 374, "west");
+            pedestrianPaths.Add(pPath3);
+
+            Path pPath4 = new Path();
+            pPath4.addPoint(950, 375, "east");
+            pPath4.addPoint(770, 375, "north", pV24);
+            pPath4.addPoint(770, 226, "north", pV23);
+            pPath4.addPoint(770, -50, "north");
+            pedestrianPaths.Add(pPath4);
+
+            Path pPath5 = new Path();
+            pPath5.addPoint(767, -50, "north");
+            pPath5.addPoint(767, 99, "north");
+            pPath5.addPoint(572, 99, "west", pV14);
+            pPath5.addPoint(565, 113, "north");
+            pPath5.addPoint(565, 136, "west");
+            pPath5.addPoint(-50, 136, "west");
+            pedestrianPaths.Add(pPath5);
+
+            Path pPath6 = new Path();
+            pPath6.addPoint(950, 374, "west");
+            pPath6.addPoint(368, 374, "west");
+            pPath6.addPoint(355, 391, "north");
+            pPath6.addPoint(337, 408, "west");
+            pPath6.addPoint(221, 408, "west", pV44);
+            pPath6.addPoint(-50, 408, "west", pV42);
+            pedestrianPaths.Add(pPath6);
+
+            Path pPath7 = new Path();
+            pPath7.addPoint(770, -50, "north");
+            pPath7.addPoint(770, 226, "north", pV21);
+            pPath7.addPoint(770, 375, "north", pV22);
+            pPath7.addPoint(950, 375, "east");
+            pedestrianPaths.Add(pPath7);
+
+            Path pPath8 = new Path();
+            pPath8.addPoint(950, 102, "east");
+            pPath8.addPoint(770, 102, "south", pV21);
+            pPath8.addPoint(770, 268, "north", pV22);
+            pPath8.addPoint(770, 375, "west"); 
+            pPath8.addPoint(950, 375, "west");
+            pedestrianPaths.Add(pPath8);
 
             //cyclist paths
             Path cPath1 = new Path();
@@ -337,7 +387,7 @@ namespace TrafficRoad
             {
                     if (j.Name == t.nameT)
                     {
-                        t.trafficLightStatus = 0; //Convert.ToInt32(j.GetValue(null));
+                        t.trafficLightStatus = 1; //Convert.ToInt32(j.GetValue(null));
                         //Console.WriteLine(j.Name + "  " + t.nameT);
                     }
                 }
