@@ -103,7 +103,7 @@ namespace TrafficRoad
             BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B41");
 
             // adding Paths (path0/4 from north spawn)
-            /*Path path0 = new Path();
+            Path path0 = new Path();
             path0.addPoint(603, -20, "south");
             path0.addPoint(603, 175, "south", tA11);
             path0.addPoint(262, 172, "west", tA61);
@@ -133,7 +133,7 @@ namespace TrafficRoad
             path4.addPoint(642, -20, "south");
             path4.addPoint(642, 308, "south", tA13);
             path4.addPoint(941, 303, "east");
-            paths.Add(path4);*/
+            paths.Add(path4);
 
             Path path17 = new Path();
             path17.addPoint(-50, 303, "east");
@@ -309,7 +309,7 @@ namespace TrafficRoad
 
             Car car = new Car();
 
-            car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, paths[rnd]);
+            car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, 15, 30, paths[rnd]);
 
             traffic.Add(car);
 

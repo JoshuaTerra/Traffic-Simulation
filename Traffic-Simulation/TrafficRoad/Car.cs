@@ -11,7 +11,7 @@ namespace TrafficRoad
 {
     class Car : Traffic
     {
-        public void spawnTraffic(int leftX, int topY, Path path)
+        public void spawnTraffic(int leftX, int topY, int width, int height, Path path)
         {
             trafficPB = new PictureBox();
             trafficPB.Image = Properties.Resources.ferrari;
@@ -20,6 +20,8 @@ namespace TrafficRoad
             this.path = path;
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
+            this.width = width;
+            this.height = height;
         }
     }
 }
