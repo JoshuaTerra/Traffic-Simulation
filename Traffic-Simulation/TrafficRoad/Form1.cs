@@ -9,8 +9,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+
 using Newtonsoft.Json.Linq;
 using System.Threading;
+
 
 namespace TrafficRoad
 {
@@ -18,6 +20,9 @@ namespace TrafficRoad
     {
         List<Traffic> traffic = new List<Traffic>();
         List<Path> paths = new List<Path>();
+        List<Path> busPaths = new List<Path>();
+        List<Path> cyclistPaths = new List<Path>();
+        List<Path> pedestrianPaths = new List<Path>();
         List<TrafficLight> trafficLights = new List<TrafficLight>();
         List<BusLight> busLights = new List<BusLight>();
         private mySocket aSocket = new mySocket();
@@ -103,7 +108,7 @@ namespace TrafficRoad
             BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B4-1");
 
             // adding Paths (path0/4 from north spawn)
-            /*Path path0 = new Path();
+            Path path0 = new Path();
             path0.addPoint(603, -20, "south");
             path0.addPoint(603, 175, "south", tA11);
             path0.addPoint(262, 172, "west", tA61);
@@ -133,8 +138,10 @@ namespace TrafficRoad
             path4.addPoint(642, -20, "south");
             path4.addPoint(642, 308, "south", tA13);
             path4.addPoint(941, 303, "east");
+
             paths.Add(path4);*/
 
+            paths.Add(path4);
 
             // addings Paths (path5/10 from east spawn)
             Path path5 = new Path();
@@ -144,7 +151,7 @@ namespace TrafficRoad
             paths.Add(path5);
             Path path6 = new Path();
             path6.addPoint(921, 152, "west");
-            path6.addPoint(695, 152, "west", tA21);
+            path6.addPoint(695, 152, "west", tA22);
             path6.addPoint(696, -40, "north");
             paths.Add(path6);
             Path path7 = new Path();
@@ -214,6 +221,8 @@ namespace TrafficRoad
             path16.addPoint(696, -50, "north");
             paths.Add(path16);
 
+            // addings Paths (path17/22 from west spawn)
+
             Path path17 = new Path();
             path17.addPoint(-50, 303, "east");
             path17.addPoint(206, 303, "east", tA51);
@@ -236,7 +245,6 @@ namespace TrafficRoad
             path19.addPoint(333, 303, "east", tA33);
             path19.addPoint(950, 303, "east");
             paths.Add(path19);
-
             Path path20 = new Path();
             path20.addPoint(-50, 322, "east");
             path20.addPoint(226, 322, "east", tA52);
@@ -258,7 +266,6 @@ namespace TrafficRoad
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
-
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -307,6 +314,13 @@ namespace TrafficRoad
             {
                 spawnCar();
             }
+            int rnd2 = random.Next(100);
+            if (rnd2 == 1)
+            {
+                spawnBus();
+                spawnCyclist();
+                spawnPedestrian();
+            }
 
             /*foreach (TrafficLight t in trafficLights)
             {
@@ -318,42 +332,60 @@ namespace TrafficRoad
         private void spawnCar()
         {
             Random random = new Random();
-
             int rnd = random.Next(paths.Count());
-
             Car car = new Car();
-
-            car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, paths[rnd]);
-
+            car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, 15, 30, paths[rnd]);
             traffic.Add(car);
-
             Controls.Add(car.trafficPB);
         }
+
+        private void spawnBus()
+        {
+            Random random = new Random();
+            int rnd = random.Next(busPaths.Count());
+            Bus bus = new Bus();
+            bus.spawnTraffic(busPaths[rnd].points[0].Left, busPaths[rnd].points[0].Top, 15, 58, busPaths[rnd]);
+            traffic.Add(bus);
+            Controls.Add(bus.trafficPB);
+        }
+
+        private void spawnCyclist()
+        {
+            Random random = new Random();
+            int rnd = random.Next(cyclistPaths.Count());
+            Cyclist cyclist = new Cyclist();
+            cyclist.spawnTraffic(cyclistPaths[rnd].points[0].Left, cyclistPaths[rnd].points[0].Top, 6, 15, cyclistPaths[rnd]);
+            traffic.Add(cyclist);
+            Controls.Add(cyclist.trafficPB);
+        }
+
+        private void spawnPedestrian()
+        {
+            Random random = new Random();
+            int rnd = random.Next(pedestrianPaths.Count());
+            Pedestrian pedestrian = new Pedestrian();
+            pedestrian.spawnTraffic(pedestrianPaths[rnd].points[0].Left, pedestrianPaths[rnd].points[0].Top, 2, 2, pedestrianPaths[rnd]);
+            traffic.Add(pedestrian);
+            Controls.Add(pedestrian.trafficPB);
+        }
+
 
         // function to add the trafficlights into the simulation
         private TrafficLight addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             TrafficLight trafficLight = new TrafficLight();
-
             trafficLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
-
             trafficLights.Add(trafficLight);
-
             Controls.Add(trafficLight.trafficLightPB);
-
             return trafficLight;
         }
 
         private BusLight addBusLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             BusLight busLight = new BusLight();
-
             busLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
-
             busLights.Add(busLight);
-
             Controls.Add(busLight.trafficLightPB);
-
             return busLight;
         }
 
