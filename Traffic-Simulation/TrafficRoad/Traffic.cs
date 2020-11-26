@@ -222,10 +222,18 @@ namespace TrafficRoad
             // if the collisionbox infront of the car intersects with another car it stops
             foreach (Traffic t in trafficList)
             {
-                if (rectangle.IntersectsWith(t.trafficPB.Bounds) && t.path.points[index].Direction == direction)
+                try
                 {
-                    return true;
+                    if (rectangle.IntersectsWith(t.trafficPB.Bounds) && t.path.points[index].Direction == direction)
+                    {
+                        return true;
+                    }
                 }
+                catch 
+                {
+                    
+                }
+
             }
             return false;
         }
