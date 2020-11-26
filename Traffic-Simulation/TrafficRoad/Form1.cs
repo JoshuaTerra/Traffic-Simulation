@@ -102,41 +102,6 @@ namespace TrafficRoad
             BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "B12");
             BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B41");
 
-            //// adding roads north
-            //addRoad(19, 98, 603, -20, "south", "A11", tA11); // index 0
-            //addRoad(19, 98, 622, -20, "south", "A12", tA12); // index 1
-            //addRoad(19, 98, 641, -20, "south", "A13", tA13); // index 2
-
-            //// adding roads east
-            //addRoad(131, 19, 911, 133, "west", "A21", tA21); // index 3
-            //addRoad(131, 19, 911, 152, "west", "A22", tA22); // index 4
-            //addRoad(131, 19, 911, 171, "west", "A23", tA23); // index 5
-            //addRoad(131, 19, 911, 190, "west", "A24", tA24); // index 6
-
-            //// adding roads south
-            //addRoad(19, 98, 228, 517, "north", "A41", tA41); // index 7
-            //addRoad(19, 98, 247, 517, "north", "A42", tA42); // index 8
-            //addRoad(19, 98, 265, 517, "north", "A43", tA43); // index 9
-            //addRoad(19, 98, 284, 517, "north", "A44", tA44); // index 10
-
-            //// adding roads west
-            //addRoad(132, 19, -20, 302, "east", "A51", tA51); // index 11
-            //addRoad(132, 19, -20, 321, "east", "A52", tA52); // index 12
-            //addRoad(132, 19, -20, 340, "east", "A53", tA53); // index 13
-            //addRoad(132, 19, -20, 359, "east", "A54", tA54); // index 14
-
-            //// adding roads south-east
-            //addRoad(308, 19, 331, 264, "east", "A31", tA31); // index 15
-            //addRoad(308, 19, 331, 383, "east", "A32", tA32); // index 16
-            //addRoad(308, 19, 331, 302, "east", "A33", tA33); // index 17
-            //addRoad(308, 19, 331, 321, "east", "A34", tA34); // index 18
-
-            //// adding roads north-west
-            //addRoad(308, 19, 262, 171, "west", "A61", tA61); // index 19
-            //addRoad(308, 19, 262, 190, "west", "A62", tA62); // index 20
-            //addRoad(308, 19, 262, 209, "west", "A63", tA63); // index 21
-            //addRoad(308, 19, 262, 228, "west", "A64", tA64); // index 22
-
             // adding Paths (path0/4 from north spawn)
             /*Path path0 = new Path();
             path0.addPoint(603, -20, "south");
@@ -160,7 +125,7 @@ namespace TrafficRoad
             Path path3 = new Path();
             path3.addPoint(622, -20, "south");
             path3.addPoint(622, 231, "south", tA12);
-            path3.addPoint(262, 227, "west", tA63);
+            path3.addPoint(262, 227, "west", tA64);
             path3.addPoint(191, 227, "west");
             path3.addPoint(191, 546, "south");
             paths.Add(path3);
@@ -213,6 +178,84 @@ namespace TrafficRoad
             paths.Add(path22);
 
 
+            // addings Paths (path5/10 from east spawn)
+            Path path5 = new Path();
+            path5.addPoint(921, 133, "west");
+            path5.addPoint(715, 133, "west", tA21);
+            path5.addPoint(716, -40, "north");
+            paths.Add(path5);
+            Path path6 = new Path();
+            path6.addPoint(921, 152, "west");
+            path6.addPoint(695, 152, "west", tA21);
+            path6.addPoint(696, -40, "north");
+            paths.Add(path6);
+            Path path7 = new Path();
+            path7.addPoint(921, 172, "west");
+            path7.addPoint(520, 172, "west", tA23);
+            path7.addPoint(-40, 172, "west", tA61);
+            paths.Add(path7);
+            Path path8 = new Path();
+            path8.addPoint(921, 190, "west");
+            path8.addPoint(520, 190, "west", tA24);
+            path8.addPoint(-40, 190, "west", tA62);
+            paths.Add(path8);
+            Path path9 = new Path();
+            path9.addPoint(921, 190, "west");
+            path9.addPoint(714, 190, "west", tA24);
+            path9.addPoint(520, 210, "west");
+            path9.addPoint(262, 209, "west", tA63);
+            path9.addPoint(172, 209, "west");
+            path9.addPoint(172, 546, "south");
+            paths.Add(path9);
+            Path path10 = new Path();
+            path10.addPoint(921, 190, "west");
+            path10.addPoint(714, 190, "west", tA24);
+            path10.addPoint(520, 228, "west");
+            path10.addPoint(262, 227, "west", tA64);
+            path10.addPoint(191, 227, "west");
+            path10.addPoint(191, 546, "south");
+            paths.Add(path10);
+
+            // addings Paths (path11/16 from south spawn)
+            Path path11 = new Path();
+            path11.addPoint(228, 558, "north");
+            path11.addPoint(228, 189, "north", tA41);
+            path11.addPoint(0, 189, "west");
+            path11.addPoint(-50, 189, "west");
+            paths.Add(path11);
+            Path path12 = new Path();
+            path12.addPoint(247, 558, "north");
+            path12.addPoint(247, 170, "north", tA42);
+            path12.addPoint(0, 170, "west");
+            path12.addPoint(-50, 170, "west");
+            paths.Add(path12);
+            Path path13 = new Path();
+            path13.addPoint(265, 558, "north");
+            path13.addPoint(265, 302, "north", tA43);
+            path13.addPoint(888, 302, "east", tA33);
+            path13.addPoint(938, 302, "east");
+            paths.Add(path13);
+            Path path14 = new Path();
+            path14.addPoint(284, 558, "north");
+            path14.addPoint(284, 322, "north", tA44);
+            path14.addPoint(888, 322, "east", tA34);
+            path14.addPoint(938, 322, "east");
+            paths.Add(path14);
+            Path path15 = new Path();
+            path15.addPoint(265, 558, "north");
+            path15.addPoint(265, 285, "north", tA43);
+            path15.addPoint(714, 285, "east", tA32);
+            path15.addPoint(714, 0, "north");
+            path15.addPoint(714, -50, "north");
+            paths.Add(path15);
+            Path path16 = new Path();
+            path16.addPoint(265, 558, "north");
+            path16.addPoint(265, 265, "north", tA43);
+            path16.addPoint(696, 265, "east", tA31);
+            path16.addPoint(696, 0, "north");
+            path16.addPoint(696, -50, "north");
+            paths.Add(path16);
+
             Thread t = new Thread(aSocket.Connect);
             t.Start();
 
@@ -233,12 +276,11 @@ namespace TrafficRoad
                 }
             }
 
-            //int rnd = random.Next(10);
-            //if (rnd == 1)
-            //{
-            //    spawnCar();
-            //}
-            spawnCar();
+            int rnd = random.Next(10);
+            if (rnd == 1)
+            {
+                spawnCar();
+            }
 
             foreach (var j in json.GetType().GetProperties())
             {

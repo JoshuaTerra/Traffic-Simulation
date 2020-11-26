@@ -60,7 +60,7 @@ namespace TrafficRoad
         {
             if (leftX > path.points[index].Left)
             {
-                // west
+                direction = "west";
                 trafficPB.Size = new Size(30, 15);
                 if (prevRotation == 0)
                 {
@@ -84,7 +84,7 @@ namespace TrafficRoad
             }
             else if (topY < path.points[index].Top)
             {
-                // south
+                direction = "south";
                 trafficPB.Size = new Size(15, 30);
                 if (prevRotation == 0)
                 {
@@ -132,7 +132,7 @@ namespace TrafficRoad
             }
             else if (topY > path.points[index].Top)
             {
-                // north
+                direction = "north";
                 trafficPB.Size = new Size(15, 30);
                 if (prevRotation == 0)
                 {
