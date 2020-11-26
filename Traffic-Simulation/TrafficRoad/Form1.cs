@@ -15,9 +15,10 @@ namespace TrafficRoad
     public partial class Form1 : Form
     {
         List<Traffic> traffic = new List<Traffic>();
-        List<Traffic> busTraffic = new List<Traffic>();
         List<Path> paths = new List<Path>();
         List<Path> busPaths = new List<Path>();
+        List<Path> cyclistPaths = new List<Path>();
+        List<Path> pedestrianPaths = new List<Path>();
         List<TrafficLight> trafficLights = new List<TrafficLight>();
         List<BusLight> busLights = new List<BusLight>();
         private mySocket aSocket = new mySocket();
@@ -299,6 +300,8 @@ namespace TrafficRoad
             if (rnd2 == 1)
             {
                 spawnBus();
+                spawnCyclist();
+                spawnPedestrian();
             }
 
             foreach (var j in json.GetType().GetProperties())
@@ -323,31 +326,41 @@ namespace TrafficRoad
         private void spawnCar()
         {
             Random random = new Random();
-
             int rnd = random.Next(paths.Count());
-
             Car car = new Car();
-
             car.spawnTraffic(paths[rnd].points[0].Left, paths[rnd].points[0].Top, 15, 30, paths[rnd]);
-
             traffic.Add(car);
-
             Controls.Add(car.trafficPB);
         }
 
         private void spawnBus()
         {
             Random random = new Random();
-
             int rnd = random.Next(busPaths.Count());
-
             Bus bus = new Bus();
-
             bus.spawnTraffic(busPaths[rnd].points[0].Left, busPaths[rnd].points[0].Top, 15, 58, busPaths[rnd]);
-
             traffic.Add(bus);
-
             Controls.Add(bus.trafficPB);
+        }
+
+        private void spawnCyclist()
+        {
+            Random random = new Random();
+            int rnd = random.Next(cyclistPaths.Count());
+            Cyclist cyclist = new Cyclist();
+            cyclist.spawnTraffic(cyclistPaths[rnd].points[0].Left, cyclistPaths[rnd].points[0].Top, 6, 15, cyclistPaths[rnd]);
+            traffic.Add(cyclist);
+            Controls.Add(cyclist.trafficPB);
+        }
+
+        private void spawnPedestrian()
+        {
+            Random random = new Random();
+            int rnd = random.Next(pedestrianPaths.Count());
+            Pedestrian pedestrian = new Pedestrian();
+            pedestrian.spawnTraffic(pedestrianPaths[rnd].points[0].Left, pedestrianPaths[rnd].points[0].Top, 2, 2, pedestrianPaths[rnd]);
+            traffic.Add(pedestrian);
+            Controls.Add(pedestrian.trafficPB);
         }
 
 
@@ -355,26 +368,18 @@ namespace TrafficRoad
         private TrafficLight addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             TrafficLight trafficLight = new TrafficLight();
-
             trafficLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
-
             trafficLights.Add(trafficLight);
-
             Controls.Add(trafficLight.trafficLightPB);
-
             return trafficLight;
         }
 
         private BusLight addBusLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
             BusLight busLight = new BusLight();
-
             busLight.addTrafficLight(width, height, leftX, topY, flipped, trafficLightStatus, nameT);
-
             busLights.Add(busLight);
-
             Controls.Add(busLight.trafficLightPB);
-
             return busLight;
         }
 
