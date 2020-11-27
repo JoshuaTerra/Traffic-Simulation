@@ -20,7 +20,6 @@ namespace TrafficRoad
             this.direction = direction;
             this.tl = tl;
         }
-
         public int Left { get => leftX; set => leftX = value; }
         public int Top { get => topY; set => topY = value; }
         public string Direction { get => direction; set => direction = value; }

@@ -13,7 +13,7 @@ namespace TrafficRoad
     {
         public PictureBox trafficPB;
         public int prevRotation = 0;
-        public int index = 0;
+        public int index;
         public string direction;
         public bool stop;
         public Path path;
@@ -177,7 +177,7 @@ namespace TrafficRoad
         // collision detection function
         public bool collisionDetection(List<Traffic> traffic)
         {
-            string direction = path.points[index].Direction;
+            direction = path.points[index].Direction;
 
             // creating new list with all the current traffic 
             List<Traffic> trafficList = traffic;
@@ -194,17 +194,14 @@ namespace TrafficRoad
             {
                 rectangle = new Rectangle(trafficPB.Left, trafficPB.Top - 15, trafficPB.Width, 15);
             }
-
             if (direction == "south")
             {
                 rectangle = new Rectangle(trafficPB.Left, trafficPB.Top + trafficPB.Height, trafficPB.Width, 15);
             }
-
             if (direction == "east")
             {
                 rectangle = new Rectangle(trafficPB.Left + trafficPB.Width, trafficPB.Top, 15, trafficPB.Height);
             }
-
             if (direction == "west")
             {
                 rectangle = new Rectangle(trafficPB.Left - 15, trafficPB.Top, 15, trafficPB.Height);
@@ -222,18 +219,10 @@ namespace TrafficRoad
             // if the collisionbox infront of the car intersects with another car it stops
             foreach (Traffic t in trafficList)
             {
-                try
+                if (rectangle.IntersectsWith(t.trafficPB.Bounds)) //&& t.path.points[index].Direction == direction)
                 {
-                    if (rectangle.IntersectsWith(t.trafficPB.Bounds) && t.path.points[index].Direction == direction)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
-                catch 
-                {
-                    
-                }
-
             }
             return false;
         }
