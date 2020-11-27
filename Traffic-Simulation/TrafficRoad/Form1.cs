@@ -9,10 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-
 using Newtonsoft.Json.Linq;
-using System.Threading;
-
 
 namespace TrafficRoad
 {
@@ -89,7 +86,6 @@ namespace TrafficRoad
             TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1, "V1-1");
 
             //bike lights
-
             TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "F1-1");
             TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "F1-2");
 
@@ -102,6 +98,7 @@ namespace TrafficRoad
             TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "F5-1");
             TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "F5-2");
 
+            // hier nog even naar kijken.
             //bus lights
             BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "B1-1");
             BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "B1-2");
@@ -137,10 +134,7 @@ namespace TrafficRoad
             Path path4 = new Path();
             path4.addPoint(642, -20, "south");
             path4.addPoint(642, 308, "south", tA13);
-            path4.addPoint(941, 303, "east");
-
-            paths.Add(path4);
-
+            path4.addPoint(1100, 303, "east");
             paths.Add(path4);
 
             // addings Paths (path5/10 from east spawn)
@@ -198,13 +192,13 @@ namespace TrafficRoad
             path13.addPoint(265, 558, "north");
             path13.addPoint(265, 302, "north", tA43);
             path13.addPoint(888, 302, "east", tA33);
-            path13.addPoint(938, 302, "east");
+            path13.addPoint(1100, 302, "east");
             paths.Add(path13);
             Path path14 = new Path();
             path14.addPoint(284, 558, "north");
             path14.addPoint(284, 322, "north", tA44);
             path14.addPoint(888, 322, "east", tA34);
-            path14.addPoint(938, 322, "east");
+            path14.addPoint(1100, 322, "east");
             paths.Add(path14);
             Path path15 = new Path();
             path15.addPoint(265, 558, "north");
@@ -221,48 +215,136 @@ namespace TrafficRoad
             path16.addPoint(696, -50, "north");
             paths.Add(path16);
 
-            // addings Paths (path17/22 from west spawn)
-
             Path path17 = new Path();
             path17.addPoint(-50, 303, "east");
             path17.addPoint(206, 303, "east", tA51);
             path17.addPoint(320, 265, "east");
-            path17.addPoint(700, 265, "north", tA31);
-            path17.addPoint(700, -50, "north");
+            path17.addPoint(697, 265, "east", tA31);
+            path17.addPoint(697, -50, "north");
             paths.Add(path17);
-
             Path path18 = new Path();
             path18.addPoint(-50, 303, "east");
             path18.addPoint(206, 303, "east", tA51);
             path18.addPoint(332, 284, "east");
-            path18.addPoint(720, 284, "north", tA32);
-            path18.addPoint(720, -50, "north");
+            path18.addPoint(716, 284, "north", tA32);
+            path18.addPoint(716, -50, "north");
             paths.Add(path18);
-
             Path path19 = new Path();
             path19.addPoint(-50, 322, "east");
             path19.addPoint(226, 322, "east", tA52);
             path19.addPoint(333, 303, "east", tA33);
-            path19.addPoint(950, 303, "east");
+            path19.addPoint(1100, 303, "east");
             paths.Add(path19);
             Path path20 = new Path();
             path20.addPoint(-50, 322, "east");
             path20.addPoint(226, 322, "east", tA52);
             path20.addPoint(333, 322, "east", tA34);
-            path20.addPoint(950, 322, "east");
+            path20.addPoint(1100, 322, "east");
             paths.Add(path20);
-
             Path path21 = new Path();
             path21.addPoint(-50, 341, "east");
-            path21.addPoint(191, 341, "south", tA53);
-            path21.addPoint(191, 550, "south");
+            path21.addPoint(191, 341, "east", tA53);
+            path21.addPoint(191, 570, "south");
             paths.Add(path21);
-
             Path path22 = new Path();
             path22.addPoint(-50, 359, "east");
-            path22.addPoint(174, 359, "south", tA54);
-            path22.addPoint(174, 550, "south");
+            path22.addPoint(174, 359, "east", tA54);
+            path22.addPoint(174, 570, "south");
             paths.Add(path22);
+
+            //bus paths
+            Path bPath1 = new Path();
+            bPath1.addPoint(660, -50, "south");
+            bPath1.addPoint(660, 175, "south", bB11);
+            bPath1.addPoint(660, 172, "west", tA61);
+            bPath1.addPoint(-50, 172, "west");
+            busPaths.Add(bPath1);
+            Path bPath2 = new Path();
+            bPath2.addPoint(660, -50, "south");
+            bPath2.addPoint(660, 308, "south", bB12);
+            bPath2.addPoint(660, 301, "east");
+            bPath2.addPoint(1100, 301, "east");
+            busPaths.Add(bPath2);
+            Path bPath3 = new Path();
+            bPath3.addPoint(303, 555, "north");
+            bPath3.addPoint(303, 395, "north", bB41);
+            bPath3.addPoint(286, 322, "north");
+            bPath3.addPoint(391, 322, "east", tA34);
+            bPath3.addPoint(1100, 322, "east");
+            busPaths.Add(bPath3);
+
+            //cyclist paths
+            Path cPath1 = new Path();
+            cPath1.addPoint(-50, 142, "west");
+            cPath1.addPoint(138, 142, "south", bF51);
+            cPath1.addPoint(138, 400, "east");
+            cPath1.addPoint(-50, 400, "east");
+            cyclistPaths.Add(cPath1);
+
+            //ped peds
+            Path pPath1 = new Path();
+            pPath1.addPoint(-50, 136, "west");
+            pPath1.addPoint(132, 136, "south", pV51);
+            pPath1.addPoint(132, 410, "east");
+            pPath1.addPoint(-50, 410, "east");
+            pedestrianPaths.Add(pPath1);
+
+            Path pPath2 = new Path();
+            pPath2.addPoint(-50, 136, "west");
+            pPath2.addPoint(565, 113, "north");
+            pPath2.addPoint(572, 99, "west");
+            pPath2.addPoint(767, 99, "north");
+            pPath2.addPoint(767, -50, "north");
+            pedestrianPaths.Add(pPath2);
+
+            Path pPath3 = new Path();
+            pPath3.addPoint(-50, 408, "west", pV41);
+            pPath3.addPoint(221, 408, "west", pV43);
+            pPath3.addPoint(337, 408, "west");
+            pPath3.addPoint(355, 391, "north");
+            pPath3.addPoint(368, 374, "west");
+            pPath3.addPoint(1100, 374, "west");
+            pedestrianPaths.Add(pPath3);
+
+            Path pPath4 = new Path();
+            pPath4.addPoint(950, 375, "east");
+            pPath4.addPoint(770, 375, "north", pV24);
+            pPath4.addPoint(770, 226, "north", pV23);
+            pPath4.addPoint(770, -50, "north");
+            pedestrianPaths.Add(pPath4);
+
+            Path pPath5 = new Path();
+            pPath5.addPoint(767, -50, "north");
+            pPath5.addPoint(767, 99, "north");
+            pPath5.addPoint(572, 99, "west", pV14);
+            pPath5.addPoint(565, 113, "north");
+            pPath5.addPoint(565, 136, "west");
+            pPath5.addPoint(-50, 136, "west");
+            pedestrianPaths.Add(pPath5);
+
+            Path pPath6 = new Path();
+            pPath6.addPoint(950, 374, "west");
+            pPath6.addPoint(368, 374, "west");
+            pPath6.addPoint(355, 391, "north");
+            pPath6.addPoint(337, 408, "west");
+            pPath6.addPoint(221, 408, "west", pV44);
+            pPath6.addPoint(-50, 408, "west", pV42);
+            pedestrianPaths.Add(pPath6);
+
+            Path pPath7 = new Path();
+            pPath7.addPoint(770, -50, "north");
+            pPath7.addPoint(770, 226, "north", pV21);
+            pPath7.addPoint(770, 375, "north", pV22);
+            pPath7.addPoint(1100, 375, "east");
+            pedestrianPaths.Add(pPath7);
+
+            Path pPath8 = new Path();
+            pPath8.addPoint(950, 102, "east");
+            pPath8.addPoint(770, 102, "south", pV21);
+            pPath8.addPoint(770, 268, "north", pV22);
+            pPath8.addPoint(770, 375, "west");
+            pPath8.addPoint(1100, 375, "west");
+            pedestrianPaths.Add(pPath8);
 
             Thread t = new Thread(aSocket.Connect);
             t.Start();
@@ -293,7 +375,7 @@ namespace TrafficRoad
                         bus.trafficLightStatus = status;
                     bus.checkTrafficLightStatus();
                 }
-                jsonReceived = null;
+                //jsonReceived = null;
             }
 
             foreach (Traffic t in traffic)
@@ -322,10 +404,10 @@ namespace TrafficRoad
                 spawnPedestrian();
             }
 
-            /*foreach (TrafficLight t in trafficLights)
+            foreach (TrafficLight t in trafficLights)
             {
                 t.checkTrafficLightStatus();
-            }*/
+            }
         }
 
         // function to spawn cars into the simulation
@@ -388,7 +470,5 @@ namespace TrafficRoad
             Controls.Add(busLight.trafficLightPB);
             return busLight;
         }
-
     }
-
 }

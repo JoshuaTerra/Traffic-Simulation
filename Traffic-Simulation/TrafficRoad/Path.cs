@@ -9,13 +9,10 @@ namespace TrafficRoad
     class Path
     {
         public List<Point> points = new List<Point>();
-
         public void addPoint(int leftX, int topY, string direction, TrafficLight tl = null)
         {
             Point point = new Point(leftX, topY, direction, tl);
-
             points.Add(point);
-        
         }
     }
 }
