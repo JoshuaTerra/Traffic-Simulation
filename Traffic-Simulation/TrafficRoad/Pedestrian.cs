@@ -20,13 +20,11 @@ namespace TrafficRoad
             trafficPB.BackColor = Color.Transparent;
             trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
             trafficPB.Size = new Size(15, 30);
-
-            this.direction = direction;
-
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
             this.width = width;
             this.height = height;
+            this.path = path;
         }
     }
 }

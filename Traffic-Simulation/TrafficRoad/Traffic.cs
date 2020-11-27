@@ -16,7 +16,7 @@ namespace TrafficRoad
         public int index = 0;
         public string direction;
         public bool stop;
-        public Path path = null;
+        public Path path;
 
         public int height;
         public int width;
@@ -45,8 +45,6 @@ namespace TrafficRoad
             float moveY = path.points[index].Top - trafficPB.Top;
 
             double distance = Math.Sqrt((Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)));
-
-            
 
             if (distance > speed && !stop)
             {
