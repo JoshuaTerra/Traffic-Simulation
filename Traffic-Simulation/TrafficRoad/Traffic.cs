@@ -207,15 +207,6 @@ namespace TrafficRoad
                 rectangle = new Rectangle(trafficPB.Left - 15, trafficPB.Top, 15, trafficPB.Height);
             }
 
-            //stops the traffic infront of the trafficlights if light is red
-            if (path.points[index].Tl != null)
-            {
-                if (rectangle.IntersectsWith(path.points[index].Tl.trafficLightPB.Bounds) && path.points[index].Tl.trafficLightStatus == 0)
-                {
-                    stop = true;
-                }
-            }
-
             // if the collisionbox infront of the car intersects with another car it stops
             foreach (Traffic t in trafficList)
             {
@@ -223,6 +214,16 @@ namespace TrafficRoad
                 {
                     return true;
                 }
+            }
+            //stops the traffic infront of the trafficlights if light is red
+            if (path.points[index].Tl != null)
+            {
+                if (rectangle.IntersectsWith(path.points[index].Tl.trafficLightPB.Bounds))
+                    if (path.points[index].Tl.trafficLightStatus == 0)
+                    {
+                        return true;
+                    }
+                return false;
             }
             return false;
         }
