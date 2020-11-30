@@ -258,6 +258,8 @@ namespace TrafficRoad
             bPath1.addPoint(660, 172, "west", tA61);
             bPath1.addPoint(-50, 172, "west");
             busPaths.Add(bPath1);
+
+            
             Path bPath2 = new Path();
             bPath2.addPoint(660, -50, "south");
             bPath2.addPoint(660, 308, "south", bB12);
@@ -438,7 +440,12 @@ namespace TrafficRoad
                 }
                 else
                 {
-                    t.movement(5);
+                    if (t is Pedestrian)
+                        t.movement(4);
+                    else if (t is Cyclist)
+                        t.movement(6);
+                    else
+                    t.movement(8);
                 }
             }
 
