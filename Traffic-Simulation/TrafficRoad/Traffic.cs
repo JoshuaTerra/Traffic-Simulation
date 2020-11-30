@@ -15,7 +15,7 @@ namespace TrafficRoad
         public int prevRotation = 0;
         public int index;
         public string direction;
-        public bool stop;
+        
         public Path path;
 
         public int height;
@@ -46,7 +46,7 @@ namespace TrafficRoad
 
             double distance = Math.Sqrt((Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)));
 
-            if (distance > speed && !stop)
+            if (distance > speed)
             {
                 flip(trafficPB.Left, trafficPB.Top);
                 trafficPB.Left = (int)(trafficPB.Left + moveX / distance * speed);
@@ -212,7 +212,14 @@ namespace TrafficRoad
             {
                 if (rectangle.IntersectsWith(t.trafficPB.Bounds)) //&& t.path.points[index].Direction == direction)
                 {
-                    return true;
+                    if (t.trafficPB.Size.Height > 10)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             //stops the traffic infront of the trafficlights if light is red
