@@ -64,7 +64,6 @@
     <Compile Include="Path.cs" />
     <Compile Include="Pedestrian.cs" />
     <Compile Include="Point.cs" />
-    <Compile Include="Road.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Traffic.cs" />
