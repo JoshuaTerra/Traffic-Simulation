@@ -42,67 +42,66 @@ namespace TrafficRoad
             TrafficLight tA54 = addTrafficLight(16, 7, 107, 363, 90, 0, "A5-4");
 
             // southern traffic lights
-            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 1, "A4-1");
-            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 1, "A4-2");
-            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 1, "A4-3");
-            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 1, "A4-4");
+            TrafficLight tA41 = addTrafficLight(7, 16, 231, 416, 0, 0, "A4-1");
+            TrafficLight tA42 = addTrafficLight(7, 16, 250, 416, 0, 0, "A4-2");
+            TrafficLight tA43 = addTrafficLight(7, 16, 269, 416, 0, 0, "A4-3");
+            TrafficLight tA44 = addTrafficLight(7, 16, 288, 416, 0, 0, "A4-4");
 
             // south east traffic lights
-            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 1, "A3-1");
-            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 1, "A3-2");
-            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 1, "A3-3");
-            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 1, "A3-4");
+            TrafficLight tA31 = addTrafficLight(16, 7, 614, 269, 90, 0, "A3-1");
+            TrafficLight tA32 = addTrafficLight(16, 7, 614, 288, 90, 0, "A3-2");
+            TrafficLight tA33 = addTrafficLight(16, 7, 614, 307, 90, 0, "A3-3");
+            TrafficLight tA34 = addTrafficLight(16, 7, 614, 326, 90, 0, "A3-4");
 
             // north east traffic lights
-            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 1, "A2-1");
-            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 1, "A2-2");
-            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 1, "A2-3");
-            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 1, "A2-4");
+            TrafficLight tA21 = addTrafficLight(16, 7, 779, 138, 270, 0, "A2-1");
+            TrafficLight tA22 = addTrafficLight(16, 7, 779, 157, 270, 0, "A2-2");
+            TrafficLight tA23 = addTrafficLight(16, 7, 779, 176, 270, 0, "A2-3");
+            TrafficLight tA24 = addTrafficLight(16, 7, 779, 195, 270, 0, "A2-4");
 
             // northern single traffic light
-            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 1, "A1-1");
-            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 1, "A1-2");
-            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 1, "A1-3");
+            TrafficLight tA11 = addTrafficLight(7, 16, 607, 75, 180, 0, "A1-1");
+            TrafficLight tA12 = addTrafficLight(7, 16, 626, 75, 180, 0, "A1-2");
+            TrafficLight tA13 = addTrafficLight(7, 16, 645, 75, 180, 0, "A1-3");
 
             //pedestrain lights
-            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 1, "V5-1");
-            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 1, "V5-2");
-            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 1, "V5-3");
-            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 1, "V5-4");
+            TrafficLight pV51 = addTrafficLight(3, 8, 132, 160, 180, 0, "V5-1");
+            TrafficLight pV52 = addTrafficLight(3, 8, 132, 210, 0, 0, "V5-2");
+            TrafficLight pV53 = addTrafficLight(3, 8, 132, 290, 180, 0, "V5-3");
+            TrafficLight pV54 = addTrafficLight(3, 8, 132, 378, 0, 0, "V5-4");
 
-            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 1, "V4-1");
-            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 1, "V4-2");
-            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 1, "V4-3");
-            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 1, "V4-4");
+            TrafficLight pV41 = addTrafficLight(8, 3, 160, 406, 90, 0, "V4-1");
+            TrafficLight pV42 = addTrafficLight(8, 3, 208, 406, 270, 0, "V4-2");
+            TrafficLight pV43 = addTrafficLight(8, 3, 220, 406, 90, 0, "V4-3");
+            TrafficLight pV44 = addTrafficLight(8, 3, 322, 406, 270, 0, "V4-4");
 
-            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 1, "V2-4");
-            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 1, "V2-3");
-            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 1, "V2-2");
-            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 1, "V2-1");
+            TrafficLight pV24 = addTrafficLight(3, 8, 767, 340, 0, 0, "V2-4");
+            TrafficLight pV23 = addTrafficLight(3, 8, 767, 291, 180, 0, "V2-3");
+            TrafficLight pV22 = addTrafficLight(3, 8, 767, 210, 0, 0, "V2-2");
+            TrafficLight pV21 = addTrafficLight(3, 8, 767, 120, 180, 0, "V2-1");
 
-            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 1, "V1-4");
-            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 1, "V1-3");
-            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 1, "V1-2");
-            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 1, "V1-1");
+            TrafficLight pV14 = addTrafficLight(8, 3, 735, 99, 270, 0, "V1-4");
+            TrafficLight pV13 = addTrafficLight(8, 3, 688, 99, 90, 0, "V1-3");
+            TrafficLight pV12 = addTrafficLight(8, 3, 676, 99, 270, 0, "V1-2");
+            TrafficLight pV11 = addTrafficLight(8, 3, 590, 99, 90, 0, "V1-1");
 
             //bike lights
-            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 1, "F1-1");
-            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 1, "F1-2");
+            TrafficLight bF11 = addTrafficLight(8, 3, 590, 106, 90, 0, "F1-1");
+            TrafficLight bF12 = addTrafficLight(8, 3, 735, 106, 270, 0, "F1-2");
 
-            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 1, "F2-1");
-            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 1, "F2-2");
+            TrafficLight bF21 = addTrafficLight(3, 8, 759, 120, 180, 0, "F2-1");
+            TrafficLight bF22 = addTrafficLight(3, 8, 760, 340, 0, 0, "F2-2");
 
-            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 1, "F4-1");
-            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 1, "F4-2");
+            TrafficLight bF41 = addTrafficLight(8, 3, 160, 398, 90, 0, "F4-1");
+            TrafficLight bF44 = addTrafficLight(8, 3, 322, 398, 270, 0, "F4-2");
 
-            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 1, "F5-1");
-            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 1, "F5-2");
+            TrafficLight bF51 = addTrafficLight(3, 8, 140, 160, 180, 0, "F5-1");
+            TrafficLight bF52 = addTrafficLight(3, 8, 140, 378, 0, 0, "F5-2");
 
-            // hier nog even naar kijken.
             //bus lights
-            BusLight bB11 = addBusLight(8, 8, 306, 425, 0, 1, "B1-1");
-            BusLight bB12 = addBusLight(8, 8, 659, 74, 0, 1, "B1-2");
-            BusLight bB41 = addBusLight(8, 8, 667, 74, 0, 1, "B4-1");
+            BusLight bB41 = addBusLight(8, 8, 306, 425, 0, 0, "B4-1");
+            BusLight bB11 = addBusLight(8, 8, 659, 74, 0, 0, "B1-1");
+            BusLight bB12 = addBusLight(8, 8, 667, 74, 0, 0, "B1-2");
 
             // adding Paths (path0/4 from north spawn)
             Path path0 = new Path();
@@ -275,67 +274,62 @@ namespace TrafficRoad
 
             //cyclist paths
             Path cPath1 = new Path();
-            cPath1.addPoint(-50, 142, "west");
-            cPath1.addPoint(138, 142, "south", bF51);
-            cPath1.addPoint(138, 400, "east");
-            cPath1.addPoint(-50, 400, "east");
+            cPath1.addPoint(-40, 139, "east");
+            cPath1.addPoint(137, 139, "east");
+            cPath1.addPoint(137, 396, "south", bF51);
+            cPath1.addPoint(-50, 396, "west");
             cyclistPaths.Add(cPath1);
 
             Path cPath2 = new Path();
-            cPath2.addPoint(-50, 142, "west");
-            cPath2.addPoint(565, 142, "north");
-            cPath2.addPoint(565, 105, "west", bF11);
-            cPath2.addPoint(761, 105, "north");
-            cPath2.addPoint(761, -50, "north");
+            cPath2.addPoint(-40, 139, "east");
+            cPath2.addPoint(577, 139, "east");
+            cPath2.addPoint(577, 105, "north");
+            cPath2.addPoint(765, 105, "east", bF11);
+            cPath2.addPoint(765, -50, "north");
             cyclistPaths.Add(cPath2);
 
             Path cPath3 = new Path();
-            cPath3.addPoint(-50, 397, "west", bF41);
-            cPath3.addPoint(221, 397, "west");
-            cPath3.addPoint(337, 397, "west");
-            cPath3.addPoint(340, 391, "north");
-            cPath3.addPoint(368, 365, "west");
-            cPath3.addPoint(1100, 365, "west");
+            cPath3.addPoint(-40, 397, "east");
+            cPath3.addPoint(346, 397, "east", bF41);
+            cPath3.addPoint(346, 367, "north");
+            cPath3.addPoint(1100, 367, "east");
             cyclistPaths.Add(cPath3);
 
             Path cPath4 = new Path();
-            cPath4.addPoint(950, 361, "east");
-            cPath4.addPoint(757, 361, "north", bF22);
-            cPath4.addPoint(757, 226, "north");
+            cPath4.addPoint(920, 366, "west");
+            cPath4.addPoint(758, 366, "west");
+            cPath4.addPoint(758, 85, "north", bF22);
             cPath4.addPoint(757, -50, "north");
             cyclistPaths.Add(cPath4);
 
             Path cPath5 = new Path();
-            cPath5.addPoint(757, -50, "north");
-            cPath5.addPoint(757, 109, "north");
-            cPath5.addPoint(582, 109, "west", bF12);
-            cPath5.addPoint(565, 123, "north");
-            cPath5.addPoint(565, 141, "west");
-            cPath5.addPoint(-50, 141, "west");
+            cPath5.addPoint(759, -40, "south");
+            cPath5.addPoint(759, 104, "south");
+            cPath5.addPoint(571, 104, "west", bF12);
+            cPath5.addPoint(567, 137, "south");
+            cPath5.addPoint(-50, 137, "west");
             cyclistPaths.Add(cPath5);
 
             Path cPath6 = new Path();
-            cPath6.addPoint(950, 364, "east");
-            cPath6.addPoint(368, 364, "east");
-            cPath6.addPoint(355, 381, "north");
-            cPath6.addPoint(337, 398, "east");
-            cPath6.addPoint(221, 398, "east", bF44);
-            cPath6.addPoint(-50, 398, "east");
+            cPath6.addPoint(920, 366, "west");
+            cPath6.addPoint(348, 366, "west");
+            cPath6.addPoint(346, 399, "south");
+            cPath6.addPoint(250, 397, "west", bF44);
+            cPath6.addPoint(-50, 397, "west");
             cyclistPaths.Add(cPath6);
 
             Path cPath7 = new Path();
-            cPath7.addPoint(760, -50, "north");
-            cPath7.addPoint(760, 226, "north", bF21);
-            cPath7.addPoint(760, 365, "north");
+            cPath7.addPoint(759, -40, "south");
+            cPath7.addPoint(759, 226, "south", bF21);
+            cPath7.addPoint(759, 365, "north");
             cPath7.addPoint(1100, 365, "east");
             cyclistPaths.Add(cPath7);
 
             Path cPath8 = new Path();
-            cPath8.addPoint(950, 102, "east");
-            cPath8.addPoint(770, 102, "south", bF21);
-            cPath8.addPoint(770, 268, "north");
-            cPath8.addPoint(770, 375, "west");
-            cPath8.addPoint(1100, 375, "west");
+            cPath8.addPoint(920, 105, "west");
+            cPath8.addPoint(757, 105, "west");
+            cPath8.addPoint(759, 365, "south", bF21);
+            cPath8.addPoint(1100, 365, "east");
             cyclistPaths.Add(cPath8);
 
             //ped peds
@@ -430,7 +424,7 @@ namespace TrafficRoad
                         bus.trafficLightStatus = status;
                     if (bus.nameT == "B1-2")
                         bus.trafficLightStatus = status;
-                    bus.checkTrafficLightStatus();
+                    bus.checkTrafficLightStatusBus();
                 }
                 //jsonReceived = null;
             }
@@ -453,10 +447,6 @@ namespace TrafficRoad
             {
                 spawnCar();
                 spawnBus();
-            }
-            int rnd2 = random.Next(30);
-            if (rnd2 == 1)
-            {
                 spawnCyclist();
                 spawnPedestrian();
             }
@@ -464,6 +454,11 @@ namespace TrafficRoad
             foreach (TrafficLight t in trafficLights)
             {
                 t.checkTrafficLightStatus();
+            }
+
+            foreach (BusLight bus in busLights)
+            {
+                bus.checkTrafficLightStatusBus();
             }
         }
 

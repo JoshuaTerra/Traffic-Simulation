@@ -26,18 +26,5 @@ namespace TrafficRoad
 
             flipFunction(flipped);
         }
-        public new void checkTrafficLightStatus()
-        {
-            if (trafficLightStatus == 0)
-            {
-                trafficLightPB.Image = Properties.Resources.bus_stop;
-            }
-            else if (trafficLightStatus == 1)
-            {
-                trafficLightPB.Image = Properties.Resources.bus_right_go;
-            }
-
-            flipFunction(flipped);
-        }
     }
 }

@@ -29,18 +29,7 @@ namespace TrafficRoad
             this.trafficLightStatus = trafficLightStatus;
             this.nameT = nameT;
 
-            if (flipped == 90)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            }
-            else if (flipped == 180)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            }
-            else if (flipped == 270)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            }
+            flipFunction(flipped);
         }
 
         public void checkTrafficLightStatus()
@@ -59,6 +48,24 @@ namespace TrafficRoad
             }
 
             flipFunction(flipped);  
+        }
+
+        public void checkTrafficLightStatusBus()
+        {
+            if (trafficLightStatus == 0)
+            {
+                /*trafficLightPB.Image = Properties.Resources.light_slow;
+                trafficLightPB.Update();
+                await Task.Delay(3000);*/
+                trafficLightPB.Image = Properties.Resources.bus_stop;
+            }
+
+            else if (trafficLightStatus == 1)
+            {
+                trafficLightPB.Image = Properties.Resources.bus_right_go;
+            }
+
+            flipFunction(flipped);
         }
 
         public void flipFunction(int flipped)
