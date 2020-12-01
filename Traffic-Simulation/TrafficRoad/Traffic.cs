@@ -212,7 +212,7 @@ namespace TrafficRoad
             {
                 if (rectangle.IntersectsWith(t.trafficPB.Bounds)) //&& t.path.points[index].Direction == direction)
                 {
-                    if (t.trafficPB.Size.Height > 10)
+                    if (t.trafficPB.Size.Height > 14 && t.trafficPB.Size.Width > 14)
                     {
                         return true;
                     }

@@ -278,8 +278,8 @@ namespace TrafficRoad
             //cyclist paths
             Path cPath1 = new Path();
             cPath1.addPoint(-40, 139, "east");
-            cPath1.addPoint(137, 139, "east");
-            cPath1.addPoint(137, 396, "south", bF51);
+            cPath1.addPoint(145, 139, "east");
+            cPath1.addPoint(145, 396, "south", bF51);
             cPath1.addPoint(-50, 396, "west");
             cyclistPaths.Add(cPath1);
 
@@ -307,8 +307,8 @@ namespace TrafficRoad
 
             Path cPath5 = new Path();
             cPath5.addPoint(759, -40, "south");
-            cPath5.addPoint(759, 104, "south");
-            cPath5.addPoint(571, 104, "west", bF12);
+            cPath5.addPoint(759, 109, "south");
+            cPath5.addPoint(571, 109, "west", bF12);
             cPath5.addPoint(567, 137, "south");
             cPath5.addPoint(-200, 137, "west");
             cyclistPaths.Add(cPath5);
@@ -455,7 +455,7 @@ namespace TrafficRoad
             {
                 spawnCar();
             }
-            int rnd2 = random.Next(100);
+            int rnd2 = random.Next(30);
             if (rnd2 == 1)
             {
                 spawnCyclist();
