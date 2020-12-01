@@ -14,6 +14,7 @@ namespace TrafficRoad
         public int trafficLightStatus;
         public PictureBox trafficLightPB;
         public string nameT;
+        public bool carInFrontOfLight = false;
 
         public void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {

@@ -14,6 +14,7 @@ public:
 	std::string ipAddress = "127.0.0.1";
 	int port = 54000;
 	SOCKET clientSocket = INVALID_SOCKET;
+	bool running = false;
 
 	void setup();
 	void socketServer(std::string trafficInput);

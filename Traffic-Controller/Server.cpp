@@ -57,6 +57,7 @@ void Server::setup()
 	}
 
 	clientSocket = ClientSocket;
+	running = true;
 }
 
 void Server::socketServer(std::string trafficInput)
@@ -89,13 +90,13 @@ void Server::socketServer(std::string trafficInput)
 			{
 
 				// Wait for response
-				/*ZeroMemory(buf, 4096);
-
-				int bytesReceived = recv(clientSocket, buf, 4096, 0);
-				if (bytesReceived > 0)
-				{
-					cout << "Socket buffer!\n";
-				}*/
+				/*std::string message;
+				int recvData;
+				char Buffer[1024];
+				recvData = recv(clientSocket, Buffer, 1024, 0);
+				Buffer[recvData] = '\0';
+				message = Buffer;
+				std::cout << Buffer << endl;*/
 			}
 			else {
 				cerr << "Socket error!\n";
