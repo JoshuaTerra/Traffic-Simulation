@@ -409,7 +409,33 @@ namespace TrafficRoad
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            JObject jsonReceived = aSocket.json;
+            JObject jsonSend = new JObject();
+
+            foreach(TrafficLight t in trafficLights)
+            {
+                if(t.carInFrontOfLight)
+                {
+                    jsonSend[t.nameT] = 1;
+                }
+                else
+                {
+                    jsonSend[t.nameT] = 0;
+                }
+            }
+
+            foreach(BusLight b in busLights)
+            {
+                if(b.carInFrontOfLight)
+                {
+                    jsonSend[b.nameT] = 1;
+                }
+                else
+                {
+                    jsonSend[b.nameT] = 0;
+                }
+            }
+
+            JObject jsonReceived = aSocket.jsonReceived;
 
             if(jsonReceived != null)
             {

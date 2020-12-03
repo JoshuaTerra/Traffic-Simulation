@@ -228,6 +228,7 @@ namespace TrafficRoad
                 if (rectangle.IntersectsWith(path.points[index].Tl.trafficLightPB.Bounds))
                     if (path.points[index].Tl.trafficLightStatus == 0)
                     {
+                        path.points[index].Tl.carInFrontOfLight = true;
                         return true;
                     }
                 return false;
