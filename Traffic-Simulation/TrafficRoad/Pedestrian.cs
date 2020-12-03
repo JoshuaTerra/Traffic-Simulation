@@ -20,6 +20,7 @@ namespace TrafficRoad
             this.width = width;
             this.height = height;
             this.path = path;
+            trafficPB.Bounds.Inflate(10, 10);
         }
     }
 }
