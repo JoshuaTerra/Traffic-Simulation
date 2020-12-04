@@ -256,11 +256,9 @@ namespace TrafficRoad
             Path bPath1 = new Path();
             bPath1.addPoint(660, -50, "south");
             bPath1.addPoint(660, 175, "south", bB11);
-            bPath1.addPoint(660, 172, "west", tA61);
-            bPath1.addPoint(-200, 172, "west");
+            bPath1.addPoint(660, 172, "west");
+            bPath1.addPoint(-200, 172, "west", tA61);
             busPaths.Add(bPath1);
-
-            
             Path bPath2 = new Path();
             bPath2.addPoint(660, -50, "south");
             bPath2.addPoint(660, 308, "south", bB12);
@@ -435,6 +433,7 @@ namespace TrafficRoad
                 }
             }
 
+            aSocket.jsonSend = jsonSend;
             JObject jsonReceived = aSocket.jsonReceived;
 
             if(jsonReceived != null)
