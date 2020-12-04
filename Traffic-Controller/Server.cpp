@@ -61,9 +61,9 @@ void Server::setup()
 
 void Server::socketServer(std::string trafficInput)
 {
-	std::string length = std::to_string(trafficInput.length());
-	std::string header = length + ":";
-	std::string package = header + trafficInput;
+	std::string inputLength = std::to_string(trafficInput.length());
+	std::string inputHeader = inputLength + ":";
+	std::string package = inputHeader + trafficInput;
 	const char* Input = package.c_str();
 	std::string ti = trafficInput;
 
@@ -78,12 +78,13 @@ void Server::socketServer(std::string trafficInput)
 		{
 
 			// Send the text
-			int sendResult = 0;
+			int sendData = 0;
 			if (true) {
-				sendResult = send(clientSocket, Input, size, 0);
+				sendData = send(clientSocket, Input, size, 0);
+				//cout << "Data sent:" << Input << endl;
 			}
 
-			if (sendResult != SOCKET_ERROR)
+			if (sendData != SOCKET_ERROR)
 				//if (sendResult == -1)
 			{
 

@@ -21,16 +21,14 @@ int main()
 	ser->setup();
 
 	int order = 1;
-	const char* traffic;
-	const char* header;
-	const char* package;
-	int modorder;
+	bool evacuation = false;
+	int randorder;
 
 	//timing
 	double time_counter = 0;
 	clock_t this_time = clock();
 	clock_t last_time = this_time;
-	const int NUM_SECONDS = 4;
+	const int NUM_SECONDS = 5;
 
 	//run clock
 	while (true)
@@ -42,13 +40,28 @@ int main()
 		if (time_counter > (double)(NUM_SECONDS * CLOCKS_PER_SEC))
 		{
 			time_counter -= (double)(NUM_SECONDS * CLOCKS_PER_SEC);
-			modorder = (order % 6) + 1; // current order
-			string traffic = tr->change_traffic_order(modorder);
+			randorder = (order % 6) + 1; // current order
+			string traffic;
+			if (!evacuation)
+			{
+				traffic = tr->change_traffic_order(randorder);
+				cout << "Traffic data send" << endl;
+				order++;
+				evacuation = true;
+			} 
+			else
+			{
+				traffic = tr->evacuation();
+				cout << "Clearing traffic" << endl;
+				evacuation = false;
+			}
 			ser->socketServer(traffic); //package every 4 seconds
-			cout << "Data sent: " << traffic << endl;
+
+		}		
+
+		if (order > 6) {
+			order = 1;
 		}
-		//continuous order
-		order++;
 	}
 	tr.reset();
 }

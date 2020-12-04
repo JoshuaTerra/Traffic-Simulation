@@ -1,31 +1,25 @@
 ﻿using System;
-using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Security.Cryptography.X509Certificates;
 
 namespace TrafficRoad
 {
     class Cyclist : Traffic
     {
-        public void spawnTraffic(int leftX, int topY, string direction, Road road)
+        public new void spawnTraffic(int leftX, int topY, int width, int height, Path path)
         {
             trafficPB = new PictureBox();
-            //trafficPB.Image = Properties.Resources.ferrari;
+            trafficPB.Image = Properties.Resources.cyclist;
             trafficPB.BackColor = Color.Transparent;
-            trafficPB.SizeMode = PictureBoxSizeMode.StretchImage;
-            trafficPB.Size = new Size(15, 30);
-
-            this.direction = direction;
-            this.road = road;
-
+            trafficPB.Size = new Size(width, height);
             trafficPB.Left = leftX;
             trafficPB.Top = topY;
+            this.width = width;
+            this.height = height;
+            this.path = path;
         }
     }
 }

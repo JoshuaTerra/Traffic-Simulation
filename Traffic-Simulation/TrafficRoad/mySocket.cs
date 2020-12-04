@@ -1,9 +1,15 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
+using System.Collections.Generic;
 using System.Text;
+using System.Net.Sockets;
+using System.Net;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 
 namespace TrafficRoad {
     public class mySocket
@@ -14,11 +20,29 @@ namespace TrafficRoad {
 
         Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        private jsonTL json = null;
+        public JObject jsonReceived = null;
 
-        public jsonTL Json
+        public JObject jsonSend = null;
+
+        public async void SendData()
         {
-            get => json; set => json = value;
+            await Task.Delay(1000);
+            string data = JsonConvert.SerializeObject(jsonSend);
+            string dataLength = data.Length.ToString();
+            string JSONHeader = dataLength + ":";
+            string package = JSONHeader + data;
+            byte[] bytes = Encoding.ASCII.GetBytes(package);
+
+            if(SocketConnected(sender))
+            {
+                sender.Send(bytes);
+                Console.WriteLine("Data sent: " + package);
+            } 
+            else
+            {
+                Console.WriteLine("Socket not connected");
+            }
+
         }
 
         public void Listen()
@@ -47,9 +71,14 @@ namespace TrafficRoad {
                 {
                     data = data.Substring(4);
 
-                    json = JsonConvert.DeserializeObject<jsonTL>(data);
+                    jsonReceived = JsonConvert.DeserializeObject<JObject>(data);
 
                     Console.WriteLine(data);
+
+                    if (jsonSend != null)
+                    {
+                        SendData();
+                    }
                 }
                 else
                 {
@@ -77,6 +106,17 @@ namespace TrafficRoad {
             {
                 Listen();
             }
+        }
+
+        // https://stackoverflow.com/questions/2661764/how-to-check-if-a-socket-is-connected-disconnected-in-c
+        bool SocketConnected(Socket s)
+        {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
         }
 
     }

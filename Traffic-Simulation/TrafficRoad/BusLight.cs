@@ -10,29 +10,21 @@ namespace TrafficRoad
 {
     class BusLight : TrafficLight
     {
-        public void checkTrafficLightStatus()
+        public new void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
-            if (trafficLightStatus == 0)
-            {
-                trafficLightPB.Image = Properties.Resources.bus_stop;
-            }
-            else if (trafficLightStatus == 1)
-            {
-                trafficLightPB.Image = Properties.Resources.bus_right_go;
-            }
+            trafficLightPB = new PictureBox();
+            trafficLightPB.Image = Properties.Resources.bus_stop;
+            trafficLightPB.BackColor = Color.Transparent;
+            trafficLightPB.SizeMode = PictureBoxSizeMode.StretchImage;
+            trafficLightPB.Width = width;
+            trafficLightPB.Height = height;
+            trafficLightPB.Left = leftX;
+            trafficLightPB.Top = topY;
+            this.flipped = flipped;
+            this.trafficLightStatus = trafficLightStatus;
+            this.nameT = nameT;
 
-            if (flipped == 90)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            }
-            else if (flipped == 180)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            }
-            else if (flipped == 270)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            }
+            flipFunction(flipped);
         }
     }
 }

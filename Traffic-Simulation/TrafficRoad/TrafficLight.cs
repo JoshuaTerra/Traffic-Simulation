@@ -14,6 +14,7 @@ namespace TrafficRoad
         public int trafficLightStatus;
         public PictureBox trafficLightPB;
         public string nameT;
+        public bool carInFrontOfLight = false;
 
         public void addTrafficLight(int width, int height, int leftX, int topY, int flipped, int trafficLightStatus, string nameT)
         {
@@ -29,43 +30,61 @@ namespace TrafficRoad
             this.trafficLightStatus = trafficLightStatus;
             this.nameT = nameT;
 
-            if (flipped == 90)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            }
-            else if (flipped == 180)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            }
-            else if (flipped == 270)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            }
+            flipFunction(flipped);
         }
 
         public void checkTrafficLightStatus()
         {
             if (trafficLightStatus == 0)
             {
+                /*trafficLightPB.Image = Properties.Resources.light_slow;
+                await Task.Delay(3000);*/
                 trafficLightPB.Image = Properties.Resources.light_stop;
             }
+            
             else if (trafficLightStatus == 1)
             {
                 trafficLightPB.Image = Properties.Resources.light_go;
             }
 
-            if (flipped == 90)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            }
-            else if (flipped == 180)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            }
-            else if (flipped == 270)
-            {
-                trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            }   
+            flipFunction(flipped);  
         }
+
+        public void checkTrafficLightStatusBus()
+        {
+            if (trafficLightStatus == 0)
+            {
+                /*trafficLightPB.Image = Properties.Resources.light_slow;
+                trafficLightPB.Update();
+                await Task.Delay(3000);*/
+                trafficLightPB.Image = Properties.Resources.bus_stop;
+            }
+
+            else if (trafficLightStatus == 1)
+            {
+                trafficLightPB.Image = Properties.Resources.bus_right_go;
+            }
+
+            flipFunction(flipped);
+        }
+
+        public void flipFunction(int flipped)
+        {
+            switch (flipped)
+            {
+                case 90:
+                    trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    break;
+
+                case 180:
+                    trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    break;
+
+                case 270:
+                    trafficLightPB.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    break;
+            }
+        }
+
     }
 }
